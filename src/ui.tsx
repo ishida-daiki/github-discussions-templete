@@ -237,6 +237,8 @@ function Plugin() {
       setValue(false);
       setRadioValue("");
       setSelectedFiles([]);
+      const defaultValues = labelOptions.map(() => "icons-size-16--option-disabled");
+      setSegmentedControlValues(defaultValues);
     } catch (error) {
       console.error("Error uploading file or sending message:", error);
       setIsLoading(false);
