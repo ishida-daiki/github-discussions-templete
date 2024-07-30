@@ -46,10 +46,10 @@ function Plugin() {
   const [segmentedControlvalue, setsegmentedControlValue] = useState<string>('bar');
   const setsegmentedControloptions: Array<SegmentedControlOption> = [{
     children: <IconOptionDisabled16 />,
-    value: ""
+    value: "icons-size-16--option-check"
   }, {
     children: <IconOptionCheck16 />,
-    value:""
+    value:"icons-size-16--option-check"
   }];
 
   const [body, setBody] = useState<string>("");
