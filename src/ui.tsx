@@ -255,8 +255,9 @@ function Plugin() {
     setRadioValue(newValue);
   }
 
-  function handleChangeSegmentedControl(event: JSX.TargetedEvent<HTMLInputElement>, value: string) {
-    setSegmentedControlValue(value);
+  function handleChangeSegmentedControl(event: JSX.TargetedEvent<HTMLInputElement>) {
+    const newValue = event.currentTarget.value;
+    setSegmentedControlValue(newValue);
   }
 
   function formatFileName(fileName: string): string {
@@ -342,7 +343,7 @@ function Plugin() {
               <div key={option.value} className={styles.label}>
                 {option.children}
                 <SegmentedControl 
-                  onChange={(event) => handleChangeSegmentedControl(event, option.value)}
+                  onChange={(event) => handleChangeSegmentedControl(event)}
                   options={segmentedControlOptions}
                   value={segmentedControlValue}
                 />
