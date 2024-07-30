@@ -1,0 +1,42 @@
+{
+  "dependencies": {
+    "@create-figma-plugin/ui": "^3.2.0",
+    "@create-figma-plugin/utilities": "^3.2.0",
+    "preact": ">=10"
+  },
+  "devDependencies": {
+    "@create-figma-plugin/build": "^3.2.0",
+    "@create-figma-plugin/tsconfig": "^3.2.0",
+    "@figma/plugin-typings": "1.90.0",
+    "typescript": ">=4"
+  },
+  "scripts": {
+    "build": "build-figma-plugin --typecheck --minify",
+    "watch": "build-figma-plugin --typecheck --watch"
+  },
+  "figma-plugin": {
+    "editorType": [
+      "figma",
+      "dev",
+      "figJam"
+    ],
+    "id": "github-discussions",
+    "name": "github-discussions",
+    "main": "src/main.ts",
+    "ui": "src/ui.tsx",
+    "api": "1.0.0",
+    "enablePrivatePluginApi": true,
+    "capabilities": ["inspect", "vscode"],
+    "enableProposedApi": false,
+    "documentAccess": "dynamic-page",
+    "permissions": ["currentuser"],
+    "networkAccess": {
+      "allowedDomains": [
+        "https://api.github.com/graphql",
+        "https://api.github.com",
+        "https://l6sre2sl0g.execute-api.ap-northeast-1.amazonaws.com/default/turtle-feedback"
+      ],
+      "reasoning": "The plugin sends notifications to a specific Slack channel using a webhook URL."
+    }
+  }
+}
