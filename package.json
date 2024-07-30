@@ -2,12 +2,14 @@
   "dependencies": {
     "@create-figma-plugin/ui": "^3.2.0",
     "@create-figma-plugin/utilities": "^3.2.0",
+    "dotenv": "^16.4.5",
     "preact": ">=10"
   },
   "devDependencies": {
     "@create-figma-plugin/build": "^3.2.0",
     "@create-figma-plugin/tsconfig": "^3.2.0",
     "@figma/plugin-typings": "1.90.0",
+    "@types/node": "^22.0.0",
     "typescript": ">=4"
   },
   "scripts": {
@@ -18,7 +20,7 @@
     "editorType": [
       "figma",
       "dev",
-      "figJam"
+      "figjam"
     ],
     "id": "github-discussions",
     "name": "github-discussions",
@@ -26,10 +28,15 @@
     "ui": "src/ui.tsx",
     "api": "1.0.0",
     "enablePrivatePluginApi": true,
-    "capabilities": ["inspect", "vscode"],
+    "capabilities": [
+      "inspect",
+      "vscode"
+    ],
     "enableProposedApi": false,
     "documentAccess": "dynamic-page",
-    "permissions": ["currentuser"],
+    "permissions": [
+      "currentuser"
+    ],
     "networkAccess": {
       "allowedDomains": [
         "https://api.github.com/graphql",
