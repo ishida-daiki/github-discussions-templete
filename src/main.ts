@@ -268,7 +268,6 @@ async function uploadFileToGitHub(
 export default function () {
   figma.ui.onmessage = async (message) => {
     if (message.type === "get-discussion") {
-      const editorMode = figma.editorType === "dev" ? "development" : "design";
       const categories = await getDiscussionCategories(owner, repo, accessToken);
       const labels = await getDiscussionLabels(owner, repo, accessToken);
       const categoryMap = categories.reduce((acc: Record<string, string>, category: DiscussionCategory) => {
@@ -277,7 +276,6 @@ export default function () {
       }, {});
       figma.ui.postMessage({ type: "discussion-categories", categories, categoryMap });
       figma.ui.postMessage({ type: "discussion-labels", labels });
-      figma.ui.postMessage({ type: "set-editor-mode", editorMode });
     }
     else if (message.type === "upload-image") {
       let imageUrl: string | null = null;

@@ -24,7 +24,7 @@ import styles from "./ui.module.css";
 
 function Plugin() {
   const [elementName, setElementName] = useState<null | string>(
-    "Discussion したい要素を選択してください"
+    "Discussion Select the element you want to discuss"
   );
 
   const [generatedUrl, setGeneratedUrl] = useState<string | null>(null);
@@ -82,10 +82,11 @@ function Plugin() {
       setOptions(newOptions);
       setCategoryMap(pluginMessage.categoryMap);
     } else if (pluginMessage.type === "discussion-labels") {
-      const filteredLabels = pluginMessage.labels.filter(
-        (label: { name: string }) =>
-          label.name === "design" || label.name === "development"
-      );
+      const filteredLabels = pluginMessage.labels;
+      // const filteredLabels = pluginMessage.labels.filter(
+      //   (label: { name: string }) =>
+      //     label.name === "design" || label.name === "development"
+      // );
       const newRadioOptions: Array<RadioButtonsOption> = filteredLabels.map(
         (label: { name: string }) => ({
           children: <Text>{label.name}</Text>,
@@ -106,7 +107,7 @@ function Plugin() {
       setIsLoadingLabels(false);
     } else if (pluginMessage.type === "selection-cleared") {
       setElementName(
-        "Turtle のコンポーネント、またはスタイルを選択してください"
+        "Discussion Select the element you want to discuss"
       );
       setGeneratedUrl(null); // 選択クリア時にURLをリセット
     } else if (pluginMessage.type === "update-name") {
@@ -119,8 +120,6 @@ function Plugin() {
         "-"
       )}`; // ノードIDの形式をエンコード（": -> "-"）
       setGeneratedUrl(url); // 状態を更新
-    } else if (pluginMessage.type === "set-editor-mode") {
-      setRadioValue(pluginMessage.editorMode);
     }
   };
 
@@ -219,10 +218,10 @@ function Plugin() {
       setBody("");
       setCategory(null);
       setElementName(
-        "Turtle のコンポーネント、またはスタイルを選択してください"
+        "Discussion Select the element you want to discuss"
       );
       setValue(false);
-      setRadioValue("design");
+      setRadioValue("");
       setSelectedFiles([]);
     } catch (error) {
       console.error("Error uploading file or sending message:", error);
@@ -242,7 +241,7 @@ function Plugin() {
     setValue(newValue);
   }
 
-  const [radioValue, setRadioValue] = useState<string>("design");
+  const [radioValue, setRadioValue] = useState<string>("");
   function handleChangeRadio(event: JSX.TargetedEvent<HTMLInputElement>) {
     const newValue = event.currentTarget.value;
     setRadioValue(newValue);
@@ -285,9 +284,9 @@ function Plugin() {
           }}
         >
           {elementName ===
-          "Turtle のコンポーネント、またはスタイルを選択してください" ? (
+          "Discussion Select the element you want to discuss" ? (
             <div className={styles.previewPlaceholder}>
-              Turtle のコンポーネント、またはスタイルを選択してください
+              Discussion Select the element you want to discuss
             </div>
           ) : (
             <div className={styles.previewText}>{elementName}</div>
@@ -395,7 +394,7 @@ function Plugin() {
           fullWidth
           onClick={handleClick}
         >
-          送信
+          Submit
         </Button>
         <VerticalSpace space="extraLarge" />
       </Container>
