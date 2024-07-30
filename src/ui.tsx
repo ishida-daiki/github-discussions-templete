@@ -12,7 +12,6 @@ import {
   FileUploadDropzone,
   Muted,
   FileUploadButton,
-  RadioButtons,
   RadioButtonsOption,
   Textbox,
   Preview,
@@ -36,14 +35,12 @@ function Plugin() {
   const [category, setCategory] = useState<null | string>(null);
   const [options, setOptions] = useState<Array<DropdownOption>>([]);
   const [categoryMap, setCategoryMap] = useState<Record<string, string>>({});
-  const [radioOptions, setRadioOptions] = useState<Array<RadioButtonsOption>>(
-    []
-  );
+  const [radioOptions, setRadioOptions] = useState<Array<RadioButtonsOption>>([]);
   const [labelMap, setLabelMap] = useState<Record<string, string>>({});
   const [isLoadingLabels, setIsLoadingLabels] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [selectedFiles, setSelectedFiles] = useState<Array<File>>([]);
-  const [segmentedControlValue, setSegmentedControlValue] = useState<string>("icons-size-16--option-disabled");
+  const [segmentedControlValues, setSegmentedControlValues] = useState<string[]>([]);
   const segmentedControlOptions: Array<SegmentedControlOption> = [{
     children: <IconOptionDisabled16 />,
     value: "icons-size-16--option-disabled"
@@ -82,6 +79,14 @@ function Plugin() {
   useEffect(() => {
     parent.postMessage({ pluginMessage: { type: "get-discussion" } }, "*");
   }, []);
+
+  useEffect(() => {
+    if (radioOptions.length > 0) {
+      // radioOptions が設定された後に default 値を設定
+      const defaultValues = radioOptions.map(() => "icons-size-16--option-disabled");
+      setSegmentedControlValues(defaultValues);
+    }
+  }, [radioOptions]);
 
   window.onmessage = async (event) => {
     const { pluginMessage } = event.data;
@@ -255,9 +260,15 @@ function Plugin() {
     setRadioValue(newValue);
   }
 
-  function handleChangeSegmentedControl(event: JSX.TargetedEvent<HTMLInputElement>) {
-    const newValue = event.currentTarget.value;
-    setSegmentedControlValue(newValue);
+  function createHandleChangeSegmentedControl(index: number) {
+    return (event: JSX.TargetedEvent<HTMLInputElement>) => {
+      const newValue = event.currentTarget.value;
+      setSegmentedControlValues((prevValues) => {
+        const newValues = [...prevValues];
+        newValues[index] = newValue;
+        return newValues;
+      });
+    };
   }
 
   function formatFileName(fileName: string): string {
@@ -336,21 +347,21 @@ function Plugin() {
           <Label title="Labels" />
           <VerticalSpace space="extraSmall" />
           <Stack space="extraSmall">
-          {isLoadingLabels ? (
-            <Text>Loading...</Text>
-          ) : (
-            radioOptions.map((option) => (
-              <div key={option.value} className={styles.label}>
-                {option.children}
-                <SegmentedControl 
-                  onChange={(event) => handleChangeSegmentedControl(event)}
-                  options={segmentedControlOptions}
-                  value={segmentedControlValue}
-                />
-              </div>
-            ))
-          )}
-        </Stack>
+            {isLoadingLabels ? (
+              <Text>Loading...</Text>
+            ) : (
+              radioOptions.map((option, index) => (
+                <div key={option.value} className={styles.label}>
+                  {option.children}
+                  <SegmentedControl 
+                    onChange={createHandleChangeSegmentedControl(index)}
+                    options={segmentedControlOptions}
+                    value={segmentedControlValues[index]}
+                  />
+                </div>
+              ))
+            )}
+          </Stack>
           <VerticalSpace space="large" />
         </Container>
         <Divider />
