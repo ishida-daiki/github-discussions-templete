@@ -24,7 +24,7 @@ import styles from "./ui.module.css";
 
 function Plugin() {
   const [elementName, setElementName] = useState<null | string>(
-    "Turtle のコンポーネント、またはスタイルを選択してください"
+    "Discussion したい要素を選択してください"
   );
 
   const [generatedUrl, setGeneratedUrl] = useState<string | null>(null);
@@ -73,12 +73,7 @@ function Plugin() {
   window.onmessage = async (event) => {
     const { pluginMessage } = event.data;
     if (pluginMessage.type === "discussion-categories") {
-      const filteredCategories = pluginMessage.categories.filter(
-        (label: { name: string }) =>
-          label.name === "Ideas" ||
-          label.name === "Q&A" ||
-          label.name === "Show and tell"
-      );
+      const filteredCategories = pluginMessage.categories;
       const newOptions = filteredCategories.map(
         (category: { name: string }) => ({
           value: category.name,
@@ -150,7 +145,6 @@ function Plugin() {
     });
   };
 
-
   async function handleClick(event: JSX.TargetedMouseEvent<HTMLButtonElement>) {
     setIsLoading(true);
     try {
@@ -163,7 +157,8 @@ function Plugin() {
         imageUrl = await new Promise((resolve) => {
           let handler: (event: MessageEvent) => void;
           // Update the current onmessage function
-          let _oldListener: ((this: Window, ev: MessageEvent) => any) | null = window.onmessage;
+          let _oldListener: ((this: Window, ev: MessageEvent) => any) | null =
+            window.onmessage;
           window.onmessage = (event) => {
             _oldListener?.call(window, event);
             handler(event);
