@@ -35,7 +35,7 @@ function Plugin() {
   const [category, setCategory] = useState<null | string>(null);
   const [options, setOptions] = useState<Array<DropdownOption>>([]);
   const [categoryMap, setCategoryMap] = useState<Record<string, string>>({});
-  const [radioOptions, setRadioOptions] = useState<Array<RadioButtonsOption>>([]);
+  const [labelOptions, setLabelOptions] = useState<Array<RadioButtonsOption>>([]);
   const [labelMap, setLabelMap] = useState<Record<string, string>>({});
   const [isLoadingLabels, setIsLoadingLabels] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -68,7 +68,7 @@ function Plugin() {
     }
   }, [
     options,
-    radioOptions,
+    labelOptions,
     selectedFiles,
     elementName,
     category,
@@ -81,12 +81,12 @@ function Plugin() {
   }, []);
 
   useEffect(() => {
-    if (radioOptions.length > 0) {
-      // radioOptions が設定された後に default 値を設定
-      const defaultValues = radioOptions.map(() => "icons-size-16--option-disabled");
+    if (labelOptions.length > 0) {
+      // labelOptions が設定された後に default 値を設定
+      const defaultValues = labelOptions.map(() => "icons-size-16--option-disabled");
       setSegmentedControlValues(defaultValues);
     }
-  }, [radioOptions]);
+  }, [labelOptions]);
 
   window.onmessage = async (event) => {
     const { pluginMessage } = event.data;
@@ -101,13 +101,13 @@ function Plugin() {
       setCategoryMap(pluginMessage.categoryMap);
     } else if (pluginMessage.type === "discussion-labels") {
       const filteredLabels = pluginMessage.labels;
-      const newRadioOptions: Array<RadioButtonsOption> = filteredLabels.map(
+      const newLabelOptions: Array<RadioButtonsOption> = filteredLabels.map(
         (label: { name: string }) => ({
           children: <Text>{label.name}</Text>,
           value: label.name,
         })
       );
-      setRadioOptions(newRadioOptions);
+      setLabelOptions(newLabelOptions);
 
       const newLabelMap = pluginMessage.labels.reduce(
         (acc: Record<string, string>, label: { id: string; name: string }) => {
@@ -350,7 +350,7 @@ function Plugin() {
             {isLoadingLabels ? (
               <Text>Loading...</Text>
             ) : (
-              radioOptions.map((option, index) => (
+              labelOptions.map((option, index) => (
                 <div key={option.value} className={styles.label}>
                   {option.children}
                   <SegmentedControl 
