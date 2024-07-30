@@ -2,7 +2,7 @@
 > **このプラグインは組織内でのみ使用可能です！**
 > プラグインには、Figma ユーザーが利用できる Public なプラグインと Private なプラグインの 2つが存在しますが、このプラグインは Private なものであり、組織内に属するメンバーのみが使用できます。
 >
-> <a href="https://help.figma.com/hc/ja/articles/4404239055127-%E7%B5%84%E7%B9%94%E3%81%AE%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%A8%E3%82%A6%E3%82%A3%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88%E3%81%AE%E4%BF%9D%E5%AD%98" target="_blank"><img src="https://github.com/dmm-com/pf-fe-dev/blob/main/github-discussions/_resources/Card.png" alt="組織のプラグインとウィジェットの保存" style="width: 250px; height: 61px;" width="250" height="61" /></a>
+> <a href="https://help.figma.com/hc/ja/articles/4404239055127-%E7%B5%84%E7%B9%94%E3%81%AE%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%A8%E3%82%A6%E3%82%A3%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88%E3%81%AE%E4%BF%9D%E5%AD%98" target="_blank"><img src="https://github.com/dmm-com/ishida-daiki/blob/main/github-discussions/_resources/Card.png" alt="組織のプラグインとウィジェットの保存" style="width: 250px; height: 61px;" width="250" height="61" /></a>
 
 
 # Github Discussions
@@ -21,14 +21,14 @@
 
 ## Using
 
-<img src="https://github.com/dmm-com/pf-fe-dev/blob/main/github-discussions/_resources/Icon.png" width="50px"> 
+<img src="https://github.com/dmm-com/ishida-daiki/blob/main/github-discussions/_resources/Icon.png" width="50px"> 
 
 1. [Github Discussions](https://www.figma.com/community/plugin/888356646278934516/Design-Tokens) ページにアクセス
 2. 「場所を指定して開く...」もしくは、「Open in...」をクリック
 
 ## Settings
 ### 開発環境の設定
-1. [pf-fe-dev](https://github.com/dmm-com/pf-fe-dev/tree/main) リポジトリをクローン
+1. [ishida-daiki](https://github.com/dmm-com/ishida-daiki/tree/main) リポジトリをクローン
 ```cli
 git clone git@github.com:ishida-daiki/github-discussions.git
 ```
