@@ -83,10 +83,6 @@ function Plugin() {
       setCategoryMap(pluginMessage.categoryMap);
     } else if (pluginMessage.type === "discussion-labels") {
       const filteredLabels = pluginMessage.labels;
-      // const filteredLabels = pluginMessage.labels.filter(
-      //   (label: { name: string }) =>
-      //     label.name === "design" || label.name === "development"
-      // );
       const newRadioOptions: Array<RadioButtonsOption> = filteredLabels.map(
         (label: { name: string }) => ({
           children: <Text>{label.name}</Text>,
