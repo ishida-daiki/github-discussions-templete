@@ -43,13 +43,13 @@ function Plugin() {
   const [isLoadingLabels, setIsLoadingLabels] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [selectedFiles, setSelectedFiles] = useState<Array<File>>([]);
-  const [segmentedControlvalue, setsegmentedControlValue] = useState<string>('bar');
-  const setsegmentedControloptions: Array<SegmentedControlOption> = [{
+  const [segmentedControlValue, setSegmentedControlValue] = useState<string>("icons-size-16--option-disabled");
+  const segmentedControlOptions: Array<SegmentedControlOption> = [{
     children: <IconOptionDisabled16 />,
-    value: "icons-size-16--option-check"
+    value: "icons-size-16--option-disabled"
   }, {
     children: <IconOptionCheck16 />,
-    value:"icons-size-16--option-check"
+    value: "icons-size-16--option-check"
   }];
 
   const [body, setBody] = useState<string>("");
@@ -246,14 +246,17 @@ function Plugin() {
 
   const [value, setValue] = useState<boolean>(false);
   function handleChange(event: JSX.TargetedEvent<HTMLInputElement>) {
-    const newValue = event.currentTarget.checked;
-    setValue(newValue);
+    setValue(event.currentTarget.checked);
   }
 
   const [radioValue, setRadioValue] = useState<string>("");
   function handleChangeRadio(event: JSX.TargetedEvent<HTMLInputElement>) {
     const newValue = event.currentTarget.value;
     setRadioValue(newValue);
+  }
+
+  function handleChangeSegmentedControl(event: JSX.TargetedEvent<HTMLInputElement>, value: string) {
+    setSegmentedControlValue(value);
   }
 
   function formatFileName(fileName: string): string {
@@ -332,17 +335,21 @@ function Plugin() {
           <Label title="Labels" />
           <VerticalSpace space="extraSmall" />
           <Stack space="extraSmall">
-            {isLoadingLabels ? (
-              <Text>Loading...</Text>
-            ) : (
-              radioOptions.map((value) => (
-                <div key={value} className={styles.label}>
-                  {value.children}
-                  <SegmentedControl onChange={handleChange} options={setsegmentedControloptions} value={segmentedControlvalue} />
-                </div>
-              ))
-            )}
-          </Stack>
+          {isLoadingLabels ? (
+            <Text>Loading...</Text>
+          ) : (
+            radioOptions.map((option) => (
+              <div key={option.value} className={styles.label}>
+                {option.children}
+                <SegmentedControl 
+                  onChange={(event) => handleChangeSegmentedControl(event, option.value)}
+                  options={segmentedControlOptions}
+                  value={segmentedControlValue}
+                />
+              </div>
+            ))
+          )}
+        </Stack>
           <VerticalSpace space="large" />
         </Container>
         <Divider />
