@@ -3,7 +3,6 @@ import { showUI } from '@create-figma-plugin/utilities';
 const owner = process.env.GITHUB_OWNER as string;  // リポジトリ所有者の名前
 const repo = process.env.GITHUB_REPO as string;  // リポジトリ名
 const accessToken = process.env.GITHUB_ACCESS_TOKEN as string; // GitHub API トークン
-const apiGatewayUrl = process.env.API_GATEWAY_URL as string; // API Gateway の URL
 
 figma.on("selectionchange", () => {
   const selection = figma.currentPage.selection;
@@ -299,32 +298,8 @@ export default function () {
       const body = `${message.body}\n\nPosted by: ${userName}`;
       const categoryId = message.categoryId;
       const labelIds = message.labelIds;
-      const postToSlack = message.postToSlack;
       
       try {
-        if(postToSlack) {
-          const payload = {
-            text: "Notification from Figma plugin",
-            // 他の必要なデータをここに追加
-          };
-
-          try {
-            const response = await fetch(apiGatewayUrl, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(payload)
-            });
-
-            if(!response.ok) throw new Error('Network response was not ok');
-
-            const result = await response.json();
-            console.log('Slack notification result:', result);
-          } catch (error) {
-            console.error('Error sending notification:', error);
-          }
-        }
         const discussion = await createDiscussionInGitHubRepo(owner, repo, accessToken, title, body, categoryId);
 
         if (discussion && labelIds && labelIds.length > 0) {
