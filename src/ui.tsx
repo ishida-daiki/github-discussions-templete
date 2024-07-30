@@ -19,7 +19,8 @@ import {
   SegmentedControlOption,
   SegmentedControl,
   IconOptionCheck16,
-  IconOptionDisabled16
+  IconOptionDisabled16,
+  Stack
 } from "@create-figma-plugin/ui";
 import Label from "./components/label";
 import { Fragment, h, JSX } from "preact";
@@ -330,17 +331,18 @@ function Plugin() {
           <VerticalSpace space="small" />
           <Label title="Labels" />
           <VerticalSpace space="extraSmall" />
-          {isLoadingLabels ? (
-            <Text>Loading...</Text>
-          ) : (
-            <Fragment>
-              <RadioButtons
-                onChange={handleChangeRadio}
-                options={radioOptions}
-                value={radioValue} />
-              <SegmentedControl onChange={handleChange} options={setsegmentedControloptions} value={segmentedControlvalue} />
-            </Fragment>
-          )}
+          <Stack space="extraSmall">
+            {isLoadingLabels ? (
+              <Text>Loading...</Text>
+            ) : (
+              radioOptions.map((value) => (
+                <div key={value} className={styles.label}>
+                  {value.children}
+                  <SegmentedControl onChange={handleChange} options={setsegmentedControloptions} value={segmentedControlvalue} />
+                </div>
+              ))
+            )}
+          </Stack>
           <VerticalSpace space="large" />
         </Container>
         <Divider />

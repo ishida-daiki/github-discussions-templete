@@ -65,3 +65,9 @@
     height: 100%;
     align-items: center;
 }
+
+.label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
