@@ -16,6 +16,10 @@ import {
   RadioButtonsOption,
   Textbox,
   Preview,
+  SegmentedControlOption,
+  SegmentedControl,
+  IconOptionCheck16,
+  IconOptionDisabled16
 } from "@create-figma-plugin/ui";
 import Label from "./components/label";
 import { Fragment, h, JSX } from "preact";
@@ -38,6 +42,14 @@ function Plugin() {
   const [isLoadingLabels, setIsLoadingLabels] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [selectedFiles, setSelectedFiles] = useState<Array<File>>([]);
+  const [segmentedControlvalue, setsegmentedControlValue] = useState<string>('bar');
+  const setsegmentedControloptions: Array<SegmentedControlOption> = [{
+    children: <IconOptionDisabled16 />,
+    value: ""
+  }, {
+    children: <IconOptionCheck16 />,
+    value:""
+  }];
 
   const [body, setBody] = useState<string>("");
   function handleInput(event: JSX.TargetedEvent<HTMLTextAreaElement>) {
@@ -321,11 +333,13 @@ function Plugin() {
           {isLoadingLabels ? (
             <Text>Loading...</Text>
           ) : (
-            <RadioButtons
-              onChange={handleChangeRadio}
-              options={radioOptions}
-              value={radioValue}
-            />
+            <Fragment>
+              <RadioButtons
+                onChange={handleChangeRadio}
+                options={radioOptions}
+                value={radioValue} />
+              <SegmentedControl onChange={handleChange} options={setsegmentedControloptions} value={segmentedControlvalue} />
+            </Fragment>
           )}
           <VerticalSpace space="large" />
         </Container>
