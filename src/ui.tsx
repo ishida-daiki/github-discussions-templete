@@ -1,7 +1,6 @@
 import {
   Bold,
   Button,
-  Checkbox,
   Container,
   Divider,
   Dropdown,
@@ -76,10 +75,9 @@ function Plugin() {
     if (pluginMessage.type === "discussion-categories") {
       const filteredCategories = pluginMessage.categories.filter(
         (label: { name: string }) =>
-          label.name === "アイデア" ||
-          label.name === "気になったこと" ||
-          label.name === "要望" ||
-          label.name === "質問"
+          label.name === "Ideas" ||
+          label.name === "Q&A" ||
+          label.name === "Show and tell"
       );
       const newOptions = filteredCategories.map(
         (category: { name: string }) => ({
@@ -280,7 +278,7 @@ function Plugin() {
       <div
         ref={contentRef}
         style={{
-          height: "calc(100% - 109px)",
+          height: "calc(100% - 77px)",
           overflowY: needsScroll ? "auto" : "hidden",
         }}
       >
@@ -395,12 +393,6 @@ function Plugin() {
           borderTop: "1px solid var(--figma-color-border)",
         }}
       >
-        <VerticalSpace space="large" />
-        <Checkbox onChange={handleChange} value={value}>
-          <Text>
-            <Bold>#ask-turtle</Bold> に投稿する
-          </Text>
-        </Checkbox>
         <VerticalSpace space="large" />
         <Button
           loading={isLoading}
