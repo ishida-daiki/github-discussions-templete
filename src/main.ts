@@ -26,7 +26,6 @@ interface DiscussionCategory {
 // カテゴリを取得する関数
 async function getDiscussionCategories(owner: string, repo: string, accessToken: string): Promise<DiscussionCategory[]> {
   const apiUrl = 'https://api.github.com/graphql';
-
   const query = `
     {
       repository(owner: "${owner}", name: "${repo}") {
@@ -75,7 +74,6 @@ interface Label {
 // ラベルを取得する関数
 async function getDiscussionLabels(owner: string, repo: string, accessToken: string): Promise<Label[]> {
   const apiUrl = 'https://api.github.com/graphql';
-
   const query = `
     {
       repository(owner: "${owner}", name: "${repo}") {

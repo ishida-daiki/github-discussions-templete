@@ -229,7 +229,6 @@ function Plugin() {
             title: title,
             body: messageBody,
             elementName: elementName,
-            postToSlack: value,
             categoryId: categoryId,
             labelIds: labelIds,
           },
@@ -245,7 +244,6 @@ function Plugin() {
       setElementName(
         "Discussion Select the element you want to discuss"
       );
-      setValue(false);
       setSelectedFiles([]);
       const defaultValues = labelOptions.map(() => "icons-size-16--option-disabled");
       setSegmentedControlValues(defaultValues);
@@ -259,11 +257,6 @@ function Plugin() {
   function handleInputTitle(event: JSX.TargetedEvent<HTMLInputElement>) {
     const newValue = event.currentTarget.value;
     setTitle(newValue);
-  }
-
-  const [value, setValue] = useState<boolean>(false);
-  function handleChange(event: JSX.TargetedEvent<HTMLInputElement>) {
-    setValue(event.currentTarget.checked);
   }
 
   function createHandleChangeSegmentedControl(index: number) {
