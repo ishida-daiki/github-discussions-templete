@@ -202,7 +202,18 @@ function Plugin() {
         });
       }
       const categoryId = category ? categoryMap[category] : undefined;
-      const labelId = labelMap[radioValue];
+
+      // 選択されたすべての "icons-size-16--option-check" のラベルIDを格納
+      const labelIds: string[] = segmentedControlValues.reduce((ids: string[], value: string, index: number) => {
+        if (value === "icons-size-16--option-check" && labelOptions[index]) {
+          const labelId = labelMap[labelOptions[index].value];
+          if (labelId) {
+        ids.push(labelId);
+          }
+        }
+        return ids;
+      }, []);
+
       let messageBody: string = "";
       if (imageUrl) {
         messageBody += `![image](${imageUrl})\n\n`;
@@ -220,7 +231,7 @@ function Plugin() {
             elementName: elementName,
             postToSlack: value,
             categoryId: categoryId,
-            labelIds: [labelId],
+            labelIds: labelIds,
           },
         },
         "*"
@@ -235,7 +246,6 @@ function Plugin() {
         "Discussion Select the element you want to discuss"
       );
       setValue(false);
-      setRadioValue("");
       setSelectedFiles([]);
       const defaultValues = labelOptions.map(() => "icons-size-16--option-disabled");
       setSegmentedControlValues(defaultValues);
@@ -254,12 +264,6 @@ function Plugin() {
   const [value, setValue] = useState<boolean>(false);
   function handleChange(event: JSX.TargetedEvent<HTMLInputElement>) {
     setValue(event.currentTarget.checked);
-  }
-
-  const [radioValue, setRadioValue] = useState<string>("");
-  function handleChangeRadio(event: JSX.TargetedEvent<HTMLInputElement>) {
-    const newValue = event.currentTarget.value;
-    setRadioValue(newValue);
   }
 
   function createHandleChangeSegmentedControl(index: number) {
