@@ -12,14 +12,14 @@ import {
   FileUploadDropzone,
   Muted,
   FileUploadButton,
-  RadioButtons,
   RadioButtonsOption,
   Textbox,
   Preview,
   SegmentedControlOption,
   SegmentedControl,
   IconOptionCheck16,
-  IconOptionDisabled16
+  IconOptionDisabled16,
+  Stack
 } from "@create-figma-plugin/ui";
 import Label from "./components/label";
 import { Fragment, h, JSX } from "preact";
@@ -35,20 +35,18 @@ function Plugin() {
   const [category, setCategory] = useState<null | string>(null);
   const [options, setOptions] = useState<Array<DropdownOption>>([]);
   const [categoryMap, setCategoryMap] = useState<Record<string, string>>({});
-  const [radioOptions, setRadioOptions] = useState<Array<RadioButtonsOption>>(
-    []
-  );
+  const [labelOptions, setLabelOptions] = useState<Array<RadioButtonsOption>>([]);
   const [labelMap, setLabelMap] = useState<Record<string, string>>({});
   const [isLoadingLabels, setIsLoadingLabels] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [selectedFiles, setSelectedFiles] = useState<Array<File>>([]);
-  const [segmentedControlvalue, setsegmentedControlValue] = useState<string>('bar');
-  const setsegmentedControloptions: Array<SegmentedControlOption> = [{
+  const [segmentedControlValues, setSegmentedControlValues] = useState<string[]>([]);
+  const segmentedControlOptions: Array<SegmentedControlOption> = [{
     children: <IconOptionDisabled16 />,
-    value: ""
+    value: "icons-size-16--option-disabled"
   }, {
     children: <IconOptionCheck16 />,
-    value:""
+    value: "icons-size-16--option-check"
   }];
 
   const [body, setBody] = useState<string>("");
@@ -70,7 +68,7 @@ function Plugin() {
     }
   }, [
     options,
-    radioOptions,
+    labelOptions,
     selectedFiles,
     elementName,
     category,
@@ -81,6 +79,14 @@ function Plugin() {
   useEffect(() => {
     parent.postMessage({ pluginMessage: { type: "get-discussion" } }, "*");
   }, []);
+
+  useEffect(() => {
+    if (labelOptions.length > 0) {
+      // labelOptions が設定された後に default 値を設定
+      const defaultValues = labelOptions.map(() => "icons-size-16--option-disabled");
+      setSegmentedControlValues(defaultValues);
+    }
+  }, [labelOptions]);
 
   window.onmessage = async (event) => {
     const { pluginMessage } = event.data;
@@ -95,13 +101,13 @@ function Plugin() {
       setCategoryMap(pluginMessage.categoryMap);
     } else if (pluginMessage.type === "discussion-labels") {
       const filteredLabels = pluginMessage.labels;
-      const newRadioOptions: Array<RadioButtonsOption> = filteredLabels.map(
+      const newLabelOptions: Array<RadioButtonsOption> = filteredLabels.map(
         (label: { name: string }) => ({
           children: <Text>{label.name}</Text>,
           value: label.name,
         })
       );
-      setRadioOptions(newRadioOptions);
+      setLabelOptions(newLabelOptions);
 
       const newLabelMap = pluginMessage.labels.reduce(
         (acc: Record<string, string>, label: { id: string; name: string }) => {
@@ -196,7 +202,18 @@ function Plugin() {
         });
       }
       const categoryId = category ? categoryMap[category] : undefined;
-      const labelId = labelMap[radioValue];
+
+      // 選択されたすべての "icons-size-16--option-check" のラベルIDを格納
+      const labelIds: string[] = segmentedControlValues.reduce((ids: string[], value: string, index: number) => {
+        if (value === "icons-size-16--option-check" && labelOptions[index]) {
+          const labelId = labelMap[labelOptions[index].value];
+          if (labelId) {
+        ids.push(labelId);
+          }
+        }
+        return ids;
+      }, []);
+
       let messageBody: string = "";
       if (imageUrl) {
         messageBody += `![image](${imageUrl})\n\n`;
@@ -212,9 +229,8 @@ function Plugin() {
             title: title,
             body: messageBody,
             elementName: elementName,
-            postToSlack: value,
             categoryId: categoryId,
-            labelIds: [labelId],
+            labelIds: labelIds,
           },
         },
         "*"
@@ -228,9 +244,9 @@ function Plugin() {
       setElementName(
         "Discussion Select the element you want to discuss"
       );
-      setValue(false);
-      setRadioValue("");
       setSelectedFiles([]);
+      const defaultValues = labelOptions.map(() => "icons-size-16--option-disabled");
+      setSegmentedControlValues(defaultValues);
     } catch (error) {
       console.error("Error uploading file or sending message:", error);
       setIsLoading(false);
@@ -243,16 +259,15 @@ function Plugin() {
     setTitle(newValue);
   }
 
-  const [value, setValue] = useState<boolean>(false);
-  function handleChange(event: JSX.TargetedEvent<HTMLInputElement>) {
-    const newValue = event.currentTarget.checked;
-    setValue(newValue);
-  }
-
-  const [radioValue, setRadioValue] = useState<string>("");
-  function handleChangeRadio(event: JSX.TargetedEvent<HTMLInputElement>) {
-    const newValue = event.currentTarget.value;
-    setRadioValue(newValue);
+  function createHandleChangeSegmentedControl(index: number) {
+    return (event: JSX.TargetedEvent<HTMLInputElement>) => {
+      const newValue = event.currentTarget.value;
+      setSegmentedControlValues((prevValues) => {
+        const newValues = [...prevValues];
+        newValues[index] = newValue;
+        return newValues;
+      });
+    };
   }
 
   function formatFileName(fileName: string): string {
@@ -330,17 +345,22 @@ function Plugin() {
           <VerticalSpace space="small" />
           <Label title="Labels" />
           <VerticalSpace space="extraSmall" />
-          {isLoadingLabels ? (
-            <Text>Loading...</Text>
-          ) : (
-            <Fragment>
-              <RadioButtons
-                onChange={handleChangeRadio}
-                options={radioOptions}
-                value={radioValue} />
-              <SegmentedControl onChange={handleChange} options={setsegmentedControloptions} value={segmentedControlvalue} />
-            </Fragment>
-          )}
+          <Stack space="extraSmall">
+            {isLoadingLabels ? (
+              <Text>Loading...</Text>
+            ) : (
+              labelOptions.map((option, index) => (
+                <div key={option.value} className={styles.label}>
+                  {option.children}
+                  <SegmentedControl 
+                    onChange={createHandleChangeSegmentedControl(index)}
+                    options={segmentedControlOptions}
+                    value={segmentedControlValues[index]}
+                  />
+                </div>
+              ))
+            )}
+          </Stack>
           <VerticalSpace space="large" />
         </Container>
         <Divider />
