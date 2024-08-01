@@ -22,8 +22,8 @@
       "dev",
       "figjam"
     ],
-    "id": "github-discussions",
-    "name": "github-discussions",
+    "id": "1400842118012272574",
+    "name": "Discussions",
     "main": "src/main.ts",
     "ui": "src/ui.tsx",
     "api": "1.0.0",
@@ -40,10 +40,8 @@
     "networkAccess": {
       "allowedDomains": [
         "https://api.github.com/graphql",
-        "https://api.github.com",
-        "https://l6sre2sl0g.execute-api.ap-northeast-1.amazonaws.com/default/turtle-feedback"
-      ],
-      "reasoning": "The plugin sends notifications to a specific Slack channel using a webhook URL."
+        "https://api.github.com"
+      ]
     }
   }
 }
