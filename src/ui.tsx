@@ -19,12 +19,12 @@ import {
   SegmentedControl,
   IconOptionCheck16,
   IconOptionDisabled16,
-  Stack
+  Stack,
 } from "@create-figma-plugin/ui";
 import Label from "./components/label";
 import { Fragment, h, JSX } from "preact";
 import { useEffect, useState, useRef } from "preact/hooks";
-import styles from "./ui.module.css";
+import styles from "./css/ui.module.css";
 
 function Plugin() {
   const [elementName, setElementName] = useState<null | string>(
@@ -35,19 +35,26 @@ function Plugin() {
   const [category, setCategory] = useState<null | string>(null);
   const [options, setOptions] = useState<Array<DropdownOption>>([]);
   const [categoryMap, setCategoryMap] = useState<Record<string, string>>({});
-  const [labelOptions, setLabelOptions] = useState<Array<RadioButtonsOption>>([]);
+  const [labelOptions, setLabelOptions] = useState<Array<RadioButtonsOption>>(
+    []
+  );
   const [labelMap, setLabelMap] = useState<Record<string, string>>({});
   const [isLoadingLabels, setIsLoadingLabels] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [selectedFiles, setSelectedFiles] = useState<Array<File>>([]);
-  const [segmentedControlValues, setSegmentedControlValues] = useState<string[]>([]);
-  const segmentedControlOptions: Array<SegmentedControlOption> = [{
-    children: <IconOptionDisabled16 />,
-    value: "icons-size-16--option-disabled"
-  }, {
-    children: <IconOptionCheck16 />,
-    value: "icons-size-16--option-check"
-  }];
+  const [segmentedControlValues, setSegmentedControlValues] = useState<
+    string[]
+  >([]);
+  const segmentedControlOptions: Array<SegmentedControlOption> = [
+    {
+      children: <IconOptionDisabled16 />,
+      value: "icons-size-16--option-disabled",
+    },
+    {
+      children: <IconOptionCheck16 />,
+      value: "icons-size-16--option-check",
+    },
+  ];
 
   const [body, setBody] = useState<string>("");
   function handleInput(event: JSX.TargetedEvent<HTMLTextAreaElement>) {
@@ -83,7 +90,9 @@ function Plugin() {
   useEffect(() => {
     if (labelOptions.length > 0) {
       // labelOptions が設定された後に default 値を設定
-      const defaultValues = labelOptions.map(() => "icons-size-16--option-disabled");
+      const defaultValues = labelOptions.map(
+        () => "icons-size-16--option-disabled"
+      );
       setSegmentedControlValues(defaultValues);
     }
   }, [labelOptions]);
@@ -120,9 +129,7 @@ function Plugin() {
 
       setIsLoadingLabels(false);
     } else if (pluginMessage.type === "selection-cleared") {
-      setElementName(
-        "Discussion Select the element you want to discuss"
-      );
+      setElementName("Discussion Select the element you want to discuss");
       setGeneratedUrl(null); // 選択クリア時にURLをリセット
     } else if (pluginMessage.type === "update-name") {
       setElementName(pluginMessage.name);
@@ -204,15 +211,18 @@ function Plugin() {
       const categoryId = category ? categoryMap[category] : undefined;
 
       // 選択されたすべての "icons-size-16--option-check" のラベルIDを格納
-      const labelIds: string[] = segmentedControlValues.reduce((ids: string[], value: string, index: number) => {
-        if (value === "icons-size-16--option-check" && labelOptions[index]) {
-          const labelId = labelMap[labelOptions[index].value];
-          if (labelId) {
-        ids.push(labelId);
+      const labelIds: string[] = segmentedControlValues.reduce(
+        (ids: string[], value: string, index: number) => {
+          if (value === "icons-size-16--option-check" && labelOptions[index]) {
+            const labelId = labelMap[labelOptions[index].value];
+            if (labelId) {
+              ids.push(labelId);
+            }
           }
-        }
-        return ids;
-      }, []);
+          return ids;
+        },
+        []
+      );
 
       let messageBody: string = "";
       if (imageUrl) {
@@ -241,11 +251,11 @@ function Plugin() {
       setTitle("");
       setBody("");
       setCategory(null);
-      setElementName(
-        "Discussion Select the element you want to discuss"
-      );
+      setElementName("Discussion Select the element you want to discuss");
       setSelectedFiles([]);
-      const defaultValues = labelOptions.map(() => "icons-size-16--option-disabled");
+      const defaultValues = labelOptions.map(
+        () => "icons-size-16--option-disabled"
+      );
       setSegmentedControlValues(defaultValues);
     } catch (error) {
       console.error("Error uploading file or sending message:", error);
@@ -352,7 +362,7 @@ function Plugin() {
               labelOptions.map((option, index) => (
                 <div key={option.value} className={styles.label}>
                   {option.children}
-                  <SegmentedControl 
+                  <SegmentedControl
                     onChange={createHandleChangeSegmentedControl(index)}
                     options={segmentedControlOptions}
                     value={segmentedControlValues[index]}
