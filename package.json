@@ -1,4 +1,12 @@
 {
+  "name": "@ishida-daiki/github-discussions",
+  "version": "1.0.0",
+  "main": "index.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "author": "ishida-daiki",
+  "license": "MIT",  
   "dependencies": {
     "@create-figma-plugin/ui": "^3.2.0",
     "@create-figma-plugin/utilities": "^3.2.0",
@@ -14,7 +22,8 @@
   },
   "scripts": {
     "build": "build-figma-plugin --typecheck --minify",
-    "watch": "build-figma-plugin --typecheck --watch"
+    "watch": "build-figma-plugin --typecheck --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "figma-plugin": {
     "editorType": [
@@ -22,7 +31,7 @@
       "dev",
       "figjam"
     ],
-    "id": "1400842118012272574",
+    "id": "Discussions",
     "name": "Discussions",
     "main": "src/main.ts",
     "ui": "src/ui.tsx",
