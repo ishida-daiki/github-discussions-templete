@@ -1,13 +1,7 @@
-> [!NOTE]
-> **このプラグインは組織内でのみ使用可能です！**
-> プラグインには、Figma ユーザーが利用できる Public なプラグインと Private なプラグインの 2つが存在しますが、このプラグインは Private なものであり、組織内に属するメンバーのみが使用できます。
->
-> <a href="https://help.figma.com/hc/ja/articles/4404239055127-%E7%B5%84%E7%B9%94%E3%81%AE%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%A8%E3%82%A6%E3%82%A3%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88%E3%81%AE%E4%BF%9D%E5%AD%98" target="_blank"><img src="https://github.com/ishida-daiki/github-discussions/blob/main/_resources/Card.png" alt="組織のプラグインとウィジェットの保存" style="width: 250px; height: 61px;" width="250" height="61" /></a>
-
 ![Feedback to Turtle](https://github.com/ishida-daiki/github-discussions/blob/main/_resources/Thumbnail.png)
-# Github Discussions
 
-**Github Discussions** プラグインを使用すると、
+## Description
+This is a sample code for a Figma plugin that enables seamless posting of various types of requests, feedback, and discussions directly to GitHub Discussions. It is intended for users to duplicate and use for their own purposes.
 
 ## Table of content
 - [Using](#using)
@@ -22,29 +16,25 @@
 ## Using
 
 <img src="https://github.com/ishida-daiki/github-discussions/blob/main/_resources/Icon.png" width="50px"> 
+環境構築される前に、Plugin の挙動を確認したい方は、下記の手順よりお試しくださいご使用ください。
 
-1. [Github Discussions](https://www.figma.com/community/plugin/888356646278934516/Design-Tokens) ページにアクセス
-2. 「場所を指定して開く...」もしくは、「Open in...」をクリック
+1. [Discussions](https://www.figma.com/community/plugin/888356646278934516/Design) ページにアクセス
+2. 「Open in...」をクリック
 
 ## Settings
 ### 開発環境の設定
-1. [ishida-daiki](https://github.com/dmm-com/ishida-daiki/tree/main) リポジトリをクローン
-```cli
-git clone git@github.com:ishida-daiki/github-discussions.git
-```
-2. `github-discussions` フォルダーに移動
-```cli
-cd github-discussions
-```
-3. 必要なパッケージをインストール
+1. Use this template > Create a new repository を押下し、新しいリポジトリを作成
+2. 作成したリポジトリをクローン
+3. 作成したリポジトリに移動
+4. 必要なパッケージをインストール
 ```cli
 npm install
 ```
-4. vs code を起動
+5. vs code を起動
 ```cli
 code .
 ```
-5. ルートに `.env` ファイルを作成し、下記の値を設定
+6. ルートに `.env` ファイルを作成し、下記の値を設定
 ```.env
 例）ishida-daiki / github-discussions の場合
 
@@ -61,12 +51,11 @@ GITHUB_ACCESS_TOKEN=#新規作成した Github のパーソナルアクセスト
 
 ### パーソナルアクセストークンの作成
 1. Github にログイン後、https://github.com/settings/tokens を開く
-5. `Generate new token` を押下
-6. 「Note」 に、トークン名を設定
-7. 「Expiration」 を `No expiration` で設定
-8. 「Select scopes」 の `repo` と `write:discussion` にチェックを入れる
-9. `Generate token` を押下
-10. 生成されたトークンをコピーし、`.env` ファイルの `GITHUB_ACCESS_TOKEN` に設定
+2. `Generate new token` を押下
+3. 「Expiration」 を `No expiration` で設定
+4. 「Select scopes」 の `repo` と `write:discussion` にチェックを入れる
+5. `Generate token` を押下
+6. 生成されたトークンをコピーし、`.env` ファイルの `GITHUB_ACCESS_TOKEN` に設定
 設定
 > [!WARNING]
 > 複数の `GITHUB_ACCESS_TOKEN` を作成するのではなく、一つだけ生成し、それをチーム内で共用する方法を推奨します。
@@ -83,6 +72,20 @@ npm run build
 npm run watch
 ```
 上記コマンドにより、ソースコードの変更が監視されます。更新があるとプラグインは自動的に再ビルドされます。
+
+## Figma Plugin Publish
+投稿者がわかるよう enablePrivatePluginApi を true にしていますが、このプロパティは、プライベートか組織内向けのプラグインでないと使えません。
+```
+// package.json
+
+"enablePrivatePluginApi": true,
+```
+> [!NOTE]
+> **このプラグインは組織内でのみ使用可能です！**
+> プラグインには、Figma ユーザーが利用できる Public なプラグインと Private なプラグインの 2つが存在しますが、このプラグインは Private なものであり、組織内に属するメンバーのみが使用できます。
+>
+> <a href="https://help.figma.com/hc/ja/articles/4404239055127-%E7%B5%84%E7%B9%94%E3%81%AE%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%A8%E3%82%A6%E3%82%A3%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88%E3%81%AE%E4%BF%9D%E5%AD%98" target="_blank"><img src="https://github.com/ishida-daiki/github-discussions/blob/main/_resources/Card.png" alt="組織のプラグインとウィジェットの保存" style="width: 250px; height: 61px;" width="250" height="61" /></a>
+
 
 ## Appendix
 
