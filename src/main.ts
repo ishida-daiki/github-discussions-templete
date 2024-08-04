@@ -302,10 +302,10 @@ export default function () {
           await addLabelsToDiscussion(discussion.id, labelIds, accessToken);  // ラベルを追加
         }
 
-        figma.notify("Github Discussions に追加しました🎉", { timeout: 3000 });
+        figma.notify("Successfully added to GitHub Discussions🎉", { timeout: 3000 });
       } catch (error) {
         console.error(error);
-        figma.notify("Failed to post to GitHub Discussions or add labels", { timeout: 3000 });
+        figma.notify("Failed to post to GitHub Discussions", { timeout: 3000 });
       }
     }
   };
