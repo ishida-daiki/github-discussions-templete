@@ -1,7 +1,4 @@
 {
-  "name": "@ishida-daiki/github-discussions",
-  "version": "1.0.0",
-  "description": "This package is a Figma plugin that enables seamless posting of various types of requests, feedback, and discussions directly to GitHub Discussions.",
   "scripts": {
     "build": "build-figma-plugin --typecheck --minify",
     "watch": "build-figma-plugin --typecheck --watch"
