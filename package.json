@@ -1,12 +1,10 @@
 {
   "name": "@ishida-daiki/github-discussions",
-  "version": "1.0.3",
+  "version": "1.0.0",
   "description": "This package is a Figma plugin that enables seamless posting of various types of requests, feedback, and discussions directly to GitHub Discussions.",
-  "main": "index.js",
   "scripts": {
     "build": "build-figma-plugin --typecheck --minify",
-    "watch": "build-figma-plugin --typecheck --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "build-figma-plugin --typecheck --watch"
   },
   "repository": {
     "type": "git",
@@ -14,10 +12,7 @@
   },
   "homepage": "https://github.com/ishida-daiki/github-discussions/blob/main/README.md", 
   "author": "ishida-daiki",
-  "license": "MIT",  
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
+  "license": "MIT",
   "dependencies": {
     "@create-figma-plugin/ui": "^3.2.0",
     "@create-figma-plugin/utilities": "^3.2.0",
