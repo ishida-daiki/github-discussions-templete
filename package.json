@@ -34,7 +34,7 @@
     "main": "src/main.ts",
     "ui": "src/ui.tsx",
     "api": "1.0.0",
-    "enablePrivatePluginApi": true,
+    "enablePrivatePluginApi": false,
     "capabilities": [
       "inspect",
       "vscode"
