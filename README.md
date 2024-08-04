@@ -1,8 +1,5 @@
 ![Feedback to Turtle](https://github.com/ishida-daiki/github-discussions/blob/main/_resources/Thumbnail.png)
 
-## Description
-This is a sample code for a Figma plugin that enables seamless posting of various types of requests, feedback, and discussions directly to GitHub Discussions. It is intended for users to duplicate and use for their own purposes.
-
 ## Table of content
 - [Using](#using)
 - [Settings](#settings)
