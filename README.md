@@ -16,10 +16,10 @@ This is a sample code for a Figma plugin that enables seamless posting of variou
 ## Using
 
 <img src="https://github.com/ishida-daiki/github-discussions/blob/main/_resources/Icon.png" width="50px"> 
-環境構築される前に、試しに利用されたい方は、こちらをご使用ください。
+環境構築される前に、Plugin の挙動を確認したい方は、下記の手順よりお試しくださいご使用ください。
 
 1. [Discussions](https://www.figma.com/community/plugin/888356646278934516/Design) ページにアクセス
-2. 「場所を指定して開く...」もしくは、「Open in...」をクリック
+2. 「Open in...」をクリック
 
 ## Settings
 ### 開発環境の設定
