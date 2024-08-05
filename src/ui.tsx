@@ -30,7 +30,6 @@ function Plugin() {
   const [elementName, setElementName] = useState<null | string>(
     "Discussion Select the element you want to discuss"
   );
-
   const [generatedUrl, setGeneratedUrl] = useState<string | null>(null);
   const [category, setCategory] = useState<null | string>(null);
   const [options, setOptions] = useState<Array<DropdownOption>>([]);

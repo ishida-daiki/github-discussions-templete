@@ -29,8 +29,8 @@
       "dev",
       "figjam"
     ],
-    "id": "Discussions",
-    "name": "Discussions",
+    "id": "Discussions Templete",
+    "name": "Discussions Templete",
     "main": "src/main.ts",
     "ui": "src/ui.tsx",
     "api": "1.0.0",
