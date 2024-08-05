@@ -72,7 +72,7 @@ npm run watch
 This command monitors changes in the source code and automatically rebuilds the plugin when updates are detected.
 
 ## Plugin Security Notice
-Originally, this plugin was designed to use figma.clientStorage to store data on the user's local machine and allow posting to GitHub Discussions. However, the official Figma documentation states:
+Originally, this plugin was designed to use `figma.clientStorage` to store data on the user's local machine and allow posting to GitHub Discussions. However, the official Figma documentation states:
 > ⚠ The data is stored privately for stability, not security. It prevents other plugins from accessing with your data. It does not, however, prevent users from seeing data stored on their own client given sufficient effort.
 
 [figma.clientStorage](https://www.figma.com/plugin-docs/api/figma-clientStorage/#:~:text=%E2%9A%A0%20The%20data%20is%20stored%20privately%20for%20stability%2C%20not%20security.%20It%20prevents%20other%20plugins%20from%20accessing%20with%20your%20data.%20It%20does%20not%2C%20however%2C%20prevent%20users%20from%20seeing%20data%20stored%20on%20their%20own%20client%20given%20sufficient%20effort.)
