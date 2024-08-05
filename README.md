@@ -9,6 +9,7 @@
   - [Command to Build the Plugin](#Command-to-Build-the-Plugin) 
   - [Command to Automatically Rebuild the Plugin](#Command-to-Automatically-Rebuild-the-Plugin)
 - [Plugin Security Notice](#Plugin-Security-Notice)
+- [Credits](#credits)
 - [Appendix](#Appendix)
 
 ## Using
@@ -79,6 +80,9 @@ Originally, this plugin was designed to use `figma.clientStorage` to store data 
 
 Considering this explanation, I decided that storing access tokens could be risky. Therefore, I am providing this plugin as a template. Please build and use this plugin in your environment as a private or organization-specific plugin rather than a public one.
 
+## Credits
+This project is based on the work of Yuan Qing Lim, who originally developed the [create-figma-plugin](https://github.com/yuanqing/create-figma-plugin). The original library is licensed under the MIT License.
+I have modified the original source code and am providing it as a new template under a new MIT License. For the full text of the new MIT License, please refer to the LICENSE file in this repository.
 
 ## Appendix
 
