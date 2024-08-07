@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+
 ![Feedback to Turtle](https://github.com/ishida-daiki/github-discussions-templete/blob/main/_resources/Thumbnail.png)
 
 ## Table of content
