@@ -18,7 +18,7 @@
 <img src="https://github.com/ishida-daiki/github-discussions-templete/blob/main/_resources/Icon.png" width="50px"> 
 If you want to check the behavior of the plugin before setting up the environment, you can try the following steps:
 
-1. Visit the [Discussions](https://www.figma.com/community/plugin/888356646278934516/Design) page.
+1. Visit the [Discussions](https://www.figma.com/community/plugin/1402940367964187567/github-discussions-sample) page.
 2. Click "Open in...".
 
 ## Settings
