@@ -66,8 +66,8 @@ GITHUB_ACCESS_TOKEN=#Please set your newly created GitHub personal access token 
 4. Check the boxes for `repo` and `write:discussion` under "Select scopes."
 5. Click "Generate token."
 6. Copy the generated token and set it as `GITHUB_ACCESS_TOKEN` in the `.env` file.
-   > [!WARNING]
-   > Instead of creating multiple `GITHUB_ACCESS_TOKEN`, it is recommended to generate a single token and share it within your team.
+> [!WARNING]
+> Instead of creating multiple `GITHUB_ACCESS_TOKEN`, it is recommended to generate a single token and share it within your team.
 
 ## Build
 
