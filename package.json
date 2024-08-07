@@ -5,9 +5,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ishida-daiki/github-discussions" 
+    "url": "https://github.com/ishida-daiki/github-discussions-templete"
   },
-  "homepage": "https://github.com/ishida-daiki/github-discussions/blob/main/README.md", 
+  "homepage": "https://github.com/ishida-daiki/github-discussions-templete/blob/main/README.md",
   "author": "ishida-daiki",
   "license": "MIT",
   "dependencies": {
