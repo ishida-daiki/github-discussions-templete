@@ -1,0 +1,31 @@
+name: Remove awesome_images Folder
+
+on:
+  push:
+    branches:
+      - main # テンプレートリポジトリで使用されるデフォルトブランチ
+
+jobs:
+  remove-folder:
+    runs-on: ubuntu-latest
+        
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Remove awesome_images folder
+      run: |
+        if [ -d "./awesome_images" ]; then
+          rm -rf ./awesome_images
+          echo "🚮 Removed awesome_images folder"
+        else
+          echo "👍 awesome_images folder is not found, skipping"
+        fi
+      
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add .
+        git commit -m "Remove awesome_images folder"
+        git push origin main
