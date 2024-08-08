@@ -5,15 +5,6 @@
     justify-content: space-between;
 }
 
-.text {
-    display: flex;
-    flex: 1.5;
-    font-size: 11px;
-    flex-grow: 1;
-    height: 32px;
-    align-items: center;
-}
-
 .dropdown {
     display: flex;
     flex-grow: 1;
@@ -51,7 +42,7 @@
 }
 
 .previewPlaceholder {
-    color: var(--figma-color-text-disabled);  /* 非活性テキストの色 */
+    color: var(--figma-color-text-disabled);
     display: flex;
     margin: 0 16px;
     height: 100%;
@@ -59,7 +50,7 @@
 }
 
 .previewText {
-    color: var(--figma-color-text);  /* 要素が選択されている場合のテキストの色 */
+    color: var(--figma-color-text);
     display: flex;
     margin: 0 8px;
     height: 100%;

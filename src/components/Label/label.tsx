@@ -1,6 +1,6 @@
 import { Bold, Text } from "@create-figma-plugin/ui";
 import { h } from "preact";
-import styles from "../css/ui.module.css";
+import styles from "./label.css";
 
 interface labelProps {
   title: string;
@@ -13,9 +13,7 @@ function Label(props: labelProps) {
     <Text className={styles.text}>
       <Bold>{title}</Bold>
       {required && (
-        <div
-          style={{ marginLeft: "2px", color: "var(--figma-color-icon-danger)" }}
-        >
+        <div className={styles.required} >
           *
         </div>
       )}

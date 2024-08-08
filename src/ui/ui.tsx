@@ -21,10 +21,10 @@ import {
   IconOptionDisabled16,
   Stack,
 } from "@create-figma-plugin/ui";
-import Label from "./components/label";
+import Label from "../components/Label/label";
 import { Fragment, h, JSX } from "preact";
 import { useEffect, useState, useRef } from "preact/hooks";
-import styles from "./css/ui.module.css";
+import styles from "./ui.module.css";
 
 function Plugin() {
   const [elementName, setElementName] = useState<null | string>(

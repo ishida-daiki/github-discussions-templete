@@ -1,0 +1,13 @@
+.text {
+    display: flex;
+    flex: 1.5;
+    font-size: 11px;
+    flex-grow: 1;
+    height: 32px;
+    align-items: center;
+}
+
+.required {
+    margin-left: 2px;
+    color: var(--figma-color-icon-danger);
+}
