@@ -1,6 +1,6 @@
 import { h } from "preact";
 import { Container, VerticalSpace, Text, Bold, Muted, FileUploadDropzone, FileUploadButton } from "@create-figma-plugin/ui";
-import Label from "../components/Label/label";
+import Label from "../../primitives/Label/label";
 import styles from "./imageuploader.module.css";
 
 type ImageUploaderProps = {

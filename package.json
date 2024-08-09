@@ -32,7 +32,7 @@
     "id": "Discussions Templete",
     "name": "Discussions Templete",
     "main": "src/main.ts",
-    "ui": "src/App.tsx",
+    "ui": "src/app/App.tsx",
     "api": "1.0.0",
     "enablePrivatePluginApi": true,
     "capabilities": [

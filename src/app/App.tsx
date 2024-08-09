@@ -13,11 +13,11 @@ import {
   IconOptionCheck16,
   IconOptionDisabled16,
 } from "@create-figma-plugin/ui";
-import Label from "./compositions/components/Label/label";
-import Preview from "./compositions/components/Preview/preview";
-import DiscussionLabels from "./compositions/DiscussionLabels/discussionlabels";
-import ImageUploader from "./compositions/ImageUploader/imageuploader";
-import ActionFooter from "./compositions/ActionFooter/actionfooter";
+import Label from "../ui/primitives/Label/label";
+import Preview from "../ui/primitives/Preview/preview";
+import DiscussionLabels from "../ui/compositions/DiscussionLabels/discussionlabels";
+import ImageUploader from "../ui/compositions/ImageUploader/imageuploader";
+import ActionFooter from "../ui/compositions/ActionFooter/actionfooter";
 import { Fragment, h, JSX } from "preact";
 import { useEffect, useState, useRef } from "preact/hooks";
 import styles from "./App.module.css";
