@@ -320,14 +320,12 @@ function Plugin() {
           />
           <VerticalSpace space="small" />
           <Label title="Add a title" required />
-          <div style={{ width: "100%" }}>
-            <Textbox
-              onInput={handleInputTitle}
-              placeholder="Title"
-              value={title}
-              variant="border"
-            />
-          </div>
+          <Textbox
+            onInput={handleInputTitle}
+            placeholder="Title"
+            value={title}
+            variant="border"
+          />
           <VerticalSpace space="small" />
           <Label title="body" required />
           <TextboxMultiline
