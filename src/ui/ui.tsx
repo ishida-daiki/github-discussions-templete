@@ -9,9 +9,6 @@ import {
   Text,
   TextboxMultiline,
   VerticalSpace,
-  FileUploadDropzone,
-  Muted,
-  FileUploadButton,
   RadioButtonsOption,
   Textbox,
   SegmentedControlOption,
@@ -21,6 +18,7 @@ import {
 import Label from "../components/Label/label";
 import Preview from "../components/Preview/preview";
 import DiscussionLabels from "../components/DiscussionLabels/discussionlabels";
+import ImageUploader from "../components/ImageUploader/imageuploader";
 import { Fragment, h, JSX } from "preact";
 import { useEffect, useState, useRef } from "preact/hooks";
 import styles from "./ui.module.css";
@@ -348,46 +346,7 @@ function Plugin() {
           <VerticalSpace space="large" />
         </Container>
         <Divider />
-        <Container space="medium">
-          <VerticalSpace space="extraSmall" />
-          <Label title="Images" />
-          <FileUploadDropzone
-            acceptedFileTypes={["image/jpeg", "image/png"]}
-            multiple
-            onSelectedFiles={handleSelectedFiles}
-          >
-            <Text align="center">
-              <Bold>Drop images here</Bold>
-            </Text>
-            <VerticalSpace space="small" />
-            <Text align="center">
-              <Muted>or</Muted>
-            </Text>
-            <VerticalSpace space="small" />
-            <FileUploadButton
-              acceptedFileTypes={["image/jpeg", "image/png"]}
-              onSelectedFiles={handleSelectedFiles}
-            >
-              Choose Image Files
-            </FileUploadButton>
-          </FileUploadDropzone>
-          <div className={styles.previewContainer}>
-            {selectedFiles.map((file) => {
-              const url = URL.createObjectURL(file);
-              return (
-                <div key={file.name}>
-                  <VerticalSpace space="medium" />
-                  <img
-                    src={url}
-                    alt={file.name}
-                    className={styles.previewImage}
-                  />
-                </div>
-              );
-            })}
-          </div>
-          <VerticalSpace space="large" />
-        </Container>
+        <ImageUploader handleSelectedFiles={handleSelectedFiles} selectedFiles={selectedFiles} />
       </div>
       <Container
         space="medium"
