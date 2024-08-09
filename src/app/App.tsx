@@ -18,12 +18,10 @@ import { ActionFooter, DiscussionLabels, ImageUploader } from "compositions";
 import { Fragment, h, JSX } from "preact";
 import { useEffect, useState, useRef } from "preact/hooks";
 import styles from "./App.module.css";
+import { useElementName } from "hooks";
 
 function Plugin() {
-  const [elementName, setElementName] = useState<null | string>(
-    "Discussion Select the element you want to discuss"
-  );
-  const [generatedUrl, setGeneratedUrl] = useState<string | null>(null);
+  const {elementName, setElementName, generatedUrl} = useElementName();
   const [category, setCategory] = useState<null | string>(null);
   const [options, setOptions] = useState<Array<DropdownOption>>([]);
   const [categoryMap, setCategoryMap] = useState<Record<string, string>>({});
@@ -120,19 +118,6 @@ function Plugin() {
       setLabelMap(newLabelMap);
 
       setIsLoadingLabels(false);
-    } else if (pluginMessage.type === "selection-cleared") {
-      setElementName("Discussion Select the element you want to discuss");
-      setGeneratedUrl(null); // 選択クリア時にURLをリセット
-    } else if (pluginMessage.type === "update-name") {
-      setElementName(pluginMessage.name);
-    } else if (pluginMessage.type === "generate-url") {
-      const { nodeId, fileKey, pageName } = pluginMessage;
-      const encodedPageName = encodeURIComponent(pageName);
-      const url = `https://www.figma.com/design/${fileKey}/${encodedPageName}?node-id=${nodeId.replace(
-        /:/g,
-        "-"
-      )}`; // ノードIDの形式をエンコード（": -> "-"）
-      setGeneratedUrl(url); // 状態を更新
     }
   };
 
