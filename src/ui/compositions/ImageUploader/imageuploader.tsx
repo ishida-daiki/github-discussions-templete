@@ -1,6 +1,6 @@
 import { h } from "preact";
 import { Container, VerticalSpace, Text, Bold, Muted, FileUploadDropzone, FileUploadButton } from "@create-figma-plugin/ui";
-import Label from "../../primitives/Label/label";
+import { Label } from "primitives";
 import styles from "./imageuploader.module.css";
 
 type ImageUploaderProps = {
@@ -8,7 +8,7 @@ type ImageUploaderProps = {
   selectedFiles: Array<File>;
 }
 
-function ImageUploader({ handleSelectedFiles, selectedFiles }: ImageUploaderProps) {
+export function ImageUploader({ handleSelectedFiles, selectedFiles }: ImageUploaderProps) {
   return (
     <Container space="medium">
       <VerticalSpace space="extraSmall" />
@@ -52,5 +52,3 @@ function ImageUploader({ handleSelectedFiles, selectedFiles }: ImageUploaderProp
     </Container>
   );
 }
-
-export default ImageUploader;

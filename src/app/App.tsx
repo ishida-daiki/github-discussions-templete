@@ -13,11 +13,8 @@ import {
   IconOptionCheck16,
   IconOptionDisabled16,
 } from "@create-figma-plugin/ui";
-import Label from "../ui/primitives/Label/label";
-import Preview from "../ui/primitives/Preview/preview";
-import DiscussionLabels from "../ui/compositions/DiscussionLabels/discussionlabels";
-import ImageUploader from "../ui/compositions/ImageUploader/imageuploader";
-import ActionFooter from "../ui/compositions/ActionFooter/actionfooter";
+import { Label, Preview } from "primitives";
+import { ActionFooter, DiscussionLabels, ImageUploader } from "compositions";
 import { Fragment, h, JSX } from "preact";
 import { useEffect, useState, useRef } from "preact/hooks";
 import styles from "./App.module.css";
@@ -299,7 +296,9 @@ function Plugin() {
     <Fragment>
       <div
         ref={contentRef}
-        className={`${styles.content} ${needsScroll ? styles["allow-scroll"] : styles["no-scroll"]}`}
+        className={`${styles.content} ${
+          needsScroll ? styles["allow-scroll"] : styles["no-scroll"]
+        }`}
       >
         <Preview elementName={elementName} />
         <Container space="medium">
@@ -342,7 +341,10 @@ function Plugin() {
           <VerticalSpace space="large" />
         </Container>
         <Divider />
-        <ImageUploader handleSelectedFiles={handleSelectedFiles} selectedFiles={selectedFiles} />
+        <ImageUploader
+          handleSelectedFiles={handleSelectedFiles}
+          selectedFiles={selectedFiles}
+        />
       </div>
       <ActionFooter
         isLoading={isLoading}

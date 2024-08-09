@@ -9,7 +9,7 @@ type ActionFooterProps = {
   onClick: (event: JSX.TargetedMouseEvent<HTMLButtonElement>) => void;
 };
 
-function ActionFooter({ isLoading, disabled, onClick }: ActionFooterProps) {
+export function ActionFooter({ isLoading, disabled, onClick }: ActionFooterProps) {
   return (
     <div className={styles.container}>
       <VerticalSpace space="large" />
@@ -27,5 +27,3 @@ function ActionFooter({ isLoading, disabled, onClick }: ActionFooterProps) {
     </div>
   );
 }
-
-export default ActionFooter;

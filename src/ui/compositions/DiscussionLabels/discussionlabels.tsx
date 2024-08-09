@@ -10,7 +10,7 @@ interface DiscussionLabelsProps {
   segmentedControlValues: string[];
 }
 
-function DiscussionLabels({
+export function DiscussionLabels({
   isLoadingLabels,
   labelOptions,
   createHandleChangeSegmentedControl,
@@ -36,5 +36,3 @@ function DiscussionLabels({
     </Stack>
   );
 }
-
-export default DiscussionLabels;

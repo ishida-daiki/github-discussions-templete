@@ -7,7 +7,7 @@ interface LabelProps {
   required?: boolean;
 }
 
-function Label(props: LabelProps) {
+export function Label(props: LabelProps) {
   const { title, required } = props;
   return (
     <Text className={styles.text}>
@@ -20,5 +20,3 @@ function Label(props: LabelProps) {
     </Text>
   );
 }
-
-export default Label;

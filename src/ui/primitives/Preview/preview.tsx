@@ -6,7 +6,7 @@ type PreviewProps = {
   elementName: string | null;
 };
 
-function Preview({ elementName }: PreviewProps) {
+export function Preview({ elementName }: PreviewProps) {
   return (
     <UIPreview
       style={{
@@ -25,5 +25,3 @@ function Preview({ elementName }: PreviewProps) {
     </UIPreview>
   );
 }
-
-export default Preview;
