@@ -15,13 +15,12 @@ import {
   RadioButtonsOption,
   Textbox,
   SegmentedControlOption,
-  SegmentedControl,
   IconOptionCheck16,
   IconOptionDisabled16,
-  Stack,
 } from "@create-figma-plugin/ui";
 import Label from "../components/Label/label";
 import Preview from "../components/Preview/preview";
+import DiscussionLabels from "../components/DiscussionLabels/discussionlabels";
 import { Fragment, h, JSX } from "preact";
 import { useEffect, useState, useRef } from "preact/hooks";
 import styles from "./ui.module.css";
@@ -269,8 +268,8 @@ function Plugin() {
   }
 
   function createHandleChangeSegmentedControl(index: number) {
-    return (event: JSX.TargetedEvent<HTMLInputElement>) => {
-      const newValue = event.currentTarget.value;
+    return (event: Event) => {
+      const newValue = (event as any).currentTarget.value; // 型キャスト
       setSegmentedControlValues((prevValues) => {
         const newValues = [...prevValues];
         newValues[index] = newValue;
@@ -337,22 +336,15 @@ function Plugin() {
           <VerticalSpace space="small" />
           <Label title="Labels" />
           <VerticalSpace space="extraSmall" />
-          <Stack space="extraSmall">
-            {isLoadingLabels ? (
-              <Text>Loading...</Text>
-            ) : (
-              labelOptions.map((option, index) => (
-                <div key={option.value} className={styles.label}>
-                  {option.children}
-                  <SegmentedControl
-                    onChange={createHandleChangeSegmentedControl(index)}
-                    options={segmentedControlOptions}
-                    value={segmentedControlValues[index]}
-                  />
-                </div>
-              ))
-            )}
-          </Stack>
+          <DiscussionLabels
+            isLoadingLabels={isLoadingLabels}
+            labelOptions={labelOptions}
+            createHandleChangeSegmentedControl={
+              createHandleChangeSegmentedControl
+            }
+            segmentedControlOptions={segmentedControlOptions}
+            segmentedControlValues={segmentedControlValues}
+          />
           <VerticalSpace space="large" />
         </Container>
         <Divider />

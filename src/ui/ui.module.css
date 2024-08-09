@@ -40,9 +40,3 @@
     border: 1px solid #ddd;
     border-radius: 4px;
 }
-
-.label {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
