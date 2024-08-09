@@ -1,0 +1,15 @@
+.placeholder {
+    color: var(--figma-color-text-disabled);
+    display: flex;
+    margin: 0 16px;
+    height: 100%;
+    align-items: center;
+}
+
+.text {
+    color: var(--figma-color-text);
+    display: flex;
+    margin: 0 8px;
+    height: 100%;
+    align-items: center;
+}

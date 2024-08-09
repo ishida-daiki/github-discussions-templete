@@ -14,7 +14,7 @@ import {
   FileUploadButton,
   RadioButtonsOption,
   Textbox,
-  Preview,
+  // Preview as UIPreview,
   SegmentedControlOption,
   SegmentedControl,
   IconOptionCheck16,
@@ -22,6 +22,7 @@ import {
   Stack,
 } from "@create-figma-plugin/ui";
 import Label from "../components/Label/label";
+import Preview from "../components/Preview/preview";
 import { Fragment, h, JSX } from "preact";
 import { useEffect, useState, useRef } from "preact/hooks";
 import styles from "./ui.module.css";
@@ -308,22 +309,7 @@ function Plugin() {
           overflowY: needsScroll ? "auto" : "hidden",
         }}
       >
-        <Preview
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          {elementName ===
-          "Discussion Select the element you want to discuss" ? (
-            <div className={styles.previewPlaceholder}>
-              Discussion Select the element you want to discuss
-            </div>
-          ) : (
-            <div className={styles.previewText}>{elementName}</div>
-          )}
-        </Preview>
+        <Preview elementName={elementName} />
         <Container space="medium">
           <VerticalSpace space="extraSmall" />
           <Label title="Select a discussion category" required />

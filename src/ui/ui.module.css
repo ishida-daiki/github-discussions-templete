@@ -41,22 +41,6 @@
     border-radius: 4px;
 }
 
-.previewPlaceholder {
-    color: var(--figma-color-text-disabled);
-    display: flex;
-    margin: 0 16px;
-    height: 100%;
-    align-items: center;
-}
-
-.previewText {
-    color: var(--figma-color-text);
-    display: flex;
-    margin: 0 8px;
-    height: 100%;
-    align-items: center;
-}
-
 .label {
     display: flex;
     align-items: center;
