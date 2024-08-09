@@ -1,0 +1,9 @@
+.container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--figma-color-bg);
+  border-top: 1px solid var(--figma-color-border);
+}

@@ -1,6 +1,4 @@
 import {
-  Bold,
-  Button,
   Container,
   Divider,
   Dropdown,
@@ -9,22 +7,20 @@ import {
   Text,
   TextboxMultiline,
   VerticalSpace,
-  FileUploadDropzone,
-  Muted,
-  FileUploadButton,
   RadioButtonsOption,
   Textbox,
-  Preview,
   SegmentedControlOption,
-  SegmentedControl,
   IconOptionCheck16,
   IconOptionDisabled16,
-  Stack,
 } from "@create-figma-plugin/ui";
-import Label from "./components/label";
+import Label from "../ui/primitives/Label/label";
+import Preview from "../ui/primitives/Preview/preview";
+import DiscussionLabels from "../ui/compositions/DiscussionLabels/discussionlabels";
+import ImageUploader from "../ui/compositions/ImageUploader/imageuploader";
+import ActionFooter from "../ui/compositions/ActionFooter/actionfooter";
 import { Fragment, h, JSX } from "preact";
 import { useEffect, useState, useRef } from "preact/hooks";
-import styles from "./css/ui.module.css";
+import styles from "./App.module.css";
 
 function Plugin() {
   const [elementName, setElementName] = useState<null | string>(
@@ -269,8 +265,8 @@ function Plugin() {
   }
 
   function createHandleChangeSegmentedControl(index: number) {
-    return (event: JSX.TargetedEvent<HTMLInputElement>) => {
-      const newValue = event.currentTarget.value;
+    return (event: Event) => {
+      const newValue = (event as any).currentTarget.value; // 型キャスト
       setSegmentedControlValues((prevValues) => {
         const newValues = [...prevValues];
         newValues[index] = newValue;
@@ -303,27 +299,9 @@ function Plugin() {
     <Fragment>
       <div
         ref={contentRef}
-        style={{
-          height: "calc(100% - 77px)",
-          overflowY: needsScroll ? "auto" : "hidden",
-        }}
+        className={`${styles.content} ${needsScroll ? styles["allow-scroll"] : styles["no-scroll"]}`}
       >
-        <Preview
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          {elementName ===
-          "Discussion Select the element you want to discuss" ? (
-            <div className={styles.previewPlaceholder}>
-              Discussion Select the element you want to discuss
-            </div>
-          ) : (
-            <div className={styles.previewText}>{elementName}</div>
-          )}
-        </Preview>
+        <Preview elementName={elementName} />
         <Container space="medium">
           <VerticalSpace space="extraSmall" />
           <Label title="Select a discussion category" required />
@@ -335,14 +313,12 @@ function Plugin() {
           />
           <VerticalSpace space="small" />
           <Label title="Add a title" required />
-          <div style={{ width: "100%" }}>
-            <Textbox
-              onInput={handleInputTitle}
-              placeholder="Title"
-              value={title}
-              variant="border"
-            />
-          </div>
+          <Textbox
+            onInput={handleInputTitle}
+            placeholder="Title"
+            value={title}
+            variant="border"
+          />
           <VerticalSpace space="small" />
           <Label title="body" required />
           <TextboxMultiline
@@ -354,89 +330,25 @@ function Plugin() {
           <VerticalSpace space="small" />
           <Label title="Labels" />
           <VerticalSpace space="extraSmall" />
-          <Stack space="extraSmall">
-            {isLoadingLabels ? (
-              <Text>Loading...</Text>
-            ) : (
-              labelOptions.map((option, index) => (
-                <div key={option.value} className={styles.label}>
-                  {option.children}
-                  <SegmentedControl
-                    onChange={createHandleChangeSegmentedControl(index)}
-                    options={segmentedControlOptions}
-                    value={segmentedControlValues[index]}
-                  />
-                </div>
-              ))
-            )}
-          </Stack>
+          <DiscussionLabels
+            isLoadingLabels={isLoadingLabels}
+            labelOptions={labelOptions}
+            createHandleChangeSegmentedControl={
+              createHandleChangeSegmentedControl
+            }
+            segmentedControlOptions={segmentedControlOptions}
+            segmentedControlValues={segmentedControlValues}
+          />
           <VerticalSpace space="large" />
         </Container>
         <Divider />
-        <Container space="medium">
-          <VerticalSpace space="extraSmall" />
-          <Label title="Images" />
-          <FileUploadDropzone
-            acceptedFileTypes={["image/jpeg", "image/png"]}
-            multiple
-            onSelectedFiles={handleSelectedFiles}
-          >
-            <Text align="center">
-              <Bold>Drop images here</Bold>
-            </Text>
-            <VerticalSpace space="small" />
-            <Text align="center">
-              <Muted>or</Muted>
-            </Text>
-            <VerticalSpace space="small" />
-            <FileUploadButton
-              acceptedFileTypes={["image/jpeg", "image/png"]}
-              onSelectedFiles={handleSelectedFiles}
-            >
-              Choose Image Files
-            </FileUploadButton>
-          </FileUploadDropzone>
-          <div className={styles.previewContainer}>
-            {selectedFiles.map((file) => {
-              const url = URL.createObjectURL(file);
-              return (
-                <div key={file.name}>
-                  <VerticalSpace space="medium" />
-                  <img
-                    src={url}
-                    alt={file.name}
-                    className={styles.previewImage}
-                  />
-                </div>
-              );
-            })}
-          </div>
-          <VerticalSpace space="large" />
-        </Container>
+        <ImageUploader handleSelectedFiles={handleSelectedFiles} selectedFiles={selectedFiles} />
       </div>
-      <Container
-        space="medium"
-        style={{
-          position: "absolute",
-          left: "0",
-          bottom: "0",
-          right: "0",
-          zIndex: "100",
-          background: "var(--figma-color-bg)",
-          borderTop: "1px solid var(--figma-color-border)",
-        }}
-      >
-        <VerticalSpace space="large" />
-        <Button
-          loading={isLoading}
-          disabled={!(elementName && body && category)}
-          fullWidth
-          onClick={handleClick}
-        >
-          Submit
-        </Button>
-        <VerticalSpace space="extraLarge" />
-      </Container>
+      <ActionFooter
+        isLoading={isLoading}
+        disabled={!(elementName && body && category)}
+        onClick={handleClick}
+      />
     </Fragment>
   );
 }
