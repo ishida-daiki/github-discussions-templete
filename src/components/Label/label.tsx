@@ -1,6 +1,6 @@
 import { Bold, Text } from "@create-figma-plugin/ui";
 import { h } from "preact";
-import styles from "./label.css";
+import styles from "./label.module.css";
 
 interface labelProps {
   title: string;
