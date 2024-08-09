@@ -2,11 +2,11 @@ import { h } from "preact";
 import styles from "./preview.module.css";
 import { Preview as UIPreview } from "@create-figma-plugin/ui";
 
-type Props = {
+type PreviewProps = {
   elementName: string | null;
 };
 
-function Preview({ elementName }: Props) {
+function Preview({ elementName }: PreviewProps) {
   return (
     <UIPreview
       style={{

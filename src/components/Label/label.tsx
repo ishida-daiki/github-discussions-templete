@@ -2,12 +2,12 @@ import { Bold, Text } from "@create-figma-plugin/ui";
 import { h } from "preact";
 import styles from "./label.module.css";
 
-interface labelProps {
+interface LabelProps {
   title: string;
   required?: boolean;
 }
 
-function Label(props: labelProps) {
+function Label(props: LabelProps) {
   const { title, required } = props;
   return (
     <Text className={styles.text}>
