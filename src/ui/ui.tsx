@@ -1,6 +1,4 @@
 import {
-  Bold,
-  Button,
   Container,
   Divider,
   Dropdown,
@@ -19,6 +17,7 @@ import Label from "../components/Label/label";
 import Preview from "../components/Preview/preview";
 import DiscussionLabels from "../components/DiscussionLabels/discussionlabels";
 import ImageUploader from "../components/ImageUploader/imageuploader";
+import ActionFooter from "../components/ActionFooter/actionfooter";
 import { Fragment, h, JSX } from "preact";
 import { useEffect, useState, useRef } from "preact/hooks";
 import styles from "./ui.module.css";
@@ -348,29 +347,11 @@ function Plugin() {
         <Divider />
         <ImageUploader handleSelectedFiles={handleSelectedFiles} selectedFiles={selectedFiles} />
       </div>
-      <Container
-        space="medium"
-        style={{
-          position: "absolute",
-          left: "0",
-          bottom: "0",
-          right: "0",
-          zIndex: "100",
-          background: "var(--figma-color-bg)",
-          borderTop: "1px solid var(--figma-color-border)",
-        }}
-      >
-        <VerticalSpace space="large" />
-        <Button
-          loading={isLoading}
-          disabled={!(elementName && body && category)}
-          fullWidth
-          onClick={handleClick}
-        >
-          Submit
-        </Button>
-        <VerticalSpace space="extraLarge" />
-      </Container>
+      <ActionFooter
+        isLoading={isLoading}
+        disabled={!(elementName && body && category)}
+        onClick={handleClick}
+      />
     </Fragment>
   );
 }
