@@ -13,6 +13,7 @@
     "paths": {
       "compositions": ["./ui/compositions"],
       "primitives": ["./ui/primitives"],
+      "hooks": ["./hooks"],
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]
