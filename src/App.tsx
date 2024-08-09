@@ -13,13 +13,14 @@ import {
   IconOptionCheck16,
   IconOptionDisabled16,
 } from "@create-figma-plugin/ui";
-import Label from "./compositions/Label/label";
-import Preview from "./compositions/Preview/preview";
+import Label from "./compositions/components/Label/label";
+import Preview from "./compositions/components/Preview/preview";
 import DiscussionLabels from "./compositions/DiscussionLabels/discussionlabels";
 import ImageUploader from "./compositions/ImageUploader/imageuploader";
 import ActionFooter from "./compositions/ActionFooter/actionfooter";
 import { Fragment, h, JSX } from "preact";
 import { useEffect, useState, useRef } from "preact/hooks";
+import styles from "./App.module.css";
 
 function Plugin() {
   const [elementName, setElementName] = useState<null | string>(
@@ -298,10 +299,7 @@ function Plugin() {
     <Fragment>
       <div
         ref={contentRef}
-        style={{
-          height: "calc(100% - 77px)",
-          overflowY: needsScroll ? "auto" : "hidden",
-        }}
+        className={`${styles.content} ${needsScroll ? styles["allow-scroll"] : styles["no-scroll"]}`}
       >
         <Preview elementName={elementName} />
         <Container space="medium">
