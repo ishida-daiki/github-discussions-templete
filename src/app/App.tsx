@@ -18,13 +18,12 @@ import { ActionFooter, DiscussionLabels, ImageUploader } from "compositions";
 import { Fragment, h, JSX } from "preact";
 import { useEffect, useState, useRef } from "preact/hooks";
 import styles from "./App.module.css";
-import { useElementName } from "hooks";
+import { useElementName, useDiscussionCategories } from "hooks";
 
 function Plugin() {
   const {elementName, setElementName, generatedUrl} = useElementName();
+  const { options, categoryMap } = useDiscussionCategories();
   const [category, setCategory] = useState<null | string>(null);
-  const [options, setOptions] = useState<Array<DropdownOption>>([]);
-  const [categoryMap, setCategoryMap] = useState<Record<string, string>>({});
   const [labelOptions, setLabelOptions] = useState<Array<RadioButtonsOption>>(
     []
   );
@@ -89,16 +88,7 @@ function Plugin() {
 
   window.onmessage = async (event) => {
     const { pluginMessage } = event.data;
-    if (pluginMessage.type === "discussion-categories") {
-      const filteredCategories = pluginMessage.categories;
-      const newOptions = filteredCategories.map(
-        (category: { name: string }) => ({
-          value: category.name,
-        })
-      );
-      setOptions(newOptions);
-      setCategoryMap(pluginMessage.categoryMap);
-    } else if (pluginMessage.type === "discussion-labels") {
+    if (pluginMessage.type === "discussion-labels") {
       const filteredLabels = pluginMessage.labels;
       const newLabelOptions: Array<RadioButtonsOption> = filteredLabels.map(
         (label: { name: string }) => ({
