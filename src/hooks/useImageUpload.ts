@@ -1,8 +1,13 @@
 import { useState } from "preact/hooks";
 
+/**
+ * useImageUpload フック
+ * 
+ * 画像のアップロードを管理するためのカスタムフック。
+ * 選択されたファイルを管理し、ファイルを base64 に変換する。
+ */
 export function useImageUpload() {
   const [selectedFiles, setSelectedFiles] = useState<Array<File>>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const fileToBase64 = (file: File): Promise<string> => {
     return new Promise<string>((resolve, reject) => {
@@ -40,8 +45,6 @@ export function useImageUpload() {
   return {
     selectedFiles,
     setSelectedFiles,
-    isLoading,
-    setIsLoading,
     fileToBase64,
     handleSelectedFiles,
   };

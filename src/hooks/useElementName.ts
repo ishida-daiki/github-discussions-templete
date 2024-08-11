@@ -1,5 +1,11 @@
 import { useState, useEffect } from "preact/hooks";
 
+/**
+ * useElementName フック
+ * 
+ * 選択した要素の名前を管理するためのカスタムフック。
+ * 選択解除時には名前を初期化し、名前が更新されたときには URL を生成する。
+ */
 export function useElementName() {
   const [elementName, setElementName] = useState<null | string>(
     "Discussion Select the element you want to discuss"

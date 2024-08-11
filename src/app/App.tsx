@@ -13,7 +13,7 @@ import {
 import { Label, Preview } from "primitives";
 import { ActionFooter, DiscussionLabels, ImageUploader } from "compositions";
 import { Fragment, h, JSX } from "preact";
-import { useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import styles from "./App.module.css";
 import {
   useElementName,
@@ -39,11 +39,12 @@ function Plugin() {
   } = useDiscussionLabels();
   const { title, setTitle, body, setBody, handleInputTitle, handleInputBody } =
     useFormState();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const {
     selectedFiles,
     setSelectedFiles,
-    isLoading,
-    setIsLoading,
+    // isLoading,
+    // setIsLoading,
     fileToBase64,
     handleSelectedFiles,
   } = useImageUpload();

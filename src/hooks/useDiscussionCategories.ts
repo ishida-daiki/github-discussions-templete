@@ -1,6 +1,12 @@
 import { DropdownOption } from "@create-figma-plugin/ui";
 import { useState, useEffect } from "preact/hooks";
 
+/**
+ * useDiscussionCategories フック
+ * 
+ * ディスカッションに設定するカテゴリオプションを管理するためのカスタムフック。
+ * カテゴリの取得、選択状態の管理を行う。
+ */
 export function useDiscussionCategories() {
   const [options, setOptions] = useState<Array<DropdownOption>>([]);
   const [categoryMap, setCategoryMap] = useState<Record<string, string>>({});

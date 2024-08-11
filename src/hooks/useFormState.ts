@@ -1,6 +1,12 @@
 import { JSX } from "preact";
 import { useState } from "preact/hooks";
 
+/**
+ * useFormState フック
+ * 
+ * フォームの状態を管理するためのカスタムフック。
+ * タイトルと本文の入力値を管理し、入力値が更新されたときにはそれぞれの状態を更新する。
+ */
 export function useFormState(
   initialTitle: string = "",
   initialBody: string = ""
