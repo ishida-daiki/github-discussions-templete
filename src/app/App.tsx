@@ -2,12 +2,9 @@ import {
   Container,
   Divider,
   Dropdown,
-  DropdownOption,
   render,
-  Text,
   TextboxMultiline,
   VerticalSpace,
-  RadioButtonsOption,
   Textbox,
   SegmentedControlOption,
   IconOptionCheck16,
@@ -16,7 +13,7 @@ import {
 import { Label, Preview } from "primitives";
 import { ActionFooter, DiscussionLabels, ImageUploader } from "compositions";
 import { Fragment, h, JSX } from "preact";
-import { useEffect, useState, useRef } from "preact/hooks";
+import { useEffect } from "preact/hooks";
 import styles from "./App.module.css";
 import {
   useElementName,
