@@ -18,22 +18,27 @@ import { ActionFooter, DiscussionLabels, ImageUploader } from "compositions";
 import { Fragment, h, JSX } from "preact";
 import { useEffect, useState, useRef } from "preact/hooks";
 import styles from "./App.module.css";
-import { useElementName, useDiscussionCategories } from "hooks";
+import {
+  useElementName,
+  useDiscussionCategories,
+  useDiscussionLabels,
+} from "hooks";
 
 function Plugin() {
-  const {elementName, setElementName, generatedUrl} = useElementName();
+  const { elementName, setElementName, generatedUrl } = useElementName();
   const { options, categoryMap } = useDiscussionCategories();
-  const [category, setCategory] = useState<null | string>(null);
-  const [labelOptions, setLabelOptions] = useState<Array<RadioButtonsOption>>(
-    []
-  );
-  const [labelMap, setLabelMap] = useState<Record<string, string>>({});
-  const [isLoadingLabels, setIsLoadingLabels] = useState<boolean>(true);
+  const {
+    handleTagChange,
+    isLoadingLabels,
+    labelMap,
+    segmentedControlValues,
+    setSegmentedControlValues,
+    labelOptions,
+    category,
+    setCategory,
+  } = useDiscussionLabels();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [selectedFiles, setSelectedFiles] = useState<Array<File>>([]);
-  const [segmentedControlValues, setSegmentedControlValues] = useState<
-    string[]
-  >([]);
   const segmentedControlOptions: Array<SegmentedControlOption> = [
     {
       children: <IconOptionDisabled16 />,
@@ -75,46 +80,6 @@ function Plugin() {
   useEffect(() => {
     parent.postMessage({ pluginMessage: { type: "get-discussion" } }, "*");
   }, []);
-
-  useEffect(() => {
-    if (labelOptions.length > 0) {
-      // labelOptions が設定された後に default 値を設定
-      const defaultValues = labelOptions.map(
-        () => "icons-size-16--option-disabled"
-      );
-      setSegmentedControlValues(defaultValues);
-    }
-  }, [labelOptions]);
-
-  window.onmessage = async (event) => {
-    const { pluginMessage } = event.data;
-    if (pluginMessage.type === "discussion-labels") {
-      const filteredLabels = pluginMessage.labels;
-      const newLabelOptions: Array<RadioButtonsOption> = filteredLabels.map(
-        (label: { name: string }) => ({
-          children: <Text>{label.name}</Text>,
-          value: label.name,
-        })
-      );
-      setLabelOptions(newLabelOptions);
-
-      const newLabelMap = pluginMessage.labels.reduce(
-        (acc: Record<string, string>, label: { id: string; name: string }) => {
-          acc[label.name] = label.id;
-          return acc;
-        },
-        {}
-      );
-      setLabelMap(newLabelMap);
-
-      setIsLoadingLabels(false);
-    }
-  };
-
-  function handleTagChange(event: JSX.TargetedEvent<HTMLInputElement>) {
-    const newTag = event.currentTarget.value;
-    setCategory(newTag);
-  }
 
   // ファイルを base64 に変換する関数
   const fileToBase64 = (file: File) => {
