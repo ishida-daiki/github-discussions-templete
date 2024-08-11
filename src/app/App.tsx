@@ -43,8 +43,6 @@ function Plugin() {
   const {
     selectedFiles,
     setSelectedFiles,
-    // isLoading,
-    // setIsLoading,
     fileToBase64,
     handleSelectedFiles,
   } = useImageUpload();
