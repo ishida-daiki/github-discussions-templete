@@ -2,6 +2,12 @@ import { h, JSX } from "preact";
 import { RadioButtonsOption, Text } from "@create-figma-plugin/ui";
 import { useState, useEffect } from "preact/hooks";
 
+/**
+ * useDiscussionLabels フック
+ *
+ * ディスカッションに設定するラベルオプションを管理するためのカスタムフック。
+ * ラベルの取得、選択状態の管理、ロード状態の管理を行う。
+ */
 export function useDiscussionLabels() {
   const [category, setCategory] = useState<null | string>(null);
   const [labelOptions, setLabelOptions] = useState<Array<RadioButtonsOption>>([]);
@@ -21,7 +27,6 @@ export function useDiscussionLabels() {
         const filteredLabels = pluginMessage.labels;
         const newLabelOptions: Array<RadioButtonsOption> = filteredLabels.map(
           (label: { name: string }) => ({
-            // h関数を使用してJSX要素を作成
             children: h(Text, null, label.name),
             value: label.name,
           })
