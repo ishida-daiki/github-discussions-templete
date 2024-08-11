@@ -22,6 +22,7 @@ import {
   useElementName,
   useDiscussionCategories,
   useDiscussionLabels,
+  useScrollDetection
 } from "hooks";
 
 function Plugin() {
@@ -37,8 +38,19 @@ function Plugin() {
     category,
     setCategory,
   } = useDiscussionLabels();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [selectedFiles, setSelectedFiles] = useState<Array<File>>([]);
+  const [body, setBody] = useState<string>("");
+  const dependencies = [
+    options,
+    labelOptions,
+    selectedFiles,
+    elementName,
+    category,
+    body,
+    isLoadingLabels,
+  ];
+  const { contentRef, needsScroll } = useScrollDetection(dependencies);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const segmentedControlOptions: Array<SegmentedControlOption> = [
     {
       children: <IconOptionDisabled16 />,
@@ -50,32 +62,10 @@ function Plugin() {
     },
   ];
 
-  const [body, setBody] = useState<string>("");
   function handleInput(event: JSX.TargetedEvent<HTMLTextAreaElement>) {
     const newValue = event.currentTarget.value;
     setBody(newValue);
   }
-
-  // スクロールが必要かどうかを判定するための状態とref
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [needsScroll, setNeedsScroll] = useState(false);
-
-  useEffect(() => {
-    // 初回レンダリング後にスクロールが必要かどうか判定
-    if (contentRef.current) {
-      setNeedsScroll(
-        contentRef.current.scrollHeight > contentRef.current.clientHeight
-      );
-    }
-  }, [
-    options,
-    labelOptions,
-    selectedFiles,
-    elementName,
-    category,
-    body,
-    isLoadingLabels,
-  ]);
 
   useEffect(() => {
     parent.postMessage({ pluginMessage: { type: "get-discussion" } }, "*");
