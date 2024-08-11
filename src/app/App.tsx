@@ -24,6 +24,7 @@ import {
   useDiscussionLabels,
   useScrollDetection,
   useFormState,
+  useImageUpload,
 } from "hooks";
 
 function Plugin() {
@@ -39,8 +40,16 @@ function Plugin() {
     category,
     setCategory,
   } = useDiscussionLabels();
-  const [selectedFiles, setSelectedFiles] = useState<Array<File>>([]);
-  const { title, setTitle, body, setBody, handleInputTitle, handleInputBody } = useFormState();
+  const { title, setTitle, body, setBody, handleInputTitle, handleInputBody } =
+    useFormState();
+  const {
+    selectedFiles,
+    setSelectedFiles,
+    isLoading,
+    setIsLoading,
+    fileToBase64,
+    handleSelectedFiles,
+  } = useImageUpload();
   const dependencies = [
     options,
     labelOptions,
@@ -51,7 +60,6 @@ function Plugin() {
     isLoadingLabels,
   ];
   const { contentRef, needsScroll } = useScrollDetection(dependencies);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const segmentedControlOptions: Array<SegmentedControlOption> = [
     {
       children: <IconOptionDisabled16 />,
@@ -66,22 +74,6 @@ function Plugin() {
   useEffect(() => {
     parent.postMessage({ pluginMessage: { type: "get-discussion" } }, "*");
   }, []);
-
-  // ファイルを base64 に変換する関数
-  const fileToBase64 = (file: File) => {
-    return new Promise<string>((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        const base64str = (reader.result as string).replace(
-          /data:.*\/.*;base64,/,
-          ""
-        );
-        resolve(base64str);
-      };
-      reader.onerror = (e) => reject(e);
-    });
-  };
 
   async function handleClick(event: JSX.TargetedMouseEvent<HTMLButtonElement>) {
     setIsLoading(true);
@@ -190,26 +182,6 @@ function Plugin() {
         return newValues;
       });
     };
-  }
-
-  function formatFileName(fileName: string): string {
-    // 拡張子を分離
-    const parts = fileName.split(".");
-    const extension = parts.pop();
-    const baseName = parts.join(".");
-
-    // スペースをハイフンに置換
-    const formattedName = baseName.replace(/\s+/g, "-");
-
-    return `${formattedName}.${extension}`;
-  }
-
-  function handleSelectedFiles(files: Array<File>) {
-    const formattedFiles = files.map((file) => {
-      const formattedName = formatFileName(file.name);
-      return new File([file], formattedName, { type: file.type });
-    });
-    setSelectedFiles(formattedFiles);
   }
 
   return (
