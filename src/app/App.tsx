@@ -22,7 +22,8 @@ import {
   useElementName,
   useDiscussionCategories,
   useDiscussionLabels,
-  useScrollDetection
+  useScrollDetection,
+  useFormState,
 } from "hooks";
 
 function Plugin() {
@@ -39,7 +40,7 @@ function Plugin() {
     setCategory,
   } = useDiscussionLabels();
   const [selectedFiles, setSelectedFiles] = useState<Array<File>>([]);
-  const [body, setBody] = useState<string>("");
+  const { title, setTitle, body, setBody, handleInputTitle, handleInputBody } = useFormState();
   const dependencies = [
     options,
     labelOptions,
@@ -61,11 +62,6 @@ function Plugin() {
       value: "icons-size-16--option-check",
     },
   ];
-
-  function handleInput(event: JSX.TargetedEvent<HTMLTextAreaElement>) {
-    const newValue = event.currentTarget.value;
-    setBody(newValue);
-  }
 
   useEffect(() => {
     parent.postMessage({ pluginMessage: { type: "get-discussion" } }, "*");
@@ -185,12 +181,6 @@ function Plugin() {
     }
   }
 
-  const [title, setTitle] = useState<string>("");
-  function handleInputTitle(event: JSX.TargetedEvent<HTMLInputElement>) {
-    const newValue = event.currentTarget.value;
-    setTitle(newValue);
-  }
-
   function createHandleChangeSegmentedControl(index: number) {
     return (event: Event) => {
       const newValue = (event as any).currentTarget.value; // 型キャスト
@@ -251,7 +241,7 @@ function Plugin() {
           <VerticalSpace space="small" />
           <Label title="body" required />
           <TextboxMultiline
-            onInput={handleInput}
+            onInput={handleInputBody}
             placeholder="Ask a question, start a conversation, or make an announcement"
             value={body}
             variant="border"
