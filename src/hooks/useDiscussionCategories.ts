@@ -1,15 +1,22 @@
 import { DropdownOption } from "@create-figma-plugin/ui";
+import { JSX } from "preact";
 import { useState, useEffect } from "preact/hooks";
 
 /**
  * useDiscussionCategories フック
- * 
+ *
  * ディスカッションに設定するカテゴリオプションを管理するためのカスタムフック。
- * カテゴリの取得、選択状態の管理を行う。
+ * GitHub Discussions のカテゴリを取得、選択状態の管理を行う。
  */
 export function useDiscussionCategories() {
   const [options, setOptions] = useState<Array<DropdownOption>>([]);
+  const [category, setCategory] = useState<null | string>(null);
   const [categoryMap, setCategoryMap] = useState<Record<string, string>>({});
+
+  function handleTagChange(event: JSX.TargetedEvent<HTMLInputElement>) {
+    const newTag = event.currentTarget.value;
+    setCategory(newTag);
+  }
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
@@ -32,5 +39,5 @@ export function useDiscussionCategories() {
       window.removeEventListener("message", handleMessage);
     };
   }, []);
-  return { options, categoryMap };
+  return { handleTagChange, options, category, setCategory, categoryMap };
 }

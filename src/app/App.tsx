@@ -26,16 +26,13 @@ import {
 
 function Plugin() {
   const { elementName, setElementName, generatedUrl } = useElementName();
-  const { options, categoryMap } = useDiscussionCategories();
+  const { handleTagChange, options, category, setCategory, categoryMap } = useDiscussionCategories();
   const {
-    handleTagChange,
     isLoadingLabels,
     labelMap,
     segmentedControlValues,
     setSegmentedControlValues,
     labelOptions,
-    category,
-    setCategory,
   } = useDiscussionLabels();
   const { title, setTitle, body, setBody, handleInputTitle, handleInputBody } =
     useFormState();

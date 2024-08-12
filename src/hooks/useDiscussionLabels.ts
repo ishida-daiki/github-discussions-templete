@@ -1,4 +1,4 @@
-import { h, JSX } from "preact";
+import { h } from "preact";
 import { RadioButtonsOption, Text } from "@create-figma-plugin/ui";
 import { useState, useEffect } from "preact/hooks";
 
@@ -6,19 +6,13 @@ import { useState, useEffect } from "preact/hooks";
  * useDiscussionLabels フック
  *
  * ディスカッションに設定するラベルオプションを管理するためのカスタムフック。
- * ラベルの取得、選択状態の管理、ロード状態の管理を行う。
+ * GitHub Discussions のラベルを取得、選択状態の管理、ロード状態の管理を行う。
  */
 export function useDiscussionLabels() {
-  const [category, setCategory] = useState<null | string>(null);
   const [labelOptions, setLabelOptions] = useState<Array<RadioButtonsOption>>([]);
   const [segmentedControlValues, setSegmentedControlValues] = useState<string[]>([]);
   const [labelMap, setLabelMap] = useState<Record<string, string>>({});
   const [isLoadingLabels, setIsLoadingLabels] = useState<boolean>(true);
-
-  function handleTagChange(event: JSX.TargetedEvent<HTMLInputElement>) {
-    const newTag = event.currentTarget.value;
-    setCategory(newTag);
-  }
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
@@ -62,13 +56,11 @@ export function useDiscussionLabels() {
   }, [labelOptions]);
 
   return {
-    handleTagChange,
+    
     isLoadingLabels,
     labelMap,
     segmentedControlValues,
     setSegmentedControlValues,
     labelOptions,
-    category,
-    setCategory,
   };
 }
