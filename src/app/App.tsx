@@ -6,9 +6,6 @@ import {
   TextboxMultiline,
   VerticalSpace,
   Textbox,
-  SegmentedControlOption,
-  IconOptionCheck16,
-  IconOptionDisabled16,
 } from "@create-figma-plugin/ui";
 import { Label, Preview } from "primitives";
 import { ActionFooter, DiscussionLabels, ImageUploader } from "compositions";
@@ -30,9 +27,11 @@ function Plugin() {
   const {
     isLoadingLabels,
     labelMap,
+    segmentedControlOptions,
     segmentedControlValues,
     setSegmentedControlValues,
     labelOptions,
+    createHandleChangeSegmentedControl,
   } = useDiscussionLabels();
   const { title, setTitle, body, setBody, handleInputTitle, handleInputBody } =
     useFormState();
@@ -53,16 +52,6 @@ function Plugin() {
     isLoadingLabels,
   ];
   const { contentRef, needsScroll } = useScrollDetection(dependencies);
-  const segmentedControlOptions: Array<SegmentedControlOption> = [
-    {
-      children: <IconOptionDisabled16 />,
-      value: "icons-size-16--option-disabled",
-    },
-    {
-      children: <IconOptionCheck16 />,
-      value: "icons-size-16--option-check",
-    },
-  ];
 
   useEffect(() => {
     parent.postMessage({ pluginMessage: { type: "get-discussion" } }, "*");
@@ -164,17 +153,6 @@ function Plugin() {
       console.error("Error uploading file or sending message:", error);
       setIsLoading(false);
     }
-  }
-
-  function createHandleChangeSegmentedControl(index: number) {
-    return (event: Event) => {
-      const newValue = (event as any).currentTarget.value; // 型キャスト
-      setSegmentedControlValues((prevValues) => {
-        const newValues = [...prevValues];
-        newValues[index] = newValue;
-        return newValues;
-      });
-    };
   }
 
   return (

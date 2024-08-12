@@ -1,5 +1,5 @@
 import { h } from "preact";
-import { RadioButtonsOption, Text } from "@create-figma-plugin/ui";
+import { IconOptionCheck16, IconOptionDisabled16, RadioButtonsOption, SegmentedControlOption, Text } from "@create-figma-plugin/ui";
 import { useState, useEffect } from "preact/hooks";
 
 /**
@@ -13,6 +13,28 @@ export function useDiscussionLabels() {
   const [segmentedControlValues, setSegmentedControlValues] = useState<string[]>([]);
   const [labelMap, setLabelMap] = useState<Record<string, string>>({});
   const [isLoadingLabels, setIsLoadingLabels] = useState<boolean>(true);
+
+  const segmentedControlOptions: Array<SegmentedControlOption> = [
+    {
+      children: h(IconOptionDisabled16, null),
+      value: "icons-size-16--option-disabled",
+    },
+    {
+      children: h(IconOptionCheck16, null),
+      value: "icons-size-16--option-check",
+    },
+  ];
+  
+  function createHandleChangeSegmentedControl(index: number) {
+    return (event: Event) => {
+      const newValue = (event as any).currentTarget.value; // 型キャスト
+      setSegmentedControlValues((prevValues) => {
+        const newValues = [...prevValues];
+        newValues[index] = newValue;
+        return newValues;
+      });
+    };
+  }
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
@@ -56,11 +78,12 @@ export function useDiscussionLabels() {
   }, [labelOptions]);
 
   return {
-    
     isLoadingLabels,
     labelMap,
+    segmentedControlOptions,
     segmentedControlValues,
     setSegmentedControlValues,
     labelOptions,
+    createHandleChangeSegmentedControl,
   };
 }
