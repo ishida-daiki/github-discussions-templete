@@ -3,8 +3,8 @@ import { useState, useEffect } from "preact/hooks";
 /**
  * useElementName フック
  * 
- * 選択した要素の名前を管理するためのカスタムフック。
- * 選択解除時には名前を初期化し、名前が更新されたときには URL を生成する。
+ * Figma 内の要素を選択した際に、要素名を更新し、対応する URL を生成します。
+ * 選択解除時には、要素名を初期化します。
  */
 export function useElementName() {
   const [elementName, setElementName] = useState<null | string>(
