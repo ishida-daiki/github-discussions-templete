@@ -283,7 +283,7 @@ export default function () {
       }
       catch (error) {
         console.error(error);
-        figma.notify("Failed to upload image to GitHub", { timeout: 3000 });
+        figma.notify("Failed to upload image to GitHub😓", { timeout: 3000 });
       }
     }
     else if (message.type === "post-message") {
@@ -305,7 +305,7 @@ export default function () {
         figma.notify("Successfully added to GitHub Discussions🎉", { timeout: 3000 });
       } catch (error) {
         console.error(error);
-        figma.notify("Failed to post to GitHub Discussions", { timeout: 3000 });
+        figma.notify("Failed to post to GitHub Discussions😓", { timeout: 3000 });
       }
     }
   };
