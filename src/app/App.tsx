@@ -9,22 +9,27 @@ import {
 } from "@create-figma-plugin/ui";
 import { Label, Preview } from "primitives";
 import { ActionFooter, DiscussionLabels, ImageUploader } from "compositions";
-import { Fragment, h, JSX } from "preact";
+import { Fragment, h } from "preact";
 import { useEffect, useState } from "preact/hooks";
 import styles from "./App.module.css";
 import {
-  useElementName,
   useDiscussionCategories,
   useDiscussionLabels,
-  useScrollDetection,
+  useElementName,
   useFormState,
-  useImageUpload,
   useHandleClick,
+  useImageUpload,
+  useScrollDetection,
 } from "hooks";
 
 function Plugin() {
+  useEffect(() => {
+    parent.postMessage({ pluginMessage: { type: "get-discussion" } }, "*");
+  }, []);
+
   const { elementName, setElementName, generatedUrl } = useElementName();
-  const { handleTagChange, options, category, setCategory, categoryMap } = useDiscussionCategories();
+  const { handleTagChange, options, category, setCategory, categoryMap } =
+    useDiscussionCategories();
   const {
     isLoadingLabels,
     labelMap,
@@ -37,13 +42,9 @@ function Plugin() {
   const { title, setTitle, body, setBody, handleInputTitle, handleInputBody } =
     useFormState();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const {
-    selectedFiles,
-    setSelectedFiles,
-    fileToBase64,
-    handleSelectedFiles,
-  } = useImageUpload();
-  const dependencies = [
+  const { selectedFiles, setSelectedFiles, fileToBase64, handleSelectedFiles } =
+    useImageUpload();
+  const { contentRef, needsScroll } = useScrollDetection({
     options,
     labelOptions,
     selectedFiles,
@@ -51,13 +52,7 @@ function Plugin() {
     category,
     body,
     isLoadingLabels,
-  ];
-  const { contentRef, needsScroll } = useScrollDetection(dependencies);
-
-  useEffect(() => {
-    parent.postMessage({ pluginMessage: { type: "get-discussion" } }, "*");
-  }, []);
-
+  });
   const { handleClick } = useHandleClick({
     elementName,
     setElementName,
