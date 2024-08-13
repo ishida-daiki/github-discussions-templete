@@ -4,15 +4,26 @@ import { useState, useEffect } from "preact/hooks";
 
 /**
  * useDiscussionCategories フック
- *
- * ディスカッションに設定するカテゴリオプションを管理するためのカスタムフック。
- * GitHub Discussions のカテゴリを取得、選択状態の管理を行う。
+ * 
+ * GitHub Discussions のカテゴリを取得し、これらのカテゴリオプションおよび選択状態を管理します。
+ * 
+ * @return {object} - フックが管理する状態および状態を変更するための関数を返します。
+ * @return {Array<DropdownOption>} options - ドロップダウン用のカテゴリオプションの配列。
+ * @return {null | string} category - 現在選択されているカテゴリ。
+ * @return {function} setCategory - 現在選択されているカテゴリを設定する関数。
+ * @return {Record<string, string>} categoryMap - カテゴリ名とカテゴリIDのマッピング。
+ * @return {function} handleTagChange - カテゴリタグの変更を処理する関数。
  */
 export function useDiscussionCategories() {
   const [options, setOptions] = useState<Array<DropdownOption>>([]);
   const [category, setCategory] = useState<null | string>(null);
   const [categoryMap, setCategoryMap] = useState<Record<string, string>>({});
 
+  /**
+   * カテゴリの変更を処理する関数
+   * 
+   * @param {JSX.TargetedEvent<HTMLInputElement>} event - タグ変更イベント
+   */
   function handleTagChange(event: JSX.TargetedEvent<HTMLInputElement>) {
     const newTag = event.currentTarget.value;
     setCategory(newTag);
