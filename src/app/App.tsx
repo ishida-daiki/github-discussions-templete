@@ -19,6 +19,7 @@ import {
   useScrollDetection,
   useFormState,
   useImageUpload,
+  useHandleClick,
 } from "hooks";
 
 function Plugin() {
@@ -57,103 +58,27 @@ function Plugin() {
     parent.postMessage({ pluginMessage: { type: "get-discussion" } }, "*");
   }, []);
 
-  async function handleClick(event: JSX.TargetedMouseEvent<HTMLButtonElement>) {
-    setIsLoading(true);
-    try {
-      let imageUrl: string | null = null;
-      if (selectedFiles && selectedFiles.length > 0) {
-        setIsLoading(true);
-        const file = selectedFiles[0];
-        const path = `awesome_images/${file.name}`;
-        const content = await fileToBase64(file);
-        imageUrl = await new Promise((resolve) => {
-          let handler: (event: MessageEvent) => void;
-          // Update the current onmessage function
-          let _oldListener: ((this: Window, ev: MessageEvent) => any) | null =
-            window.onmessage;
-          window.onmessage = (event) => {
-            _oldListener?.call(window, event);
-            handler(event);
-          };
-          // Submit the file to be uploaded.
-          parent.postMessage(
-            {
-              pluginMessage: {
-                type: "upload-image",
-                fileData: content,
-                path: path,
-              },
-            },
-            "*"
-          );
-
-          // Once the file is uploaded, this function will be called.
-          handler = function (event: MessageEvent) {
-            if (event.data.pluginMessage.type === "image-uploaded") {
-              // If this is the response we were waiting for, resolve the promise with the image url
-              resolve(event.data.pluginMessage.imageUrl);
-              // Clean up by removing the event listener
-              if (!_oldListener) {
-                window.onmessage = _oldListener;
-              }
-            }
-          };
-        });
-      }
-      const categoryId = category ? categoryMap[category] : undefined;
-
-      // 選択されたすべての "icons-size-16--option-check" のラベルIDを格納
-      const labelIds: string[] = segmentedControlValues.reduce(
-        (ids: string[], value: string, index: number) => {
-          if (value === "icons-size-16--option-check" && labelOptions[index]) {
-            const labelId = labelMap[labelOptions[index].value];
-            if (labelId) {
-              ids.push(labelId);
-            }
-          }
-          return ids;
-        },
-        []
-      );
-
-      let messageBody: string = "";
-      if (imageUrl) {
-        messageBody += `![image](${imageUrl})\n\n`;
-      }
-      messageBody += `${body}\n\n`;
-      if (generatedUrl) {
-        messageBody += `${generatedUrl}`;
-      }
-      parent.postMessage(
-        {
-          pluginMessage: {
-            type: "post-message",
-            title: title,
-            body: messageBody,
-            elementName: elementName,
-            categoryId: categoryId,
-            labelIds: labelIds,
-          },
-        },
-        "*"
-      );
-
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      setIsLoading(false);
-      setTitle("");
-      setBody("");
-      setCategory(null);
-      setElementName("Discussion Select the element you want to discuss");
-      setSelectedFiles([]);
-      const defaultValues = labelOptions.map(
-        () => "icons-size-16--option-disabled"
-      );
-      setSegmentedControlValues(defaultValues);
-    } catch (error) {
-      console.error("Error uploading file or sending message:", error);
-      setIsLoading(false);
-    }
-  }
+  const { handleClick } = useHandleClick({
+    elementName,
+    setElementName,
+    generatedUrl,
+    fileToBase64,
+    selectedFiles,
+    setSelectedFiles,
+    category,
+    categoryMap,
+    labelOptions,
+    labelMap,
+    segmentedControlValues,
+    body,
+    title,
+    setIsLoading,
+    setTitle,
+    setBody,
+    setCategory,
+    setSegmentedControlValues,
+    isLoadingLabels,
+  });
 
   return (
     <Fragment>

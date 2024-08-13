@@ -4,3 +4,4 @@ export * from "./useElementName";
 export * from "./useFormState";
 export * from "./useImageUpload";
 export * from "./useScrollDetection";
+export * from "./useHandleClick";
