@@ -9,7 +9,6 @@ import { useState } from "preact/hooks";
  * 
  * @param {string} [initialTitle=""] - タイトルの初期値。
  * @param {string} [initialBody=""] - 本文の初期値。
- * @return {object} フックが管理する状態および状態を変更するための関数を返します。
  * @return {string} title - 現在のタイトルの値。
  * @return {function} setTitle - タイトル値を更新する関数。
  * @return {string} body - 現在の本文の値。

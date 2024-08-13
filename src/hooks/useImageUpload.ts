@@ -6,7 +6,6 @@ import { useState } from "preact/hooks";
  * 画像アップロードを管理するためのカスタムフックです。
  * 選択されたファイルを管理し、ファイルを base64 エンコードに変換します。
  * 
- * @return {object} フックが提供する状態と関数をまとめたオブジェクトを返します。
  * @return {Array<File>} selectedFiles - 現在選択されているファイルの配列。
  * @return {function} setSelectedFiles - 選択されているファイルの配列を更新する関数。
  * @return {function} fileToBase64 - ファイルを base64 文字列へと変換する関数。

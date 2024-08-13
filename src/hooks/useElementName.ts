@@ -7,7 +7,6 @@ import { useState, useEffect } from "preact/hooks";
  * 要素が選択されたときに要素名を更新し、対応する URL を生成します。
  * 要素が選択解除されたときには、要素名と生成された URL を初期化します。
  *
- * @return {object} - 選択された要素の名前とURLを取り扱う関数と状態を返します。
  * @return {string | null} elementName - 現在選択されている要素の名前。
  * @return {function} setElementName - 要素名を更新するための関数。
  * @return {string | null} generatedUrl - 選択された要素の対応URL。

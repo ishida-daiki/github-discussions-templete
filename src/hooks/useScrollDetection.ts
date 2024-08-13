@@ -7,7 +7,6 @@ import { useEffect, useRef, useState } from "preact/hooks";
  * 指定された依存関係が変化したときに、コンテンツがスクロール可能かどうかをチェックします。
  * 
  * @param {Array<any>} dependencies - フックが再評価されるトリガーとなる依存関係の配列。
- * @return {object} フックが提供する状態と参照をまとめたオブジェクトを返します。
  * @return {RefObject<HTMLDivElement>} contentRef - スクロール可能なコンテンツの参照。
  * @return {boolean} needsScroll - コンテンツがスクロール可能かどうかを示すフラグ。
  */
