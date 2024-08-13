@@ -1,16 +1,34 @@
+import { DropdownOption, RadioButtonsOption } from "@create-figma-plugin/ui";
 import { useEffect, useRef, useState } from "preact/hooks";
 
 /**
  * useScrollDetection フック
- * 
+ *
  * コンテンツがスクロール可能かどうかを検出するためのカスタムフックです。
  * 指定された依存関係が変化したときに、コンテンツがスクロール可能かどうかをチェックします。
+ * @param {object} dependencies - フックが再評価されるトリガーとなる依存関係のオブジェクト。
  * 
- * @param {Array<any>} dependencies - フックが再評価されるトリガーとなる依存関係の配列。
  * @return {RefObject<HTMLDivElement>} contentRef - スクロール可能なコンテンツの参照。
  * @return {boolean} needsScroll - コンテンツがスクロール可能かどうかを示すフラグ。
  */
-export function useScrollDetection(dependencies: any[]) {
+export function useScrollDetection(dependencies: {
+  options: Array<DropdownOption>;
+  labelOptions: Array<RadioButtonsOption>;
+  selectedFiles: Array<File>;
+  elementName: string | null;
+  category: string | null;
+  body: string;
+  isLoadingLabels: boolean;
+}) {
+  const {
+    options,
+    labelOptions,
+    selectedFiles,
+    elementName,
+    category,
+    body,
+    isLoadingLabels,
+  } = dependencies;
   // スクロール可能なコンテンツの参照
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -24,7 +42,7 @@ export function useScrollDetection(dependencies: any[]) {
         contentRef.current.scrollHeight > contentRef.current.clientHeight
       );
     }
-  }, dependencies);
+  }, [dependencies]);
 
   return { contentRef, needsScroll };
 }
