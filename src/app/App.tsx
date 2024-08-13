@@ -9,7 +9,7 @@ import {
 } from "@create-figma-plugin/ui";
 import { Label, Preview } from "primitives";
 import { ActionFooter, DiscussionLabels, ImageUploader } from "compositions";
-import { Fragment, h, JSX } from "preact";
+import { Fragment, h } from "preact";
 import { useEffect, useState } from "preact/hooks";
 import styles from "./App.module.css";
 import {
