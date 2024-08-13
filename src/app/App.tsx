@@ -13,16 +13,20 @@ import { Fragment, h, JSX } from "preact";
 import { useEffect, useState } from "preact/hooks";
 import styles from "./App.module.css";
 import {
-  useElementName,
   useDiscussionCategories,
   useDiscussionLabels,
-  useScrollDetection,
+  useElementName,
   useFormState,
-  useImageUpload,
   useHandleClick,
+  useImageUpload,
+  useScrollDetection,
 } from "hooks";
 
 function Plugin() {
+  useEffect(() => {
+    parent.postMessage({ pluginMessage: { type: "get-discussion" } }, "*");
+  }, []);
+
   const { elementName, setElementName, generatedUrl } = useElementName();
   const { handleTagChange, options, category, setCategory, categoryMap } =
     useDiscussionCategories();
@@ -49,11 +53,6 @@ function Plugin() {
     body,
     isLoadingLabels,
   });
-
-  useEffect(() => {
-    parent.postMessage({ pluginMessage: { type: "get-discussion" } }, "*");
-  }, []);
-
   const { handleClick } = useHandleClick({
     elementName,
     setElementName,
