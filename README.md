@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
-[![Figma](https://img.shields.io/badge/Figma--Plugin-Private-8A2BE2?logo=figma&logoColor=white)](https://www.figma.com/developers)
+[![Figma](https://img.shields.io/badge/Figma-Developers-8A2BE2?logo=figma&logoColor=white)](https://www.figma.com/developers)
 [![GitHub](https://img.shields.io/badge/GitHub-github--discussions--templete-lightgray?logo=github)](https://github.com/ishida-daiki/github-discussions-templete)
 
 
