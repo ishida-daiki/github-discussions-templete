@@ -10,18 +10,31 @@ jobs:
   cleanup:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
 
-    - name: Install dependencies
-      run: npm install # 必要に応じてプロジェクトのセットアップコマンドに変更
+      - name: Install dependencies
+        run: npm install
 
-    - name: Give execute permission for delete-images.sh
-      run: chmod +x ./scripts/delete-images.sh
+      - name: Give execute permission for delete-images.sh
+        run: chmod +x ./scripts/delete-images.sh
 
-    - name: Delete contents of images
-      run: ./scripts/delete-images.sh
-      if: github.repository == 'ishida-daiki/github-discussions-templete'
+      - name: Delete contents of images
+        run: ./scripts/delete-images.sh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: github.repository == 'ishida-daiki/github-discussions-templete'
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add images
+          git commit -m 'Delete contents of images directory via GitHub Actions'
+          git push
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: github.repository == 'ishida-daiki/github-discussions-templete'
