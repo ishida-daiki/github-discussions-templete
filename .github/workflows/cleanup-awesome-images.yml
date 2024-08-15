@@ -1,0 +1,26 @@
+name: Cleanup Awesome Images Action
+
+on:
+  schedule:
+    - cron: '0 * * * *' # 毎時00分にトリガー
+
+  workflow_dispatch: # 手動トリガー
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+
+    - name: Install dependencies
+      run: npm install # 必要に応じてプロジェクトのセットアップコマンドに変更
+
+    - name: Check for new discussions and delete contents
+      run: |
+        ./scripts/delete-awesome-images.sh
+        fi
+      if: github.repository == 'ishida-daiki/github-discussions-templete'
