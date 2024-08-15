@@ -1,4 +1,4 @@
-name: Cleanup Awesome Images Action
+name: Cleanup Discussion Images Action
 
 on:
   schedule:
