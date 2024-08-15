@@ -6,7 +6,8 @@ set -e
 # images フォルダの存在確認
 if [ -d "images" ]; then
   echo "Deleting contents of images directory..."
-  rm -rf images/*
+  cd images
+  rm -rf *
   echo "Contents deleted."
 else
   echo "images directory does not exist."
