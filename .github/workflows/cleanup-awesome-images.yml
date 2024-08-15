@@ -19,9 +19,9 @@ jobs:
     - name: Install dependencies
       run: npm install # 必要に応じてプロジェクトのセットアップコマンドに変更
 
-    - name: Give execute permission for delete-awesome-images.sh
-      run: chmod +x ./scripts/delete-awesome-images.sh
+    - name: Give execute permission for delete-images.sh
+      run: chmod +x ./scripts/delete-images.sh
 
-    - name: Delete contents of awesome-images
-      run: ./scripts/delete-awesome-images.sh
+    - name: Delete contents of images
+      run: ./scripts/delete-images.sh
       if: github.repository == 'ishida-daiki/github-discussions-templete'
