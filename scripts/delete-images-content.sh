@@ -1,5 +1,5 @@
 #!/bin/bash
-# scripts/delete-images.sh
+# scripts/delete-images-content.sh
 
 set -e
 

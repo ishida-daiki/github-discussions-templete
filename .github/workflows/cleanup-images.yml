@@ -1,0 +1,42 @@
+name: Cleanup Images Action
+
+on:
+  schedule:
+    - cron: '0 * * * *' # 毎時00分にトリガー
+
+  workflow_dispatch: # 手動トリガー
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Give execute permission for delete-images-content.sh
+        run: chmod +x ./scripts/delete-images-content.sh
+
+      - name: Delete contents of images
+        run: ./scripts/delete-images-content.sh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: github.repository == 'ishida-daiki/github-discussions-templete'
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add images
+          git commit -m 'Delete contents of images directory via GitHub Actions'
+          git push
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: github.repository == 'ishida-daiki/github-discussions-templete'
