@@ -84,7 +84,7 @@ export function useHandleClick(dependencies: {
       let imageUrl: string | null = null;
       if (selectedFiles && selectedFiles.length > 0) {
         const file = selectedFiles[0];
-        const path = `awesome_images/${file.name}`;
+        const path = `images/${file.name}`;
         const content = await fileToBase64(file);
         imageUrl = await new Promise((resolve) => {
           let handler: (event: MessageEvent) => void;
