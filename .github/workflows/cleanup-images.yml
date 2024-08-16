@@ -2,7 +2,7 @@ name: Cleanup Images Action
 
 on:
   schedule:
-    - cron: '0 * * * *' # 毎時00分にトリガー
+    - cron: "0 0 * * *" # 毎時00分にトリガー
 
   workflow_dispatch: # 手動トリガー
 
