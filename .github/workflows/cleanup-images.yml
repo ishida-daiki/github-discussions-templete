@@ -25,12 +25,13 @@ jobs:
         run: chmod +x ./scripts/delete-images-content.sh
 
       - name: Delete contents of images
+        if: github.repository == 'ishida-daiki/github-discussions-templete'
         run: ./scripts/delete-images-content.sh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: github.repository == 'ishida-daiki/github-discussions-templete'
 
       - name: Check for changes
+        if: github.repository == 'ishida-daiki/github-discussions-templete'
         id: check_changes
         run: |
           git add images
@@ -43,7 +44,7 @@ jobs:
           fi
 
       - name: Commit and push changes
-        if: env.changes == 'true'
+        if: env.changes == 'true' && github.repository == 'ishida-daiki/github-discussions-templete'
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
