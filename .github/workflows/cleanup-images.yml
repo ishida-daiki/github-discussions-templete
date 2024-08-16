@@ -2,7 +2,7 @@ name: Cleanup Images Action
 
 on:
   schedule:
-    - cron: '0 * * * *' # 毎時00分にトリガー
+    - cron: "0 0 * * *" # 毎時00分にトリガー
 
   workflow_dispatch: # 手動トリガー
 
@@ -34,16 +34,16 @@ jobs:
         id: check_changes
         run: |
           git add images
-          if git diff-index --quiet HEAD; then
+          if git diff --cached --quiet; then
             echo "No changes to commit"
-            echo "::set-output name=changes::false"
+            echo "changes=false" >> $GITHUB_ENV
           else
             echo "Changes detected"
-            echo "::set-output name=changes::true"
+            echo "changes=true" >> $GITHUB_ENV
           fi
 
       - name: Commit and push changes
-        if: steps.check_changes.outputs.changes == 'true'
+        if: env.changes == 'true'
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
