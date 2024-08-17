@@ -8,11 +8,11 @@ jobs:
   notify-slack:
     runs-on: ubuntu-latest
     steps:
-    - name: Post to a Slack channel
-      id: slack
-      uses: slackapi/slack-github-action@v1.26.0
-      with:
-        channel-id: ${{ secrets.SLACK_CHANNEL_ID }} 
-        slack-message: "New discussion posted: ${{ github.event.discussion.title }} by ${{ github.event.discussion.user.login }}. Check it out here: ${{ github.event.discussion.html_url }}"
-      env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      - name: Post to a Slack channel
+        id: slack
+        uses: slackapi/slack-github-action@v1.26.0
+        with:
+          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          slack-message: "New discussion posted: ${{ github.event.discussion.title }} by ${{ github.event.discussion.user.login }}. Check it out here: ${{ github.event.discussion.html_url }}"
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
