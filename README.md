@@ -16,12 +16,11 @@
   </p>
   <br>
   <br>
-  <img src="https://github.com/ishida-daiki/github-discussions-templete/blob/main/_resources/Thumbnail.png" alt="Discussions" />
 </div>
 
 ## Table of contents
 
-- [Usage](#usage)
+- [Figma Sample Plugin](#figma-sample-plugin)
 - [Settings](#settings)
   - [開発環境の設定](#開発環境の設定)
   - [Personal Access Token の作成](#Personal-Access-Token-の作成)
@@ -33,19 +32,26 @@
 - [Appendix](#Appendix)
 
 
-<h2 align="center">Usage</h2>
-
-> [!NOTE]
-> このプラグインはプライベートで、`DMM.com` 組織内のメンバーのみが利用可能です。<br />
-> 
-> [![Figma](https://img.shields.io/badge/Figma-private--organization--plugins-0d99ff?logo=figma&logoColor=white)](https://help.figma.com/hc/en-us/articles/4404228629655-Create-private-organization-plugins)
+<div align="center">
+  <h2>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <img src="./_resources/Figma-Brand-Assets/Figma-Icon.svg"  style="margin-right: 10px; vertical-align: middle;"/>
+      <span>Figma Sample Plugin</span>
+    </div>
+  </h2>
+  <p>
+    このプラグインは、<code>github-discussions-templete</code> をビルドしたプライベートプラグインです。<br />
+    <code>DMM.com LLC</code> 組織内のメンバーのみ利用可能です。
+  </p>
+  
+  [![Figma](https://img.shields.io/badge/Figma-private--organization--plugins-0d99ff?logo=figma&logoColor=white)](https://help.figma.com/hc/en-us/articles/4404228629655-Create-private-organization-plugins)
+</div>
 
 <img src="https://github.com/ishida-daiki/github-discussions-templete/blob/main/_resources/Icon.png" width="50px"> 
 開発環境を設定する前にプラグインの動作を確認したい場合は、次の手順を試してみてください：
 
 1. [Discussions](https://www.figma.com/community/plugin/1402940367964187567/github-discussions-sample) にアクセス。
 2. "Open in..." を押下。
-
 
 <h2 align="center">Settings</h2>
 
