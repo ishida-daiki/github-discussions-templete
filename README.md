@@ -1,13 +1,25 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
-[![Figma](https://img.shields.io/badge/Figma-Developers-8A2BE2?logo=figma&logoColor=white)](https://www.figma.com/developers)
-![workflow: cleanup-images](https://github.com/ishida-daiki/github-discussions-templete/actions/workflows/cleanup-images.yml/badge.svg)
-![workflow: cleanup-images](https://github.com/ishida-daiki/github-discussions-templete/actions/workflows/notify-slack-chat-write.yml/badge.svg)
+<div align="center">
+  <h1>github-discussions-templete</h1>
+  <p>
+    github-discussions-templete は、Figma のプラグインを使って GitHub Discussions に直接投稿できる Figma プラグインのテンプレートプロジェクトです。コードをカスタマイズして、チームのワークフローに合わせてご利用ください。
+  </p>
+  <br>
+  <p>
+    <a href="https://opensource.org/licenses/MIT">
+      <img src="https://img.shields.io/badge/License-MIT-orange.svg" alt="License: MIT" />
+    </a>
+    <a href="https://www.figma.com/developers">
+      <img src="https://img.shields.io/badge/Figma-Developers-8A2BE2?logo=figma&logoColor=white" alt="Figma" />
+    </a>
+    <img src="https://github.com/ishida-daiki/github-discussions-templete/actions/workflows/cleanup-images.yml/badge.svg" alt="workflow: cleanup-images" />
+    <img src="https://github.com/ishida-daiki/github-discussions-templete/actions/workflows/notify-slack-chat-write.yml/badge.svg" alt="workflow: notify-slack-chat-write" />
+  </p>
+  <br>
+  <br>
+  <img src="https://github.com/ishida-daiki/github-discussions-templete/blob/main/_resources/Thumbnail.png" alt="Discussions" />
+</div>
 
-
-
-![Discussions](https://github.com/ishida-daiki/github-discussions-templete/blob/main/_resources/Thumbnail.png)
-
-## Table of content
+## Table of contents
 
 - [Usage](#usage)
 - [Settings](#settings)
@@ -20,7 +32,9 @@
 - [Credits](#credits)
 - [Appendix](#Appendix)
 
-## Usage
+
+<h2 align="center">Usage</h2>
+
 > [!NOTE]
 > このプラグインはプライベートで、`DMM.com` 組織内のメンバーのみが利用可能です。<br />
 > 
@@ -33,7 +47,7 @@
 2. "Open in..." を押下。
 
 
-## Settings
+<h2 align="center">Settings</h2>
 
 #### 開発環境の設定
 
@@ -81,7 +95,8 @@ GITHUB_ACCESS_TOKEN=#ここに新しく作成した GitHub Personal access token
 > [!WARNING]
 > 複数の `GITHUB_ACCESS_TOKEN` を作成するのではなく、単一のトークンを生成し、チーム内で共有することをお勧めします。
 
-## Build
+
+<h2 align="center">Build</h2>
 
 #### プラグインをビルドするコマンド
 
@@ -99,7 +114,8 @@ npm run watch
 
 このコマンドはソースコードの変更を監視し、更新が検出されるとプラグインを自動的に再ビルドします。
 
-## Plugin Security Notice
+
+<h2 align="center">Plugin Security Notice</h2>
 
 もともと、 `figma.clientStorage` を使用してユーザーのローカルマシンにデータを保存し、 GitHub Discussions に投稿するプラグインを作成する予定でした。しかし、公式の Figma ドキュメントでは次のように述べられています:
 
@@ -109,11 +125,13 @@ npm run watch
 
 この説明を考慮して、アクセストークンなどのデータを保存するにはリスクがあると判断しました。したがって、このプラグインをテンプレートとして提供します。プラグインは、公開プラグインではなく、プライベートまたは組織専用のプラグインとして、自分の環境でビルドしてご使用ください。
 
-## Credits
+
+<h2 align="center">Credits</h2>
 
 このプロジェクトは、 Yuan Qing Lim さんが提供している [create-figma-plugin](https://github.com/yuanqing/create-figma-plugin) をベースにして開発しました。元のソースコードを使用し、新しい MIT ライセンスの下で新しいテンプレートとして提供しています。新しい MIT ライセンスの全文については、このリポジトリ内の LICENSE ファイルをご参照ください。
 
-## Appendix
+
+<h2 align="center">Appendix</h2>
 
 - [Create Figma Plugin docs](https://yuanqing.github.io/create-figma-plugin/)
 - [`yuanqing/figma-plugins`](https://github.com/yuanqing/figma-plugins#readme)
