@@ -31,6 +31,7 @@
 1. [Discussions](https://www.figma.com/community/plugin/1402940367964187567/github-discussions-sample) にアクセス。
 2. "Open in..." を押下。
 
+
 ## Settings
 
 #### 開発環境の設定
@@ -109,8 +110,7 @@ npm run watch
 
 ## Credits
 
-このプロジェクトは、 Yuan Qing Lim さんが提供している [create-figma-plugin](https://github.com/yuanqing/create-figma-plugin) を使用し開発しました。
-私は元のソースコードを使用し、新しい MIT ライセンスの下で新しいテンプレートとして提供しています。新しい MIT ライセンスの全文については、このリポジトリ内の LICENSE ファイルをご参照ください。
+このプロジェクトは、 Yuan Qing Lim さんが提供している [create-figma-plugin](https://github.com/yuanqing/create-figma-plugin) をベースにして開発しました。元のソースコードを使用し、新しい MIT ライセンスの下で新しいテンプレートとして提供しています。新しい MIT ライセンスの全文については、このリポジトリ内の LICENSE ファイルをご参照ください。
 
 ## Appendix
 
