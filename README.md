@@ -4,18 +4,23 @@
     github-discussions-templete は、Figma のプラグインを使って GitHub Discussions に直接投稿できる Figma プラグインのテンプレートプロジェクトです。コードをカスタマイズして、チームのワークフローに合わせてご利用ください。
   </p>
   <br>
-  <p>
+  <div>
+    <img src="https://github.com/ishida-daiki/github-discussions-templete/actions/workflows/cleanup-images.yml/badge.svg" alt="workflow: cleanup-images" />
+    <img src="https://github.com/ishida-daiki/github-discussions-templete/actions/workflows/notify-slack-chat-write.yml/badge.svg" alt="workflow: notify-slack-chat-write" />
+    <img src="https://github.com/ishida-daiki/github-discussions-templete/actions/workflows/notify-slack-incoming-webhook.yml/badge.svg" alt="workflow: notify-slack-incoming-webhook" />
+  </div>
+  <br>
+  <div>
     <a href="https://opensource.org/licenses/MIT">
       <img src="https://img.shields.io/badge/License-MIT-orange.svg" alt="License: MIT" />
     </a>
     <a href="https://www.figma.com/developers">
       <img src="https://img.shields.io/badge/Figma-Developers-8A2BE2?logo=figma&logoColor=white" alt="Figma" />
     </a>
-    <img src="https://github.com/ishida-daiki/github-discussions-templete/actions/workflows/cleanup-images.yml/badge.svg" alt="workflow: cleanup-images" />
-    <img src="https://github.com/ishida-daiki/github-discussions-templete/actions/workflows/notify-slack-chat-write.yml/badge.svg" alt="workflow: notify-slack-chat-write" />
-  </p>
+  </div>
   <br>
   <br>
+  <img src="./_resources/Thumbnail.png" />
 </div>
 
 ## Table of contents
