@@ -1,0 +1,15 @@
+name: Notify Slack using Incoming Webhook
+
+on:
+  discussion:
+    types: [created]
+
+jobs:
+  notify-slack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify Slack
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{
+            "text": "New discussion posted: ${{ github.event.discussion.title }} by ${{ github.event.discussion.user.login }}. Check it out here: ${{ github.event.discussion.html_url }}"
+          }' ${{ secrets.SLACK_WEBHOOK_URL }}
