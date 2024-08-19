@@ -26,7 +26,7 @@
 > [![Figma](https://img.shields.io/badge/Figma-private--organization--plugins-0d99ff?logo=figma&logoColor=white)](https://help.figma.com/hc/en-us/articles/4404228629655-Create-private-organization-plugins)
 
 <img src="https://github.com/ishida-daiki/github-discussions-templete/blob/main/_resources/Icon.png" width="50px"> 
-環境を設定する前にプラグインの動作を確認したい場合は、次の手順を試してみてください：
+開発環境を設定する前にプラグインの動作を確認したい場合は、次の手順を試してみてください：
 
 1. [Discussions](https://www.figma.com/community/plugin/1402940367964187567/github-discussions-sample) にアクセス。
 2. "Open in..." を押下。
