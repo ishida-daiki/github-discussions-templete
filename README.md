@@ -64,7 +64,7 @@ GITHUB_ACCESS_TOKEN=#ここに新しく作成した GitHub Personal access token
 > `.env` ファイルの `GITHUB_ACCESS_TOKEN` に `Personal access token` が設定されていない場合、GitHub Discussions の情報取得や、GitHub Discussions へのポストができません。<br />
 > Personal access token を生成後、必ず `.env` ファイルの `GITHUB_ACCESS_TOKEN` に設定してください。
 >
-> Personal access token の作成方法については、 [Creating a Personal Access Token](#creating-a-personal-access-token) をご参照ください。
+> Personal access token の作成方法については、 [Personal Access Token の作成](#Personal-Access-Token-の作成) をご参照ください。
 
 7. 🎉 開発環境の設定が完了しました！開発を開始する際には、 [Build](#build) をご確認ください。
 
