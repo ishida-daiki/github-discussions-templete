@@ -33,19 +33,14 @@
 
 
 <div align="center">
-  <h2>
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-      <img src="./_resources/Figma-Brand-Assets/Figma-Icon.svg"  style="margin-right: 10px; vertical-align: middle;"/>
-      <span>Figma Sample Plugin</span>
-    </div>
-  </h2>
-  <p>
-    このプラグインは、<code>github-discussions-templete</code> をビルドしたプライベートプラグインです。<br />
-    <code>DMM.com LLC</code> 組織内のメンバーのみ利用可能です。
-  </p>
-  
+  <h2>Figma Sample Plugin</h2>
+
   [![Figma](https://img.shields.io/badge/Figma-private--organization--plugins-0d99ff?logo=figma&logoColor=white)](https://help.figma.com/hc/en-us/articles/4404228629655-Create-private-organization-plugins)
 </div>
+ 
+> [!NOTE]
+> このプラグインは、<code>github-discussions-templete</code> をビルドしたプライベートプラグインです。<br />
+> <code>DMM.com LLC</code> 組織内のメンバーのみ利用可能です。
 
 <img src="https://github.com/ishida-daiki/github-discussions-templete/blob/main/_resources/Icon.png" width="50px"> 
 開発環境を設定する前にプラグインの動作を確認したい場合は、次の手順を試してみてください：
