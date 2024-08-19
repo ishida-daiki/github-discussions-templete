@@ -14,11 +14,7 @@
     <a href="https://opensource.org/licenses/MIT">
       <img src="https://img.shields.io/badge/License-MIT-orange.svg" alt="License: MIT" />
     </a>
-    <a href="https://www.figma.com/developers">
-      <img src="https://img.shields.io/badge/Figma-Developers-8A2BE2?logo=figma&logoColor=white" alt="Figma" />
-    </a>
   </div>
-  <br>
   <br>
   <img src="./_resources/Thumbnail.png" />
 </div>
@@ -40,7 +36,14 @@
 <div align="center">
   <h2>Figma Sample Plugin</h2>
 
-  [![Figma](https://img.shields.io/badge/Figma-private--organization--plugins-0d99ff?logo=figma&logoColor=white)](https://help.figma.com/hc/en-us/articles/4404228629655-Create-private-organization-plugins)
+  <div>
+    <a href="https://www.figma.com/developers">
+      <img src="https://img.shields.io/badge/Figma-Developers-8A2BE2?logo=figma&logoColor=white" alt="Figma" />
+    </a>
+    <a href="https://help.figma.com/hc/en-us/articles/4404228629655-Create-private-organization-plugins">
+      <img src="https://img.shields.io/badge/Figma-private--organization--plugins-0d99ff?logo=figma&logoColor=white" alt="Figma" />
+    </a>
+  </div>
 </div>
  
 > [!NOTE]
