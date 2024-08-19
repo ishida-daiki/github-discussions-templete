@@ -83,18 +83,18 @@ GITHUB_ACCESS_TOKEN=#ここに新しく作成した GitHub Personal access token
 > `.env` ファイルの `GITHUB_ACCESS_TOKEN` に `Personal access token` が設定されていない場合、GitHub Discussions の情報取得や、GitHub Discussions へのポストができません。<br />
 > Personal access token を生成後、必ず `.env` ファイルの `GITHUB_ACCESS_TOKEN` に設定してください。
 >
-> Personal access token の作成方法については、 [Personal Access Token の作成](#Personal-Access-Token-の作成) をご参照ください。
+> Personal access token の作成方法については、[Personal Access Token の作成](#Personal-Access-Token-の作成) をご参照ください。
 
-7. 🎉 開発環境の設定が完了しました！開発を開始する際には、 [Build](#build) をご確認ください。
+7. 🎉 開発環境の設定が完了しました！開発を開始する際には、[Build](#build) をご確認ください。
 
 #### Personal Access Token の作成
 
-1. GitHub にログインし、 https://github.com/settings/tokens を押下。
+1. GitHub にログインし、https://github.com/settings/tokens を押下。
 2. 「Generate new token」を押下し、`Generate new token (classic)` を選択。
-3. 「Expiration」 を `No expiration` に設定。
-4. 「Select scopes」 セクションで、 `repo` と `write:discussion` のチェックボックスを選択。
-5. 「Generate token」 を押下。
-6. 生成されたトークンをコピーし、 `.env` ファイル内の `GITHUB_ACCESS_TOKEN` に設定。
+3. 「Expiration」を `No expiration` に設定。
+4. 「Select scopes」セクションで、`repo` と `write:discussion` のチェックボックスを選択。
+5. 「Generate token」を押下。
+6. 生成されたトークンをコピーし、`.env` ファイル内の `GITHUB_ACCESS_TOKEN` に設定。
 > [!WARNING]
 > 複数の `GITHUB_ACCESS_TOKEN` を作成するのではなく、単一のトークンを生成し、チーム内で共有することをお勧めします。
 
@@ -107,7 +107,7 @@ GITHUB_ACCESS_TOKEN=#ここに新しく作成した GitHub Personal access token
 npm run build
 ```
 
-このコマンドを実行すると、 [`manifest.json`](https://figma.com/plugin-docs/manifest/) ファイルと、プラグインの JavaScript バンドルを含む `build/` ディレクトリが生成されます。
+このコマンドを実行すると、[`manifest.json`](https://figma.com/plugin-docs/manifest/) ファイルと、プラグインの JavaScript バンドルを含む `build/` ディレクトリが生成されます。
 
 #### プラグインを自動的に再ビルドするコマンド
 
@@ -120,7 +120,7 @@ npm run watch
 
 <h2 align="center">Plugin Security Notice</h2>
 
-もともと、 `figma.clientStorage` を使用してユーザーのローカルマシンにデータを保存し、 GitHub Discussions に投稿するプラグインを作成する予定でした。しかし、公式の Figma ドキュメントでは次のように述べられています:
+もともと、`figma.clientStorage` を使用してユーザーのローカルマシンにデータを保存し、GitHub Discussions に投稿するプラグインを作成する予定でした。しかし、公式の Figma ドキュメントでは次のように述べられています:
 
 > ⚠ The data is stored privately for stability, not security. It prevents other plugins from accessing with your data. It does not, however, prevent users from seeing data stored on their own client given sufficient effort.
 
@@ -131,7 +131,7 @@ npm run watch
 
 <h2 align="center">Credits</h2>
 
-このプロジェクトは、 Yuan Qing Lim さんが提供している [create-figma-plugin](https://github.com/yuanqing/create-figma-plugin) をベースにして開発しました。元のソースコードを使用し、新しい MIT ライセンスの下で新しいテンプレートとして提供しています。新しい MIT ライセンスの全文については、このリポジトリ内の LICENSE ファイルをご参照ください。
+このプロジェクトは、Yuan Qing Lim さんが提供している [create-figma-plugin](https://github.com/yuanqing/create-figma-plugin) をベースにして開発しました。元のソースコードを使用し、新しい MIT ライセンスの下で新しいテンプレートとして提供しています。新しい MIT ライセンスの全文については、このリポジトリ内の LICENSE ファイルをご参照ください。
 
 
 <h2 align="center">Appendix</h2>
