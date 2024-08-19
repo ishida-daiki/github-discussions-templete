@@ -1,6 +1,7 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
 [![Figma](https://img.shields.io/badge/Figma-Developers-8A2BE2?logo=figma&logoColor=white)](https://www.figma.com/developers)
-[![GitHub](https://img.shields.io/badge/GitHub-github--discussions--templete-lightgray?logo=github)](https://github.com/ishida-daiki/github-discussions-templete)
+![workflow: cleanup-images](https://github.com/ishida-daiki/github-discussions-templete/actions/workflows/cleanup-images.yml/badge.svg)
+![workflow: cleanup-images](https://github.com/ishida-daiki/github-discussions-templete/actions/workflows/notify-slack-chat-write.yml/badge.svg)
 
 
 
@@ -8,7 +9,7 @@
 
 ## Table of content
 
-- [Using](#using)
+- [Usage](#usage)
 - [Settings](#settings)
   - [開発環境の設定](#開発環境の設定)
   - [Personal Access Token の作成](#Personal-Access-Token-の作成)
@@ -19,9 +20,9 @@
 - [Credits](#credits)
 - [Appendix](#Appendix)
 
-## Using
+## Usage
 > [!NOTE]
-> このプラグインはプライベートで、`DMM.com LLC` 組織内のメンバーのみが利用可能です。<br />
+> このプラグインはプライベートで、`DMM.com` 組織内のメンバーのみが利用可能です。<br />
 > 
 > [![Figma](https://img.shields.io/badge/Figma-private--organization--plugins-0d99ff?logo=figma&logoColor=white)](https://help.figma.com/hc/en-us/articles/4404228629655-Create-private-organization-plugins)
 
