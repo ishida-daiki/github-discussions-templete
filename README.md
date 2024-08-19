@@ -4,119 +4,120 @@
 
 
 
-![Feedback to Turtle](https://github.com/ishida-daiki/github-discussions-templete/blob/main/_resources/Thumbnail.png)
+![Discussions](https://github.com/ishida-daiki/github-discussions-templete/blob/main/_resources/Thumbnail.png)
 
 ## Table of content
 
 - [Using](#using)
 - [Settings](#settings)
-  - [Setting Up the Development Environment](#Setting-Up-the-Development-Environment)
-  - [Creating a Personal Access Token](#Creating-a-Personal-Access-Token)
+  - [開発環境の設定](#開発環境の設定)
+  - [Personal Access Token の作成](#Personal-Access-Token-の作成)
 - [Build](#build)
-  - [Command to Build the Plugin](#Command-to-Build-the-Plugin)
-  - [Command to Automatically Rebuild the Plugin](#Command-to-Automatically-Rebuild-the-Plugin)
+  - [プラグインをビルドするコマンド](#プラグインをビルドするコマンド)
+  - [プラグインを自動的に再ビルドするコマンド](#プラグインを自動的に再ビルドするコマンド)
 - [Plugin Security Notice](#Plugin-Security-Notice)
 - [Credits](#credits)
 - [Appendix](#Appendix)
 
 ## Using
 > [!NOTE]
-> [![Figma](https://img.shields.io/badge/Figma-private--organization--plugins-0d99ff?logo=figma&logoColor=white)](https://help.figma.com/hc/en-us/articles/4404228629655-Create-private-organization-plugins)<br />
-> This plugin is private and only available to members within the organization.
+> このプラグインはプライベートで、`DMM.com LLC` 組織内のメンバーのみが利用可能です。<br />
+> 
+> [![Figma](https://img.shields.io/badge/Figma-private--organization--plugins-0d99ff?logo=figma&logoColor=white)](https://help.figma.com/hc/en-us/articles/4404228629655-Create-private-organization-plugins)
 
 <img src="https://github.com/ishida-daiki/github-discussions-templete/blob/main/_resources/Icon.png" width="50px"> 
-If you want to check the behavior of the plugin before setting up the environment, you can try the following steps:
+環境を設定する前にプラグインの動作を確認したい場合は、次の手順を試してみてください：
 
-1. Visit the [Discussions](https://www.figma.com/community/plugin/1402940367964187567/github-discussions-sample) page.
-2. Click "Open in...".
+1. [Discussions](https://www.figma.com/community/plugin/1402940367964187567/github-discussions-sample) にアクセス。
+2. "Open in..." を押下。
 
 ## Settings
 
-### Setting Up the Development Environment
+#### 開発環境の設定
 
-1. Click "Use this template" > "Create a new repository" to create a new repository.
-2. Clone the newly created repository.
-3. Navigate to the cloned repository.
-4. Install the necessary packages:
+1. 「Use this template」を押下し、「Create a new repository」を選択して、新しいリポジトリを作成。
+2. 新しく作成したリポジトリをクローン。
+3. クローンしたリポジトリに移動。
+4. 必要なパッケージをインストール:
 
 ```cli
 npm install
 ```
 
-5. Open VS Code:
+5. VS Code を開く:
 
 ```cli
 code .
 ```
 
-6. Create a `.env` file in the root directory and set the following values:
+6. ルートディレクトリに `.env` ファイルを作成し、以下の値を設定:
 
 ```.env
-Example for ishida-daiki / github-discussions-templete:
+例 ishida-daiki / github-discussions-templete の場合:
 
 GITHUB_OWNER=ishida-daiki
 GITHUB_REPO=github-discussions-templete
-GITHUB_ACCESS_TOKEN=#Please set your newly created GitHub personal access token here
+GITHUB_ACCESS_TOKEN=#ここに新しく作成した GitHub Personal access token を設定してください。
 ```
 
 > [!IMPORTANT]
-> If the `GITHUB_ACCESS_TOKEN` is not set in the `.env` file, you will not be able to retrieve GitHub Discussions information or register to GitHub Discussions.
-> Please make sure to set the personal access token in the `.env` file after generating it.
+> `.env` ファイルの `GITHUB_ACCESS_TOKEN` に `Personal access token` が設定されていない場合、GitHub Discussions の情報取得や、GitHub Discussions へのポストができません。<br />
+> Personal access token を生成後、必ず `.env` ファイルの `GITHUB_ACCESS_TOKEN` に設定してください。
 >
-> For creation instructions, please refer to [Creating a Personal Access Token](#creating-a-personal-access-token).
+> Personal access token の作成方法については、 [Creating a Personal Access Token](#creating-a-personal-access-token) をご参照ください。
 
-7. 🎉 Your development environment is set up! When you start development, please refer to [Build](#build) for instructions.
+7. 🎉 開発環境の設定が完了しました！開発を開始する際には、 [Build](#build) をご確認ください。
 
-### Creating a Personal Access Token
+#### Personal Access Token の作成
 
-1. Log in to GitHub and open https://github.com/settings/tokens.
-2. Click "Generate new token."
-3. Set "Expiration" to "No expiration."
-4. Check the boxes for `repo` and `write:discussion` under "Select scopes."
-5. Click "Generate token."
-6. Copy the generated token and set it as `GITHUB_ACCESS_TOKEN` in the `.env` file.
+1. GitHub にログインし、 https://github.com/settings/tokens を押下。
+2. 「Generate new token」を押下し、`Generate new token (classic)` を選択。
+3. 「Expiration」 を `No expiration` に設定。
+4. 「Select scopes」 セクションで、 `repo` と `write:discussion` のチェックボックスを選択。
+5. 「Generate token」 を押下。
+6. 生成されたトークンをコピーし、 `.env` ファイル内の `GITHUB_ACCESS_TOKEN` に設定。
 > [!WARNING]
-> Instead of creating multiple `GITHUB_ACCESS_TOKEN`, it is recommended to generate a single token and share it within your team.
+> 複数の `GITHUB_ACCESS_TOKEN` を作成するのではなく、単一のトークンを生成し、チーム内で共有することをお勧めします。
 
 ## Build
 
-### Command to Build the Plugin
+#### プラグインをビルドするコマンド
 
 ```cli
 npm run build
 ```
 
-Executing this command will generate a `build/` directory containing the [`manifest.json`](https://figma.com/plugin-docs/manifest/) file and a JavaScript bundle for the plugin.
+このコマンドを実行すると、 [`manifest.json`](https://figma.com/plugin-docs/manifest/) ファイルと、プラグインの JavaScript バンドルを含む `build/` ディレクトリが生成されます。
 
-### Command to Automatically Rebuild the Plugin
+#### プラグインを自動的に再ビルドするコマンド
 
 ```cli
 npm run watch
 ```
 
-This command monitors changes in the source code and automatically rebuilds the plugin when updates are detected.
+このコマンドはソースコードの変更を監視し、更新が検出されるとプラグインを自動的に再ビルドします。
 
 ## Plugin Security Notice
 
-Originally, this plugin was designed to use `figma.clientStorage` to store data on the user's local machine and allow posting to GitHub Discussions. However, the official Figma documentation states:
+もともと、 `figma.clientStorage` を使用してユーザーのローカルマシンにデータを保存し、 GitHub Discussions に投稿するプラグインを作成する予定でした。しかし、公式の Figma ドキュメントでは次のように述べられています:
 
 > ⚠ The data is stored privately for stability, not security. It prevents other plugins from accessing with your data. It does not, however, prevent users from seeing data stored on their own client given sufficient effort.
 
 [figma.clientStorage](https://www.figma.com/plugin-docs/api/figma-clientStorage/#:~:text=%E2%9A%A0%20The%20data%20is%20stored%20privately%20for%20stability%2C%20not%20security.%20It%20prevents%20other%20plugins%20from%20accessing%20with%20your%20data.%20It%20does%20not%2C%20however%2C%20prevent%20users%20from%20seeing%20data%20stored%20on%20their%20own%20client%20given%20sufficient%20effort.)
 
-Considering this explanation, I decided that storing access tokens could be risky. Therefore, I am providing this plugin as a template. Please build and use this plugin in your environment as a private or organization-specific plugin rather than a public one.
+この説明を考慮して、アクセストークンなどのデータを保存するにはリスクがあると判断しました。したがって、このプラグインをテンプレートとして提供します。プラグインは、公開プラグインではなく、プライベートまたは組織専用のプラグインとして、自分の環境でビルドしてご使用ください。
 
 ## Credits
 
-This project is based on the work of Yuan Qing Lim, who originally developed the [create-figma-plugin](https://github.com/yuanqing/create-figma-plugin). The original library is licensed under the MIT License.
-I have modified the original source code and am providing it as a new template under a new MIT License. For the full text of the new MIT License, please refer to the LICENSE file in this repository.
+このプロジェクトは、 Yuan Qing Lim さんが提供している [create-figma-plugin](https://github.com/yuanqing/create-figma-plugin) を使用し開発しました。
+私は元のソースコードを使用し、新しい MIT ライセンスの下で新しいテンプレートとして提供しています。新しい MIT ライセンスの全文については、このリポジトリ内の LICENSE ファイルをご参照ください。
 
 ## Appendix
 
 - [Create Figma Plugin docs](https://yuanqing.github.io/create-figma-plugin/)
 - [`yuanqing/figma-plugins`](https://github.com/yuanqing/figma-plugins#readme)
 
-Official Figma documentation and code samples:
+公式 Figma ドキュメントおよびコードサンプル:
 
 - [Plugin API docs](https://figma.com/plugin-docs/)
 - [`figma/plugin-samples`](https://github.com/figma/plugin-samples#readme)
