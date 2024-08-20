@@ -21,16 +21,16 @@
 
 ## Table of contents
 
-- 🔌[Figma Sample Plugin](#figma-sample-plugin)
-- 🚀[Features](#features)
-- 👀[Usecase](#usecase)
-- 🔍[Benefits](#benefits)
-- 🤔[Intended Use](#intended-use)
-- ⚙️[Settings](#settings)
-- 🔨[Build](#build)
-- 🔐[Plugin Security Notice](#Plugin-Security-Notice)
-- 📝[Credits](#credits)
-- 💬[Appendix](#Appendix)
+- [🔌Figma Sample Plugin](#figma-sample-plugin)
+- [🚀Features](#features)
+- [👀Usecase](#usecase)
+- [🔍Benefits](#benefits)
+- [🤔Intended Use](#intended-use)
+- [⚙️Settings](#settings)
+- [🔨Build](#build)
+- [🔐Plugin Security Notice](#Plugin-Security-Notice)
+- [📝Credits](#credits)
+- [💬Appendix](#Appendix)
 
 
 <div align="center">
