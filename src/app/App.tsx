@@ -9,7 +9,7 @@ import {
 } from "@create-figma-plugin/ui";
 import { Label, Preview } from "primitives";
 import { ActionFooter, DiscussionLabels, ImageUploader } from "compositions";
-import { Fragment, h } from "preact";
+import { Fragment, h, JSX } from "preact";
 import { useEffect, useState } from "preact/hooks";
 import styles from "./App.module.css";
 import {
@@ -42,6 +42,11 @@ function Plugin() {
   const { title, setTitle, body, setBody, handleInputTitle, handleInputBody } =
     useFormState();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [value, setValue] = useState<boolean>(false);
+  function handleChange(event: JSX.TargetedEvent<HTMLInputElement>) {
+    const newValue = event.currentTarget.checked;
+    setValue(newValue);
+  }
   const { selectedFiles, setSelectedFiles, fileToBase64, handleSelectedFiles } =
     useImageUpload();
   const { contentRef, needsScroll } = useScrollDetection({
@@ -133,6 +138,8 @@ function Plugin() {
         isLoading={isLoading}
         disabled={!(elementName && body && category)}
         onClick={handleClick}
+        handleChange={handleChange}
+        value={value}
       />
     </Fragment>
   );
