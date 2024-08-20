@@ -21,20 +21,20 @@
 
 ## Table of contents
 
-- [🔌Figma Sample Plugin](#figma-sample-plugin)
-- [🚀Features](#features)
-- [👀Usecase](#usecase)
-- [🔍Benefits](#benefits)
-- [🤔Intended Use](#intended-use)
-- [⚙️Settings](#settings)
-- [🔨Build](#build)
-- [🔐Plugin Security Notice](#Plugin-Security-Notice)
-- [📝Credits](#credits)
-- [💬Appendix](#Appendix)
+1. 🔌&nbsp;&nbsp;[Figma Sample Plugin](#figma-sample-plugin)
+2. 🚀&nbsp;&nbsp;[Features](#features)
+3. 👀&nbsp;&nbsp;[Usecase](#usecase)
+4. 🔍&nbsp;&nbsp;[Benefits](#benefits)
+5. 🤔&nbsp;&nbsp;[Intended Use](#intended-use)
+6. ⚙️&nbsp;&nbsp;[Settings](#settings)
+7. 🔨&nbsp;&nbsp;[Build](#build)
+8. 🔐&nbsp;&nbsp;[Plugin Security Notice](#Plugin-Security-Notice)
+9. 📝&nbsp;&nbsp;[Credits](#credits)
+10. 💬&nbsp;&nbsp;[Appendix](#Appendix)
 
 
 <div align="center">
-  <h2>🔌 Figma Sample Plugin</h2>
+  <h2>🔌&nbsp;&nbsp;Figma Sample Plugin</h2>
   <p>このプラグインは、<code>github-discussions-templete</code> をビルドしたプライベートプラグインです。</p>
   <br>
 
@@ -50,7 +50,7 @@
 2. "Open in..." を押下。
 
 
-<h2 align="center">🚀 Features</h2>
+<h2 align="center">🚀&nbsp;&nbsp;Features</h2>
 
 - **シームレスな投稿**: `Figma Design` や `FigJam`、`Dev Mode` から直接 GitHub Discussions にリクエスト、フィードバック、ディスカッションしたい内容を投稿できます。
   - 投稿内容には、選択した Figma の要素リンク、タイトル、内容、ラベル、画像を添付して送ることができます。また、送信した人の名前も送付されるため、誰がどんな内容を投稿したのかが一目でわかります。
@@ -58,7 +58,7 @@
 
 - **動作確認**: Submit ボタンを押すと、.env ファイルに設定した GitHub Discussions に投稿されます。
 
-<h2 align="center">👀 Usecase</h2>
+<h2 align="center">👀&nbsp;&nbsp;Usecase</h2>
 
 - **デザイナー向け**: 
   - Figma 組織内で、一つのデザインシステムを使い、複数のプロジェクトを作成している場合、デザイナーは、デザインシステムを使いながら、フィードバックや質問、要望を Figma ツールから離脱せずにデザインシステム開発チームに投稿することができます。
@@ -68,7 +68,7 @@
   - エンジニアも、開発時に感じた質問や、デザインシステムの仕様に関する疑問、根本的な問題点を Figma ツールから離脱せずに投稿することができます。
   - 具体例: コーディング中にデザインシステムのコンポーネントに関する疑問が生じた場合、迅速に質問を投稿し、早期に解決することができます。
 
-<h2 align="center">🔍 Benefits</h2>
+<h2 align="center">🔍&nbsp;&nbsp;Benefits</h2>
 
 - **意見の集約と管理**:
   - デザインシステムに関する利用者からの意見を一箇所に集約して管理することができます。これにより、過去のフィードバックや質問を簡単に見返すことができ、対応履歴を一目で把握できます。
@@ -79,12 +79,12 @@
 - **効率化**:
   - 使用者が Figma ツールから離れずにフィードバックを送信できるため、ツール間の移動による時間のロスがなくなり、作業効率が向上します。リアルタイムでのフィードバックのやり取りにより、問題の早期発見と解決が可能になります。
 
-<h2 align="center">🤔 Intended Use</h2>
+<h2 align="center">🤔&nbsp;&nbsp;Intended Use</h2>
 
 このツールは、デザインや開発に関わるさまざまな意見を集約し、[Figma Community Forum](https://forum.figma.com/) のように利用されることを想定しています。デザインシステムに関する議論を一箇所に集め、より効果的なコラボレーションを促進します。
 
 
-<h2 align="center">⚙️ Settings</h2>
+<h2 align="center">⚙️&nbsp;&nbsp;Settings</h2>
 
 #### 開発環境の設定
 
@@ -133,7 +133,7 @@ GITHUB_ACCESS_TOKEN=#ここに新しく作成した GitHub Personal access token
 > 複数の `GITHUB_ACCESS_TOKEN` を作成するのではなく、単一のトークンを生成し、チーム内で共有することをお勧めします。
 
 
-<h2 align="center">🔨 Build</h2>
+<h2 align="center">🔨&nbsp;&nbsp;Build</h2>
 
 #### プラグインをビルドするコマンド
 
@@ -152,7 +152,7 @@ npm run watch
 このコマンドはソースコードの変更を監視し、更新が検出されるとプラグインを自動的に再ビルドします。
 
 
-<h2 align="center">🔐 Plugin Security Notice</h2>
+<h2 align="center">🔐&nbsp;&nbsp;Plugin Security Notice</h2>
 
 もともと、`figma.clientStorage` を使用してユーザーのローカルマシンにデータを保存し、GitHub Discussions に投稿するプラグインを作成する予定でした。しかし、公式の Figma ドキュメントでは次のように述べられています:
 
@@ -163,12 +163,12 @@ npm run watch
 この説明を考慮して、アクセストークンなどのデータを保存するにはリスクがあると判断しました。したがって、このプラグインをテンプレートとして提供します。プラグインは、公開プラグインではなく、プライベートまたは組織専用のプラグインとして、自分の環境でビルドしてご使用ください。
 
 
-<h2 align="center">📝 Credits</h2>
+<h2 align="center">📝&nbsp;&nbsp;Credits</h2>
 
 このプロジェクトは、Yuan Qing Lim さんが提供している [create-figma-plugin](https://github.com/yuanqing/create-figma-plugin) をベースにして開発しました。元のソースコードを使用し、新しい MIT ライセンスの下で新しいテンプレートとして提供しています。新しい MIT ライセンスの全文については、このリポジトリ内の LICENSE ファイルをご参照ください。
 
 
-<h2 align="center">💬 Appendix</h2>
+<h2 align="center">💬&nbsp;&nbsp;Appendix</h2>
 
 - [Create Figma Plugin docs](https://yuanqing.github.io/create-figma-plugin/)
 - [`yuanqing/figma-plugins`](https://github.com/yuanqing/figma-plugins#readme)
