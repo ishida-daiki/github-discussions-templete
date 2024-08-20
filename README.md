@@ -22,6 +22,7 @@
 ## Table of contents
 
 - [Figma Sample Plugin](#figma-sample-plugin)
+- [Features](#features)
 - [Settings](#settings)
   - [開発環境の設定](#開発環境の設定)
   - [Personal Access Token の作成](#Personal-Access-Token-の作成)
@@ -35,20 +36,30 @@
 
 <div align="center">
   <h2>Figma Sample Plugin</h2>
+  <p>このプラグインは、<code>github-discussions-templete</code> をビルドしたプライベートプラグインです。</p>
+  <br>
 
 [![Figma Developer](https://img.shields.io/badge/Figma-Developers-8A2BE2?logo=figma&logoColor=white)](https://www.figma.com/developers) [![Figma private organization plugins](https://img.shields.io/badge/Figma-private--organization--plugins-0d99ff?logo=figma&logoColor=white)](https://help.figma.com/hc/en-us/articles/4404228629655-Create-private-organization-plugins)
 
 </div>
- 
-> [!NOTE]
-> このプラグインは、<code>github-discussions-templete</code> をビルドしたプライベートプラグインです。<br />
-> <code>DMM.com LLC</code> 組織内のメンバーのみ利用可能です。
 
 <img src="https://github.com/ishida-daiki/github-discussions-templete/blob/main/_resources/Icon.png" width="50px"> 
 開発環境を設定する前にプラグインの動作を確認したい場合は、次の手順を試してみてください：
 
 1. [Discussions](https://www.figma.com/community/plugin/1402940367964187567/github-discussions-sample) にアクセス。
 2. "Open in..." を押下。
+
+> [!NOTE]
+> <code>DMM.com LLC</code> 組織内のメンバーのみ利用可能です。
+
+<h2 align="center">Features</h2>
+
+- シームレスな投稿: `Figma Design` や `FigJam`、`Dev Mode` から直接 GitHub Discussions にリクエスト、フィードバック、ディスカッションしたい内容を投稿できます。
+  
+- コンテンツの詳細: 投稿には、選択した Figma の要素リンク、タイトル、内容、ラベル、画像を添付することができます。また、投稿者の名前も一緒に送信されるため、誰がどのような内容をポストしたのかが一目でわかります。
+
+- 動作確認: Submit ボタンを押すと、`.env` ファイルに設定した GitHub Discussions に投稿されます。
+
 
 <h2 align="center">Settings</h2>
 
