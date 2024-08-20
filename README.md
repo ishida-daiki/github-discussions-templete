@@ -21,20 +21,16 @@
 
 ## Table of contents
 
-- [Figma Sample Plugin](#figma-sample-plugin)
-- [Features](#features)
-- [Usecase](#usecase)
-- [Benefits](#benefits)
-- [Intended Use](#intended-use)
-- [Settings](#settings)
-  - [開発環境の設定](#開発環境の設定)
-  - [Personal Access Token の作成](#Personal-Access-Token-の作成)
-- [Build](#build)
-  - [プラグインをビルドするコマンド](#プラグインをビルドするコマンド)
-  - [プラグインを自動的に再ビルドするコマンド](#プラグインを自動的に再ビルドするコマンド)
-- [Plugin Security Notice](#Plugin-Security-Notice)
-- [Credits](#credits)
-- [Appendix](#Appendix)
+- 🔌[Figma Sample Plugin](#figma-sample-plugin)
+- 🚀[Features](#features)
+- 👀[Usecase](#usecase)
+- 🔍[Benefits](#benefits)
+- 🤔[Intended Use](#intended-use)
+- ⚙️[Settings](#settings)
+- 🔨[Build](#build)
+- 🔐[Plugin Security Notice](#Plugin-Security-Notice)
+- 📝[Credits](#credits)
+- 💬[Appendix](#Appendix)
 
 
 <div align="center">
