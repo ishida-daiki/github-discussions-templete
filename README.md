@@ -47,7 +47,7 @@
 
 `DMM.com LLC` 組織内のメンバーは、下記の手順でプラグインをお試しできます：
 
-1. [Discussions](https://www.figma.com/community/plugin/1402940367964187567/github-discussions-sample) にアクセス。
+1. [Discussions](https://www.figma.com/community/plugin/1402940367964187567/discussions) にアクセス。
 2. "Open in..." を押下。
 
 
