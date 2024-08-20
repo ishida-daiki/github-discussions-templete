@@ -14,7 +14,7 @@ type ActionFooterProps = {
   isLoading: boolean;
   disabled: boolean;
   onClick: (event: JSX.TargetedMouseEvent<HTMLButtonElement>) => void;
-  handleChange: (event: JSX.TargetedEvent<HTMLInputElement>) => void;
+  onChange: (event: JSX.TargetedEvent<HTMLInputElement>) => void;
   value: boolean;
 };
 
@@ -22,14 +22,14 @@ export function ActionFooter({
   isLoading,
   disabled,
   onClick,
-  handleChange,
+  onChange,
   value,
 }: ActionFooterProps) {
   return (
     <div className={styles.container}>
       <Container space="medium">
         <VerticalSpace space="large" />
-        <Checkbox onChange={handleChange} value={value}>
+        <Checkbox onChange={onChange} value={value}>
           <Text>
             <Bold>#Slack</Bold> に投稿する
           </Text>
