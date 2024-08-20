@@ -1,4 +1,6 @@
 <div align="center">
+  <img src="./_resources/Thumbnail.png" />
+  <br>
   <h1>github-discussions-templete</h1>
   <p>
     github-discussions-templete は、Figma のプラグインを使って GitHub Discussions に直接投稿できる Figma プラグインのテンプレートプロジェクトです。コードをカスタマイズして、チームのワークフローに合わせてご利用ください。
@@ -16,7 +18,6 @@
     </a>
   </div>
   <br>
-  <img src="./_resources/Thumbnail.png" />
 </div>
 
 ## Table of contents
