@@ -1,5 +1,18 @@
+# このワークフローでは、GitHub Discussionsに新しいトピックが作成されたときに
+# curlコマンドを使ってSlackのIncoming Webhook URLにPOSTリクエストを送信し、通知を行います。
+# 通知には以下の情報が含まれます：
+#  - 新しいディスカッションのタイトル
+#  - 投稿者のユーザー名
+#  - ディスカッションのURL
+#
+# SlackのIncoming Webhookについての詳細は以下のリンクを参照してください:
+# https://github.com/marketplace/actions/slack-send#technique-3-slack-incoming-webhook
+
+
+# Slackに通知を送信するためのGitHub Actionsワークフロー
 name: Notify Slack using Incoming Webhook
 
+# GitHub Discussionsの新規作成イベントをトリガーに設定
 on:
   discussion:
     types: [created]
