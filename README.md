@@ -105,11 +105,9 @@ npm install
 code .
 ```
 
-6. ルートディレクトリに `.env` ファイルを作成し、以下の値を設定:
-
+6. ルートディレクトリに `.env` ファイルを作成し、以下の値を設定<br>
+例）ishida-daiki / github-discussions-templete の場合:
 ```.env
-例 ishida-daiki / github-discussions-templete の場合:
-
 GITHUB_OWNER=ishida-daiki
 GITHUB_REPO=github-discussions-templete
 GITHUB_ACCESS_TOKEN=#ここに新しく作成した GitHub Personal access token を設定してください。
