@@ -1,5 +1,17 @@
+# このワークフローでは、GitHub Discussionsに新しいトピックが作成されたときに
+# Slackの指定したチャネルにその情報を通知します。通知には以下の情報が含まれます：
+#  - 新しいディスカッションのタイトル
+#  - 投稿者のユーザー名
+#  - ディスカッションのURL
+# 
+# Slackへの通知の方法についての詳細は、以下のリンクにあります:
+# https://github.com/marketplace/actions/slack-send#technique-2-slack-app
+
+
+# Slackに通知を送信するためのGitHub Actionsワークフロー
 name: Notify Slack using chat:write Scope
 
+# GitHub Discussionsの新規作成イベントをトリガーに設定
 on:
   discussion:
     types: [created]

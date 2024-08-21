@@ -1,10 +1,23 @@
+# このワークフローは、指定したスケジュールまたは手動トリガーで実行されます。
+# 特に以下の処理を行います：
+#  1. リポジトリのチェックアウト。
+#  2. Node.jsのセットアップと依存関係のインストール。
+#  3. 画像ディレクトリの内容を削除するスクリプトに実行権限を付与。
+#  4. スクリプトの実行。
+#  5. 変更があれば、これをコミットしてリポジトリにプッシュ。
+
+
+# 画像ディレクトリ内容を削除するための GitHub Actionsワークフロー（ishida-daiki/github-discussions-templeteリポジトリのみ）
 name: Cleanup Images Action
 
+# ワークフローのトリガー設定
 on:
+  # 毎日午前0時に実行する
   schedule:
-    - cron: "0 0 * * *" # 毎時00分にトリガー
+    - cron: "0 0 * * *"
 
-  workflow_dispatch: # 手動トリガー
+  # 手動トリガーで実行する
+  workflow_dispatch: 
 
 jobs:
   cleanup:
