@@ -46,7 +46,7 @@
 
 <img src="https://github.com/ishida-daiki/github-discussions-templete/blob/main/_resources/Icon.png" width="50px"> 
 
-`DMM.com LLC` 組織内のメンバーは、下記の手順でプラグインをお試しできます：
+`DMM.com` 組織内のメンバーは、下記の手順でプラグインをお試しできます：
 
 1. [Discussions](https://www.figma.com/community/plugin/1402940367964187567/discussions) にアクセス。
 2. "Open in..." を押下。
