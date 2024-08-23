@@ -16,6 +16,9 @@
     <a href="https://opensource.org/licenses/MIT">
       <img src="https://img.shields.io/badge/License-MIT-orange.svg" alt="License: MIT" />
     </a>
+    <a href="https://x.com/ishida1897">
+		  <img src="https://img.shields.io/twitter/follow/ishida1897?style=social">
+	  </a>
   </div>
   <br>
 </div>
