@@ -4,8 +4,17 @@ import { JSX } from "preact";
 import styles from "./actionfooter.module.css";
 
 type ActionFooterProps = {
+  /**
+   * ボタンがローディング中かどうかを示すフラグ
+   */
   isLoading: boolean;
+  /**
+   * ボタンが無効かどうかを示すフラグ
+   */
   disabled: boolean;
+  /**
+   * ボタンがクリックされたときに呼び出される関数
+   */
   onClick: (event: JSX.TargetedMouseEvent<HTMLButtonElement>) => void;
 };
 
