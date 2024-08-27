@@ -7,6 +7,7 @@
   </p>
   <br>
   <div>
+    <img src="https://github.com/ishida-daiki/github-discussions-templete/actions/workflows/build.yml/badge.svg" alt="workflow: Build and Attest" />
     <img src="https://github.com/ishida-daiki/github-discussions-templete/actions/workflows/cleanup-images.yml/badge.svg" alt="workflow: cleanup-images" />
     <img src="https://github.com/ishida-daiki/github-discussions-templete/actions/workflows/notify-slack-chat-write.yml/badge.svg" alt="workflow: notify-slack-chat-write" />
     <img src="https://github.com/ishida-daiki/github-discussions-templete/actions/workflows/notify-slack-incoming-webhook.yml/badge.svg" alt="workflow: notify-slack-incoming-webhook" />
