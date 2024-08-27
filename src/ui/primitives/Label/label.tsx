@@ -2,8 +2,14 @@ import { Bold, Text } from "@create-figma-plugin/ui";
 import { h } from "preact";
 import styles from "./label.module.css";
 
-interface LabelProps {
+type LabelProps = {
+  /**
+   * ラベルのタイトル
+   */
   title: string;
+  /**
+   * 必須フラグ
+   */
   required?: boolean;
 }
 

@@ -2,12 +2,27 @@ import { h } from "preact";
 import { Stack, Text, SegmentedControl, SegmentedControlOption, RadioButtonsOption } from "@create-figma-plugin/ui";
 import styles from "./discussionlabels.module.css";
 
-interface DiscussionLabelsProps {
+type DiscussionLabelsProps = {
+  /**
+   * ラベルのロード状態
+   */
   isLoadingLabels: boolean;
+  /**
+   * ラベルオプション
+   */
   labelOptions: Array<RadioButtonsOption>;
-  createHandleChangeSegmentedControl: (index: number) => (event: Event) => void;
-  segmentedControlOptions: Array<SegmentedControlOption>;
+  /**
+   * セグメントコントロールの選択状態
+   */
   segmentedControlValues: string[];
+  /**
+   * セグメントコントロール用のオプション
+   */
+  segmentedControlOptions: Array<SegmentedControlOption>;
+  /**
+   * セグメントコントロールの選択変更を処理する関数
+   */
+  createHandleChangeSegmentedControl: (index: number) => (event: Event) => void;
 }
 
 export function DiscussionLabels({
