@@ -31,4 +31,4 @@ jobs:
       - name: Attest build provenance
         uses: actions/attest-build-provenance@v1
         with:
-          subject-path: 'build/*'
+          subject-path: 'dist/*'
