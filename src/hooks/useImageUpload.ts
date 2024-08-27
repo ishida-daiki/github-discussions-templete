@@ -1,17 +1,37 @@
 import { useState } from "preact/hooks";
 
+type UseImageUploadResult = {
+  /**
+   * 現在選択されているファイルの配列
+   */
+  selectedFiles: Array<File>;
+  /**
+   * 選択されているファイルの配列を更新する関数
+   */
+  setSelectedFiles: (files: Array<File>) => void;
+  /**
+   * ファイルを base64 文字列へと変換する関数
+   */
+  fileToBase64: (file: File) => Promise<string>;
+  /**
+   * 選択されたファイルを処理し、状態を更新する関数
+   */
+  handleSelectedFiles: (files: Array<File>) => void;
+};
+
 /**
  * useImageUpload フック
  * 
  * 画像アップロードを管理するためのカスタムフックです。
  * 選択されたファイルを管理し、ファイルを base64 エンコードに変換します。
  * 
- * @return {Array<File>} selectedFiles - 現在選択されているファイルの配列。
- * @return {function} setSelectedFiles - 選択されているファイルの配列を更新する関数。
- * @return {function} fileToBase64 - ファイルを base64 文字列へと変換する関数。
- * @return {function} handleSelectedFiles - 選択されたファイルを処理し、状態を更新する関数。
+ * @returns {UseImageUploadResult} 結果オブジェクトには以下のプロパティが含まれます:
+ * - selectedFiles: 現在選択されているファイルの配列
+ * - setSelectedFiles: 選択されているファイルの配列を更新する関数
+ * - fileToBase64: ファイルを base64 文字列へと変換する関数
+ * - handleSelectedFiles: 選択されたファイルを処理し、状態を更新する関数
  */
-export function useImageUpload() {
+export function useImageUpload(): UseImageUploadResult {
   const [selectedFiles, setSelectedFiles] = useState<Array<File>>([]);
 
   /**

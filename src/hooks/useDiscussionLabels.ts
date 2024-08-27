@@ -8,28 +8,60 @@ import {
 } from "@create-figma-plugin/ui";
 import { useState, useEffect } from "preact/hooks";
 
+type UseDiscussionLabelsResult = {
+  /**
+   * ラベルのロード状態
+   */
+  isLoadingLabels: boolean;
+  /**
+   * ラベル名とラベルIDのマッピング
+   */
+  labelMap: Record<string, string>;
+  /**
+   * ラベルオプション
+   */
+  labelOptions: Array<RadioButtonsOption>;
+  /**
+   * セグメントコントロールの選択状態
+   */
+  segmentedControlValues: string[];
+  /**
+   * セグメントコントロールの選択状態を更新する関数
+   */
+  setSegmentedControlValues: (values: string[]) => void;
+  /**
+   * セグメントコントロール用のオプション
+   */
+  segmentedControlOptions: Array<SegmentedControlOption>;
+  /**
+   * セグメントコントロールの選択変更を処理する関数
+   */
+  createHandleChangeSegmentedControl: (index: number) => (event: Event) => void;
+};
+
 /**
  * useDiscussionLabels フック
  *
  * GitHub Discussions のラベルを取得し、選択状態やロード状態を管理します。
  *
- * @return {boolean} isLoadingLabels - ラベルのロード状態。
- * @return {Record<string, string>} labelMap - ラベル名とラベルIDのマッピング。
- * @return {Array<SegmentedControlOption>} segmentedControlOptions - セグメントコントロール用のオプション。
- * @return {Array<string>} segmentedControlValues - セグメントコントロールの選択状態。
- * @return {function} setSegmentedControlValues - セグメントコントロールの選択状態を更新する関数。
- * @return {Array<RadioButtonsOption>} labelOptions - ラベルオプション。
- * @return {function} createHandleChangeSegmentedControl - セグメントコントロールの選択変更を処理する関数。
-*/
-export function useDiscussionLabels() {
+ * @returns {UseDiscussionLabelsResult} 結果オブジェクトには以下のプロパティが含まれます:
+ * - isLoadingLabels: ラベルのロード状態
+ * - labelMap: ラベル名とラベルIDのマッピング
+ * - labelOptions: ラベルオプション
+ * - segmentedControlValues: セグメントコントロールの選択状態
+ * - setSegmentedControlValues: セグメントコントロールの選択状態を更新する関数
+ * - segmentedControlOptions: セグメントコントロール用のオプション
+ * - createHandleChangeSegmentedControl: セグメントコントロールの選択変更を処理する関数
+ */
+export function useDiscussionLabels(): UseDiscussionLabelsResult {
+  const [isLoadingLabels, setIsLoadingLabels] = useState<boolean>(true);
+  const [labelMap, setLabelMap] = useState<Record<string, string>>({});
   const [labelOptions, setLabelOptions] = useState<Array<RadioButtonsOption>>(
     []
   );
   const [segmentedControlValues, setSegmentedControlValues] = useState<
     string[]
   >([]);
-  const [labelMap, setLabelMap] = useState<Record<string, string>>({});
-  const [isLoadingLabels, setIsLoadingLabels] = useState<boolean>(true);
   const segmentedControlOptions: Array<SegmentedControlOption> = [
     {
       children: h(IconOptionDisabled16, null),
@@ -42,14 +74,14 @@ export function useDiscussionLabels() {
   ];
 
   /**
-   * セグメントコントロールの選択変更を処理する関数を作成
+   * セグメントコントロールの選択変更を処理する関数
    *
    * @param {number} index - セグメントコントロールのインデックス
    * @return {function} - イベントリスナー関数を返す
    */
   function createHandleChangeSegmentedControl(index: number) {
     return (event: Event) => {
-      const newValue = (event as any).currentTarget.value; // 型キャスト
+      const newValue = (event as any).currentTarget.value;
       setSegmentedControlValues((prevValues) => {
         const newValues = [...prevValues];
         newValues[index] = newValue;
