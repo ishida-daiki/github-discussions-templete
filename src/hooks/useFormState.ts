@@ -1,6 +1,33 @@
 import { JSX } from "preact";
 import { useState } from "preact/hooks";
 
+type UseFormStateResult = {
+  /**
+   * 現在のタイトルの値
+   */
+  title: string;
+  /**
+   * タイトル値を更新する関数
+   */
+  setTitle: (title: string) => void;
+  /**
+   * 現在の本文の値
+   */
+  body: string;
+  /**
+   * 本文値を更新する関数
+   */
+  setBody: (body: string) => void;
+  /**
+   * タイトルの入力変更を処理する関数
+   */
+  handleInputTitle: (event: JSX.TargetedEvent<HTMLInputElement>) => void;
+  /**
+   * 本文の入力変更を処理する関数
+   */
+  handleInputBody: (event: JSX.TargetedEvent<HTMLTextAreaElement>) => void;
+}
+
 /**
  * useFormState フック
  * 
@@ -9,14 +36,15 @@ import { useState } from "preact/hooks";
  * 
  * @param {string} [initialTitle=""] - タイトルの初期値。
  * @param {string} [initialBody=""] - 本文の初期値。
- * @return {string} title - 現在のタイトルの値。
- * @return {function} setTitle - タイトル値を更新する関数。
- * @return {string} body - 現在の本文の値。
- * @return {function} setBody - 本文値を更新する関数。
- * @return {function} handleInputTitle - タイトルの入力変更を処理する関数。
- * @return {function} handleInputBody - 本文の入力変更を処理する関数。
+ * @returns {UseFormStateResult} 結果オブジェクトには以下のプロパティが含まれます:
+ * - title: 現在のタイトルの値
+ * - setTitle: タイトル値を更新する関数
+ * - body: 現在の本文の値
+ * - setBody: 本文値を更新する関数
+ * - handleInputTitle: タイトルの入力変更を処理する関数
+ * - handleInputBody: 本文の入力変更を処理する関数
  */
-export function useFormState(initialTitle: string = "", initialBody: string = "") {
+export function useFormState(initialTitle: string = "", initialBody: string = ""): UseFormStateResult {
   // タイトルの状態を管理
   const [title, setTitle] = useState<string>(initialTitle);
   

@@ -1,5 +1,17 @@
 import { DropdownOption, RadioButtonsOption } from "@create-figma-plugin/ui";
+import { RefObject } from "preact";
 import { useEffect, useRef, useState } from "preact/hooks";
+
+type UseScrollDetectionDependenciesResult = {
+  /**
+   * スクロール可能なコンテンツの参照
+   */
+  contentRef: RefObject<HTMLDivElement>;
+  /**
+   * コンテンツがスクロール可能かどうかを示すフラグ
+   */
+  needsScroll: boolean;
+}
 
 /**
  * useScrollDetection フック
@@ -8,8 +20,9 @@ import { useEffect, useRef, useState } from "preact/hooks";
  * 指定された依存関係が変化したときに、コンテンツがスクロール可能かどうかをチェックします。
  * @param {object} dependencies - フックが再評価されるトリガーとなる依存関係のオブジェクト。
  * 
- * @return {RefObject<HTMLDivElement>} contentRef - スクロール可能なコンテンツの参照。
- * @return {boolean} needsScroll - コンテンツがスクロール可能かどうかを示すフラグ。
+ * @returns {UseScrollDetectionDependenciesResult} 結果オブジェクトには以下のプロパティが含まれます:
+ * - contentRef: スクロール可能なコンテンツの参照
+ * - needsScroll: コンテンツがスクロール可能かどうかを示すフラグ
  */
 export function useScrollDetection(dependencies: {
   options: Array<DropdownOption>;
@@ -19,7 +32,7 @@ export function useScrollDetection(dependencies: {
   category: string | null;
   body: string;
   isLoadingLabels: boolean;
-}) {
+}): UseScrollDetectionDependenciesResult {
   const {
     options,
     labelOptions,
@@ -29,10 +42,7 @@ export function useScrollDetection(dependencies: {
     body,
     isLoadingLabels,
   } = dependencies;
-  // スクロール可能なコンテンツの参照
   const contentRef = useRef<HTMLDivElement>(null);
-
-  // コンテンツがスクロール可能かどうかを示すフラグ
   const [needsScroll, setNeedsScroll] = useState(false);
 
   // 依存関係が変化したときにスクロールの必要性をチェックする副作用フック

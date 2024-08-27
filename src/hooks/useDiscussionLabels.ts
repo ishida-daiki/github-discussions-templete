@@ -44,7 +44,7 @@ type UseDiscussionLabelsResult = {
  *
  * GitHub Discussions のラベルを取得し、選択状態やロード状態を管理します。
  *
- * @returns {UseDiscussionLabelsResult} 結果オブジェクトには以下のプロパティが含まれます
+ * @returns {UseDiscussionLabelsResult} 結果オブジェクトには以下のプロパティが含まれます:
  * - isLoadingLabels: ラベルのロード状態
  * - labelMap: ラベル名とラベルIDのマッピング
  * - labelOptions: ラベルオプション

@@ -1,5 +1,12 @@
 import { JSX } from "preact";
 
+type UseHandleClickResult = {
+  /**
+   * クリックイベントを処理する関数
+   */
+  handleClick: (event: JSX.TargetedMouseEvent<HTMLButtonElement>) => void;
+};
+
 /**
  * useHandleClick フック
  *
@@ -27,7 +34,8 @@ import { JSX } from "preact";
  * @param {function} dependencies.setCategory - カテゴリを設定する関数。
  * @param {function} dependencies.setSegmentedControlValues - セグメントコントロールの選択状態を更新する関数。
  *
- * @return {function} handleClick - クリックイベントを処理する関数。
+ * @returns {UseHandleClickResult} 結果オブジェクトには以下のプロパティが含まれます:
+ * - handleClick: クリックイベントを処理する関数
  */
 export function useHandleClick(dependencies: {
   elementName: string | null;
@@ -49,7 +57,7 @@ export function useHandleClick(dependencies: {
   setBody: (body: string) => void;
   setCategory: (category: string | null) => void;
   setSegmentedControlValues: (values: string[]) => void;
-}) {
+}): UseHandleClickResult {
   const {
     elementName,
     setElementName,

@@ -1,5 +1,20 @@
 import { useState, useEffect } from "preact/hooks";
 
+type UseElementNameResult = {
+  /**
+   * 現在選択されている要素の名前
+   */
+  elementName: string | null;
+  /**
+   * 要素名を更新する関数
+   */
+  setElementName: (elementName: string) => void;
+  /**
+   * 生成されたURL
+   */
+  generatedUrl: string | null;
+};
+
 /**
  * useElementName フック
  *
@@ -7,11 +22,12 @@ import { useState, useEffect } from "preact/hooks";
  * 要素が選択されたときに要素名を更新し、対応する URL を生成します。
  * 要素が選択解除されたときには、要素名と生成された URL を初期化します。
  *
- * @return {string | null} elementName - 現在選択されている要素の名前。
- * @return {function} setElementName - 要素名を更新するための関数。
- * @return {string | null} generatedUrl - 選択された要素の対応URL。
+ * @returns {UseElementNameResult} 結果オブジェクトには以下のプロパティが含まれます:
+ * - elementName: 現在選択されている要素の名前
+ * - setElementName: 要素名を更新する関数
+ * - generatedUrl: 生成されたURL
  */
-export function useElementName() {
+export function useElementName(): UseElementNameResult {
   const [elementName, setElementName] = useState<null | string>(
     "Discussion Select the element you want to discuss"
   );
