@@ -4,7 +4,13 @@ import { Label } from "primitives";
 import styles from "./imageuploader.module.css";
 
 type ImageUploaderProps = {
+  /**
+   * 選択されたファイルを処理し、状態を更新する関数
+   */
   handleSelectedFiles: (files: Array<File>) => void;
+  /**
+   * 現在選択されているファイルの配列
+   */
   selectedFiles: Array<File>;
 }
 
