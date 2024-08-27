@@ -16,9 +16,6 @@
     <a href="https://opensource.org/licenses/MIT">
       <img src="https://img.shields.io/badge/License-MIT-orange.svg" alt="License: MIT" />
     </a>
-    <a href="https://x.com/ishida1897">
-		  <img src="https://img.shields.io/twitter/follow/ishida1897?style=social">
-	  </a>
   </div>
   <br>
 </div>
@@ -43,14 +40,15 @@
   <br>
 
 [![Figma Developer](https://img.shields.io/badge/Figma-Developers-8A2BE2?logo=figma&logoColor=white)](https://www.figma.com/developers) [![Figma private organization plugins](https://img.shields.io/badge/Figma-private--organization--plugins-0d99ff?logo=figma&logoColor=white)](https://help.figma.com/hc/en-us/articles/4404228629655-Create-private-organization-plugins)
+
+[![X (formerly Twitter) URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Fx.com%2Fishida1897%2Fstatus%2F1826207464674718061&style=social&label=Watch%20Demo&link=https%3A%2F%2Fx.com%2Fishida1897%2Fstatus%2F1826207464674718061)](https://x.com/ishida1897/status/1826207464674718061)
 </div>
 
-<img src="https://github.com/ishida-daiki/github-discussions-templete/blob/main/_resources/Icon.png" width="50px"> 
-
-`DMM.com` 組織内のメンバーは、下記の手順でプラグインをお試しできます：
-
-1. [Discussions](https://www.figma.com/community/plugin/1402940367964187567/discussions) にアクセス。
-2. "Open in..." を押下。
+> <img src="https://github.com/ishida-daiki/github-discussions-templete/blob/main/_resources/Icon.png" width="50px"> 
+> 
+> `DMM.com` 組織内のメンバーは、下記の手順でプラグインをお試しできます:
+> 1. [Discussions](https://www.figma.com/community/plugin/1402940367964187567/discussions) にアクセス。
+> 2. "Open in..." を押下。
 
 
 <h2 align="center">🚀&nbsp;&nbsp;Features</h2>
