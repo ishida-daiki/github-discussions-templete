@@ -131,7 +131,7 @@ function Plugin() {
       </div>
       <ActionFooter
         isLoading={isLoading}
-        disabled={!(elementName && body && category)}
+        disabled={!(title && body && category)}
         onClick={handleClick}
       />
     </Fragment>
