@@ -19,5 +19,5 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      - name: Attest build provenance
-        uses: actions/attest-build-provenance@v1
+      - name: Attest Build Provenance
+        uses: actions/attest-build-provenance@v1.4.2
