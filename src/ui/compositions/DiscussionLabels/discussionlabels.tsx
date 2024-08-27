@@ -2,7 +2,7 @@ import { h } from "preact";
 import { Stack, Text, SegmentedControl, SegmentedControlOption, RadioButtonsOption } from "@create-figma-plugin/ui";
 import styles from "./discussionlabels.module.css";
 
-interface DiscussionLabelsProps {
+type DiscussionLabelsProps = {
   isLoadingLabels: boolean;
   labelOptions: Array<RadioButtonsOption>;
   createHandleChangeSegmentedControl: (index: number) => (event: Event) => void;
