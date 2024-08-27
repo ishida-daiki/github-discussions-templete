@@ -45,7 +45,7 @@
 [![X (formerly Twitter) URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Fx.com%2Fishida1897%2Fstatus%2F1826207464674718061&style=social&label=Watch%20Demo&link=https%3A%2F%2Fx.com%2Fishida1897%2Fstatus%2F1826207464674718061)](https://x.com/ishida1897/status/1826207464674718061)
 </div>
 
-> <img src="https://github.com/ishida-daiki/github-discussions-templete/blob/main/_resources/Icon.png" width="50px"> 
+> [!NOTE]
 > 
 > `DMM.com` 組織内のメンバーは、下記の手順でプラグインをお試しできます:
 > 1. [Discussions](https://www.figma.com/community/plugin/1402940367964187567/discussions) にアクセス。
