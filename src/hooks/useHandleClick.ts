@@ -11,7 +11,7 @@ type UseHandleClickResult = {
  * useHandleClick フック
  *
  * Submit ボタン押下時に実行されるクリックイベントを処理するためのカスタムフックです。
- * 画像のアップロードやメッセージの投稿を行い、必要な状態を更新します。
+ * 画像のアップロードやメッセージの投稿を行います。
  *
  * @param {object} dependencies - フックが必要とする依存関係のオブジェクト。
  * @param {string | null} dependencies.elementName - 要素名。

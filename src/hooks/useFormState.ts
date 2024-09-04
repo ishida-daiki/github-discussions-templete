@@ -32,7 +32,7 @@ type UseFormStateResult = {
  * useFormState フック
  * 
  * フォームの状態を管理するためのカスタムフックです。
- * タイトルと本文の入力値を管理し、入力値が更新されたらそれぞれの状態を更新します。
+ * タイトルと本文の入力値を管理し、入力値が更新されたらそれぞれの内容を更新します。
  * 
  * @param {string} [initialTitle=""] - タイトルの初期値。
  * @param {string} [initialBody=""] - 本文の初期値。
