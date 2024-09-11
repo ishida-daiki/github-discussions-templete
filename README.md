@@ -101,11 +101,7 @@ GitHub Discussions を [Figma Community Forum](https://forum.figma.com/) のよ�
 npm install
 ```
 
-5. VS Code を開く:
-
-```cli
-code .
-```
+5. 任意のIDEを開く（例: VS Code, Cursorなど）:
 
 6. ルートディレクトリに `.env` ファイルを作成し、以下の値を設定<br>
 例）ishida-daiki / github-discussions-templete の場合:
