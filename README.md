@@ -21,6 +21,13 @@
   <br>
 </div>
 
+## Another Language README
+<div>
+  <a href="./docs/README_en.md">
+    <img src="https://img.shields.io/badge/README-English-blue.svg" alt="English README" />
+  </a>
+</div>
+
 ## Table of contents
 
 1. 🔌&nbsp;&nbsp;[Figma Sample Plugin](#figma-sample-plugin)
