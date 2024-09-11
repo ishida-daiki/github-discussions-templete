@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./_resources/Thumbnail.png" />
+  <img src="../_resources/Thumbnail.png" />
   <br>
   <h1>github-discussions-templete</h1>
   <p>
@@ -115,7 +115,7 @@ GITHUB_ACCESS_TOKEN=#Set the newly created GitHub Personal access token here.
 > If the `GITHUB_ACCESS_TOKEN` in the `.env` file does not have a `Personal access token` set, you will not be able to retrieve information from or post to GitHub Discussions.<br />
 > After generating a `Personal access token`, be sure to set it in the `GITHUB_ACCESS_TOKEN` in the `.env` file.
 >
-> For instructions on creating a Personal access token, refer to [Creating a Personal Access Token](#personal-access-token-の作成).
+> For instructions on creating a Personal access token, refer to [Creating a Personal Access Token](#Creating-a-Personal-Access-Token).
 
 7. 🎉 The development environment setup is complete! To start development, please refer to [Build](#build).
 
