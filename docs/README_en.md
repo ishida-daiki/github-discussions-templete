@@ -47,7 +47,7 @@
 
 > [!NOTE]
 > 
-> Members of the `DMM.com` organization can try the plugin by following these steps:
+> Members of the [`DMM.com`](https://dmm-corp.com/) organization can try the plugin by following these steps:
 > 1. Access [Discussions](https://www.figma.com/community/plugin/1402940367964187567/discussions).
 > 2. Click "Open in...".
 
@@ -113,7 +113,7 @@ GITHUB_ACCESS_TOKEN=#Set the newly created GitHub Personal access token here.
 
 > [!IMPORTANT]
 > If the `GITHUB_ACCESS_TOKEN` in the `.env` file does not have a `Personal access token` set, you will not be able to retrieve information from or post to GitHub Discussions.<br />
-> After generating a `Personal access token`, be sure to set it in the `GITHUB_ACCESS_TOKEN` in the `.env` file.
+> After generating a `Personal access token` , be sure to set it in the `GITHUB_ACCESS_TOKEN` in the `.env` file.
 >
 > For instructions on creating a Personal access token, refer to [Creating a Personal Access Token](#Creating-a-Personal-Access-Token).
 
@@ -139,7 +139,7 @@ GITHUB_ACCESS_TOKEN=#Set the newly created GitHub Personal access token here.
 npm run build
 ```
 
-Running this command will generate a `build/`　directory containing the [`manifest.json`](https://figma.com/plugin-docs/manifest/) file and the JavaScript bundle of the plugin.
+Running this command will generate a `build/` directory containing the [`manifest.json`](https://figma.com/plugin-docs/manifest/) file and the JavaScript bundle of the plugin.
 
 #### Command to Automatically Rebuild the Plugin
 
