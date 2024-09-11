@@ -13,6 +13,7 @@ import { Fragment, h } from "preact";
 import { useEffect, useState } from "preact/hooks";
 import styles from "./App.module.css";
 import {
+  useCheckbox,
   useDiscussionCategories,
   useDiscussionLabels,
   useElementName,
@@ -42,6 +43,7 @@ function Plugin() {
   const { title, setTitle, body, setBody, handleInputTitle, handleInputBody } =
     useFormState();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [value, handleChange] = useCheckbox();
   const { selectedFiles, setSelectedFiles, fileToBase64, handleSelectedFiles } =
     useImageUpload();
   const { contentRef, needsScroll } = useScrollDetection({
@@ -133,6 +135,8 @@ function Plugin() {
         isLoading={isLoading}
         disabled={!(title && body && category)}
         onClick={handleClick}
+        onChange={handleChange}
+        value={value}
       />
     </Fragment>
   );
