@@ -1,6 +1,6 @@
 module.exports = {
   transform: {
-    "^.+\\.tsx?$": "babel-jest",
+    "^.+\\.(ts|tsx)?$": "babel-jest",
     "^.+\\.jsx?$": "babel-jest",
   },
   transformIgnorePatterns: [
@@ -11,10 +11,11 @@ module.exports = {
     "^react-dom$": "preact/compat",
   },
   extensionsToTreatAsEsm: [".ts", ".tsx"],
-  testEnvironment: "jsdom",
   globals: {
     "ts-jest": {
-      useESM: true,
+      tsconfig: '<rootDir>/tsconfig.json',
     },
   },
+  displayName: 'github-discussions-templete',
+  testEnvironment: 'jest-environment-jsdom',
 };
