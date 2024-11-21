@@ -1,5 +1,12 @@
 import { h } from "preact";
-import { Button, Container, VerticalSpace } from "@create-figma-plugin/ui";
+import {
+  Button,
+  Checkbox,
+  Container,
+  VerticalSpace,
+  Text,
+  Bold,
+} from "@create-figma-plugin/ui";
 import { JSX } from "preact";
 import styles from "./actionfooter.module.css";
 
@@ -16,13 +23,27 @@ type ActionFooterProps = {
    * ボタンがクリックされたときに呼び出される関数
    */
   onClick: (event: JSX.TargetedMouseEvent<HTMLButtonElement>) => void;
+  onChange: (event: JSX.TargetedEvent<HTMLInputElement>) => void;
+  value: boolean;
 };
 
-export function ActionFooter({ isLoading, disabled, onClick }: ActionFooterProps) {
+export function ActionFooter({
+  isLoading,
+  disabled,
+  onClick,
+  onChange,
+  value,
+}: ActionFooterProps) {
   return (
     <div className={styles.container}>
-      <VerticalSpace space="large" />
       <Container space="medium">
+        <VerticalSpace space="large" />
+        <Checkbox onChange={onChange} value={value}>
+          <Text>
+            <Bold>#Slack</Bold> に投稿する
+          </Text>
+        </Checkbox>
+        <VerticalSpace space="large" />
         <Button
           loading={isLoading}
           disabled={disabled}
